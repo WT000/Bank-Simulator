@@ -7,5 +7,13 @@ Because we're working on this as a team, always ensure you pull the repo before 
 Always git pull / fetch the upstream when you want to work on the project in case someone has made changes.
 Always pull before pushing your own changes too!
 
+# CODE FORMATTING
+When coding, make sure you follow standards and general practices:
+ClassName
+methodName
+Don't start classes or methods with a number
+Don't use confusing variable names
+Space out code where needed, make sure it's readable to everyone
+
 # TODO (will be removed)
 GitHub actions to automatically build maven and run tests on push
