@@ -9,6 +9,7 @@ Always pull before pushing your own changes too!
 
 # CODE FORMATTING
 When coding, make sure you follow standards and general practices:
+
 ClassName
 
 methodName
