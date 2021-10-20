@@ -1,3 +1,6 @@
+# NOTICE
+I'm still setting up the repo and moving my files, I'll say in the teams channel when it's ready to be worked on.
+
 # COM528AE1
 This is our groups submission for the AE1 for COM528, a credit card app that uses ReST with a front-facing UI built with JSP for users.
 
