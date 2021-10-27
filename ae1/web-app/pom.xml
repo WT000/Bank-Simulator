@@ -7,10 +7,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>webapp</artifactId>
+    <artifactId>web-app</artifactId>
     <packaging>war</packaging>
 
-    <name>webapp</name>
+    <name>web-app</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
