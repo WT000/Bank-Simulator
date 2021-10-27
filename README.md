@@ -20,6 +20,3 @@ Don't use confusing variable names.
 Space out code where needed, make sure it's readable to everyone as we're working on this as a group!
 
 Comment your code.
-
-# TODO (will be removed)
-GitHub actions to automatically build maven and run tests on push
