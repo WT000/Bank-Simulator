@@ -22,6 +22,19 @@
     </properties>
     
     <dependencies>
+        <!-- Import dependancies that we need!!!! -->
+        <dependency>
+            <groupId>org.solent.oodd.ae1</groupId>
+            <artifactId>card-checker</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.solent.oodd.ae1</groupId>
+            <artifactId>bank-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>

@@ -5,7 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="solent.oodd.ae1.card.checker.RegexCardValidator"%>
+<%@page import="org.solent.oodd.ae1.card.checker.RegexCardValidator"%>
+<%@page import="org.solent.oodd.ae1.bank.client.impl.BankRestClientImpl"%>
 <!DOCTYPE html>
 <html>
     <head>
