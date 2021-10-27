@@ -10,3 +10,4 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 /saleApp/ae1/card-checker/nbproject/
+/saleApp/ae1/bank-client/nbproject/
