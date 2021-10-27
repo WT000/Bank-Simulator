@@ -4,5 +4,22 @@ This is our groups submission for the AE1 for COM528, a credit card app that use
 # REPO INSTRUCTIONS
 Because we're working on this as a team, always ensure you pull the repo before git pushing! We don't want peoples work to be overwritten.
 
-Always git pull / fetch the upstream when you want to work on the project in case someone has made changes.
-Always pull before pushing your own changes too!
+In a nutshell, do git pull whenever you open the project and git pull whenever you're about to git push, allowing you to check for merge conflicts.
+
+# CODE FORMATTING
+When coding, make sure you follow standards and general practices:
+
+ClassName
+
+methodName
+
+Don't start classes or methods with a number.
+
+Don't use confusing variable names.
+
+Space out code where needed, make sure it's readable to everyone as we're working on this as a group!
+
+Comment your code.
+
+# TODO (will be removed)
+GitHub actions to automatically build maven and run tests on push
