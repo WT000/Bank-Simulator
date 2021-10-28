@@ -8,7 +8,7 @@ Because we're working on this as a team, always ensure you pull the repo before 
 
 In a nutshell, do git pull whenever you open the project and git pull whenever you're about to git push, allowing you to check for merge conflicts.
 
-If you're going to do a potentially damaging change, make sure you try the changes on a new branch and merge it with main if you know it works & tests didn't fail.
+If you're going to do a potentially damaging change, make sure you create and try the changes on a new branch and merge it with main if you know it works & tests didn't fail.
 
 If changes you make cause tests to fail then please try to fix them or revert the change until someone else can!
 
