@@ -1,5 +1,6 @@
 # COM528AE1
 This is our groups submission for the AE1 for COM528, a credit card app that uses ReST with a front-facing UI built with JSP for users.
+
 ae1 contains code and resources related to our project.
 
 # REPO INSTRUCTIONS
