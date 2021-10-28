@@ -13,7 +13,7 @@
     </properties>
   
     <modules>
-        <module>web-app</module>
+        <module>web</module>
         <module>card-checker</module>
         <module>bank-client</module>
     </modules>
