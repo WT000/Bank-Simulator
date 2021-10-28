@@ -73,6 +73,7 @@ public class BankRestClientImpl implements BankRestClient {
 
     @Override
     public TransactionReplyMessage transferMoney(CreditCard fromCard, CreditCard toCard, Double amount, String userName, String password) {
+        // Note that userName and password are for the account tied to toCard.
         LOG.debug("transferMoney called: ");
 
         // sets up logging for the client       
