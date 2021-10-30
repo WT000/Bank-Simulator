@@ -5,9 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-
-        <p>footer here</p>
         
         <script src="public/js/bootstrap.min.js"></script>
     </body>

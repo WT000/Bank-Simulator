@@ -10,6 +10,30 @@
 
 <jsp:include page="header.jsp"/>
 <!-- Page start -->
-<h1>app goes here</h1>
+<div id="appContainer">
+    <div id="resultContainer">
+        <div id="result">
+            <p id="resultText">Welcome. Please click one of the buttons below.</p>
+        </div>
+    </div>
+    
+    <div id="formContainer">
+        
+    </div>
+    
+    <div id="functionContainer">
+        <div class="functionButton" id="buttonCard">
+            <p>Enter Card</p>
+        </div>
+        
+        <div class="functionButton" id="buttonTransaction">
+            <p>Transaction</p>
+        </div>
+        
+        <div class="functionButton" id="buttonRefund">
+            <p>Refund</p>
+        </div>
+    </div>
+</div>
 <!-- Page end -->
 <jsp:include page="footer.jsp"/>
