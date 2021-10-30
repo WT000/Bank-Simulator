@@ -12,9 +12,27 @@
         <title>Online Sale Service</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="public/styles/bootstrap.min.css">
-        
+
         <!-- Custom stylesheet -->
         <link rel="stylesheet" href="public/styles/style.css">
     </head>
     <body>
-        <p>header will go here</p>
+        <div id="adminMenu">
+            <div id="adminMenuHeader">
+                <h2>STAFF MENU</h2>
+            </div>
+
+            <form id="propertiesForm" method="post">
+                <input type="hidden" name="action" value="setProperties">
+                <div class="propertiesFormRow">
+                    <input type="url" name="propertiesURL" placeholder="Bank URL">
+                    <input name="propertiesCard" placeholder="Card Number">
+                    <input name="propertiesUsername" placeholder="Bank Username">
+                    <input type="password" name="propertiesPassword" placeholder="Bank Password">
+                </div>
+
+                <div class="propertiesFormRow">
+                    <button>Submit</button>
+                </div>
+            </form>
+        </div>

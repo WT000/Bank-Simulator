@@ -13,5 +13,27 @@ body{
 }
 
 h1{
-    color: red;
+    color: purple;
+}
+
+#adminMenu{
+    width: 100%;
+    height: 20vh;
+    background-color: gray;
+}
+
+#adminMenuHeader h2{
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.propertiesFormRow{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.propertiesFormRow input{
+    margin-left: 25px;
+    margin-right: 25px;
 }
