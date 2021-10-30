@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Online Sale Service</title>
         <!-- Bootstrap -->
+        <link rel="stylesheet" href="public/styles/bootstrap.min.css">
         
         <!-- Custom stylesheet -->
         <link rel="stylesheet" href="public/styles/style.css">
