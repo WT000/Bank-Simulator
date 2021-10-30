@@ -18,7 +18,29 @@
     </div>
     
     <div id="formContainer">
+        <form id="addCardForm" class="innerForm" method="post">
+            <input type="hidden" name="action" value="addCard">
+            
+            <label>Card Number</label><input type="number" name="cardNumber"><br>
+            <label>Name on Card</label><input name="cardName"><br>
+            <label>Expiration Date</label><input type="number" name="cardDate"><br>
+            <label>Cvv</label><input type="number" name="cardCvv"><br>
+            <button>Submit</button>
+        </form>
         
+        <form id="transactionForm" class="innerForm" method="post">
+            <input type="hidden" name="action" value="doTransaction">
+            
+            <label>Amount to send</label><input type="number" name="amount"><br>
+            <button>Submit</button>
+        </form>
+        
+        <form id="refundForm" class="innerForm" method="post">
+            <input type="hidden" name="action" value="doRefund">
+            
+            <label>Amount to refund</label><input type="number" name="amount"><br>
+            <button>Submit</button>
+        </form>
     </div>
     
     <div id="functionContainer">
