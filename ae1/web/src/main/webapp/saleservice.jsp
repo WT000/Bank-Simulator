@@ -10,6 +10,6 @@
 
 <jsp:include page="header.jsp"/>
 <!-- Page start -->
-    <h1>app goes here</h1>
+<h1>app goes here</h1>
 <!-- Page end -->
 <jsp:include page="footer.jsp"/>
