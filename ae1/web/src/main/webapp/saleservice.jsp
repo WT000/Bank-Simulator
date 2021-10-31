@@ -57,7 +57,8 @@
         
         // if for card validation would be here
         // perhaps run a script so it makes the relevant form stay visible
-        result = "SUCCESS - CARD ADDED";
+        result = "<p style=\"color:green;\">SUCCESS - " + cardNo + " is now your current card.</p>";
+    // TRANSACTION REST CONNECTION
     } else if ("doTransaction".equals(action)) {
         String amount = (String) request.getParameter("amount");
         
@@ -65,20 +66,30 @@
         TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
         
         if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
-            result = "SUCCESS - £" + amount + " has been taken from your account.";
+            result = "<p style=\"color:green;\">SUCCESS - £" + amount + " has been taken from your account.</p>";
         } else {
-            result = "FAILURE";
+            // null isn't a helpful message if the bank properties haven't been correctly configured.
+            if (restResponse.getMessage() != null) {
+                result = "<p style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+            } else {
+                result = "<p style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+            }
         }
+    // REFUND REST CONNECTION
     } else if ("doRefund".equals(action)) {
         String amount = (String) request.getParameter("amount");
         
-        // Perform the refund
+        // Perform the refund, like the notes below, perhaps this could use a seperate form in the future
         TransactionReplyMessage restResponse = restClient.transferMoney(bankCard, customerCard, Double.valueOf(amount));
         
         if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
-            result = "SUCCESS - £" + amount + " has been refunded to your account.";
+            result = "<p style=\"color:green;\">SUCCESS - £" + amount + " has been refunded to " + restResponse.getToCardNo() + ".</p>";
         } else {
-            result = "FAILURE";
+            if (restResponse.getMessage() != null) {
+                result = "<p style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+            } else {
+                result = "<p style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+            }
         }
     }
 %>
