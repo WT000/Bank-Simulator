@@ -57,7 +57,7 @@
         
         // if for card validation would be here
         // perhaps run a script so it makes the relevant form stay visible
-        result = "SUCCESS";
+        result = "SUCCESS - CARD ADDED";
     } else if ("doTransaction".equals(action)) {
         String amount = (String) request.getParameter("amount");
         
@@ -65,7 +65,18 @@
         TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
         
         if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
-            result = "SUCCESS";
+            result = "SUCCESS - £" + amount + " has been taken from your account.";
+        } else {
+            result = "FAILURE";
+        }
+    } else if ("doRefund".equals(action)) {
+        String amount = (String) request.getParameter("amount");
+        
+        // Perform the refund
+        TransactionReplyMessage restResponse = restClient.transferMoney(bankCard, customerCard, Double.valueOf(amount));
+        
+        if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
+            result = "SUCCESS - £" + amount + " has been refunded to your account.";
         } else {
             result = "FAILURE";
         }
@@ -116,6 +127,7 @@
         </div>
         
         <!-- probably should put this in the owner menu as that'll be secured, we don't want customers giving refunds to themselves -->
+        <!-- if it's done this way, we should add a separate field for entering a customer card number -->
         <div class="functionButton" id="buttonRefund">
             <p>Refund</p>
         </div>
