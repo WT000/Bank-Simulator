@@ -6,6 +6,7 @@
 package org.solent.oodd.ae1.web.dao.properties;
 
 import java.io.File;
+import java.nio.file.Files;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,6 +26,7 @@ public class WebObjectFactory {
                 if (propertiesDao == null) {
                     // creates a single instance of the dao
                     String TEMP_DIR = System.getProperty("java.io.tmpdir");
+                    
                     File propertiesFile = new File(TEMP_DIR + "/application.properties");
                     LOG.debug("using system temp directory: " + TEMP_DIR);
                     LOG.debug("using application properties file : " + propertiesFile.getAbsolutePath());

@@ -55,7 +55,7 @@
     <body>
         <div id="adminMenu">
             <div id="adminMenuHeader">
-                <h2>STAFF MENU</h2>
+                <h2>OWNER MENU</h2>
             </div>
 
             <form id="propertiesForm" method="post">
@@ -65,12 +65,12 @@
                 </div>
                 
                 <div class="propertiesFormRow">
-                    <label>Bank Card</label><input type="text" name="propertiesCard" placeholder="Card Number" value="<%=bankCard%>">
-                    <label>Name on card</label><input type="text" name="propertiesCardName" placeholder="Name on card" value="<%=bankCardName%>">
-                    <label>Card End Date</label><input type="text" name="propertiesCardDate" placeholder="Expiration Date" value="<%=bankCardDate%>">
-                    <label>Card Cvv</label><input type="text" name="propertiesCardCvv" placeholder="Cvv" value="<%=bankCardCvv%>">
-                    <label>Bank User</label><input type="text" name="propertiesUsername" placeholder="Bank Username" value="<%=bankUsername%>">
-                    <label>Bank Password</label><input type="password" name="propertiesPassword" placeholder="Bank Password" value="<%=bankPassword%>">
+                    <label>Bank Card</label><input type="text" name="propertiesCard" placeholder="Card Number" value="<%=bankCard%>" required>
+                    <label>Name on card</label><input type="text" name="propertiesCardName" placeholder="Name on card" value="<%=bankCardName%>" required>
+                    <label>Card End Date</label><input type="text" name="propertiesCardDate" placeholder="Expiration Date" value="<%=bankCardDate%>" required>
+                    <label>Card Cvv</label><input type="text" name="propertiesCardCvv" placeholder="Cvv" value="<%=bankCardCvv%>" required>
+                    <label>Bank User</label><input type="text" name="propertiesUsername" placeholder="Bank Username" value="<%=bankUsername%>" required>
+                    <label>Bank Password</label><input type="password" name="propertiesPassword" placeholder="Bank Password" value="<%=bankPassword%>" required>
                 </div>
 
                 <div class="propertiesFormRow">

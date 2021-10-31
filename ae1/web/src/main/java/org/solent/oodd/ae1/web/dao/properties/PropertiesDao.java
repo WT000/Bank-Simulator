@@ -30,19 +30,17 @@ public class PropertiesDao {
 
     public PropertiesDao(String propertiesFileLocation) {
         try {
+            boolean firstLoad = false;
             propertiesFile = new File(propertiesFileLocation);
+            
             if (!propertiesFile.exists()) {
                 LOG.info("properties file does not exist: creating new file: " + propertiesFile.getAbsolutePath());
                 propertiesFile.getParentFile().mkdirs();
                 propertiesFile.createNewFile();
                 saveProperties();
-                
-                // Instead of starting from a blank file, we'll now load the default properties
-                LOG.info("loading default properties file...");
-                InputStream input = PropertiesDao.class.getClassLoader().getResourceAsStream("application.properties");
-                properties.load(input);
-            }
-            loadProperties();
+                firstLoad = true;
+            } 
+            loadProperties(firstLoad);
         } catch (IOException ex) {
             LOG.error("cannot load properties", ex);
         }
@@ -64,7 +62,7 @@ public class PropertiesDao {
             LOG.debug("saving properties to: " + propertiesFile.getAbsolutePath());
 
             output = new FileOutputStream(propertiesFile);
-            String comments = "# properties example file";
+            String comments = "# saleapp settings file";
             properties.store(output, comments);
 
         } catch (IOException ex) {
@@ -79,11 +77,16 @@ public class PropertiesDao {
         }
     }
 
-    private void loadProperties() {
+    private void loadProperties(boolean firstLoad) {
         InputStream input = null;
         try {
-            LOG.debug("loading properties from: " + propertiesFile.getAbsolutePath());
-            input = new FileInputStream(propertiesFile);
+            if (firstLoad) {
+                LOG.info("loading default properties file");
+                input = PropertiesDao.class.getClassLoader().getResourceAsStream("application.properties");
+            } else {
+                LOG.debug("loading properties from: " + propertiesFile.getAbsolutePath());
+                input = new FileInputStream(propertiesFile);
+            }
             properties.load(input);
         } catch (IOException ex) {
             LOG.error("cannot load properties", ex);
