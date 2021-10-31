@@ -42,9 +42,9 @@
     
     String action = (String) request.getParameter("action");
     String result = "Welcome. Please click one of the buttons below.";
+    String scriptToRun = "";
     
     if ("addCard".equals(action)) {
-        // ADD CARD VALIDATION AND MAKE FORM FIELDS REQUIRED TO SUBMIT
         String cardNo = (String) request.getParameter("cardNumber");
         String cardName = (String) request.getParameter("cardName");
         String cardDate = (String) request.getParameter("cardDate");
@@ -55,7 +55,7 @@
         customerCard.setEndDate(cardDate);
         customerCard.setCvv(cardCvv);
         
-        // if for card validation would be here
+        // Card validation using if statements would be here
         // perhaps run a script so it makes the relevant form stay visible
         result = "<p style=\"color:green;\">SUCCESS - " + cardNo + " is now your current card.</p>";
     // TRANSACTION REST CONNECTION
@@ -145,4 +145,5 @@
     </div>
 </div>
 <!-- Page end -->
+
 <jsp:include page="footer.jsp"/>
