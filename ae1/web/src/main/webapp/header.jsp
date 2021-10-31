@@ -61,16 +61,16 @@
             <form id="propertiesForm" method="post">
                 <input type="hidden" name="action" value="setProperties">
                 <div class="propertiesFormRow">
-                    <label>Bank URL</label><input type="url" name="propertiesURL" placeholder="Bank URL" value="<%=bankUrl%>">
+                    <label>Bank URL</label><input type="url" name="propertiesURL" placeholder="Bank URL" value="<%=bankUrl%>" required>
                 </div>
                 
                 <div class="propertiesFormRow">
-                    <label>Bank Card</label><input type="text" name="propertiesCard" placeholder="Card Number" value="<%=bankCard%>" required>
-                    <label>Name on card</label><input type="text" name="propertiesCardName" placeholder="Name on card" value="<%=bankCardName%>" required>
-                    <label>Card End Date</label><input type="text" name="propertiesCardDate" placeholder="Expiration Date" value="<%=bankCardDate%>" required>
-                    <label>Card Cvv</label><input type="text" name="propertiesCardCvv" placeholder="Cvv" value="<%=bankCardCvv%>" required>
-                    <label>Bank User</label><input type="text" name="propertiesUsername" placeholder="Bank Username" value="<%=bankUsername%>" required>
-                    <label>Bank Password</label><input type="password" name="propertiesPassword" placeholder="Bank Password" value="<%=bankPassword%>" required>
+                    <label>Bank Card</label><input type="text" name="propertiesCard" value="<%=bankCard%>" required>
+                    <label>Name on card</label><input type="text" name="propertiesCardName" placeholder="(optional)" value="<%=bankCardName%>">
+                    <label>Card End Date</label><input type="text" name="propertiesCardDate" placeholder="(optional)" value="<%=bankCardDate%>">
+                    <label>Card Cvv</label><input type="text" name="propertiesCardCvv" placeholder="(optional)" value="<%=bankCardCvv%>">
+                    <label>Bank User</label><input type="text" name="propertiesUsername" value="<%=bankUsername%>" required>
+                    <label>Bank Password</label><input type="password" name="propertiesPassword" value="<%=bankPassword%>" required>
                 </div>
 
                 <div class="propertiesFormRow">

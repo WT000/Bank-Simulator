@@ -84,10 +84,10 @@
         <form id="addCardForm" class="innerForm" method="post">
             <input type="hidden" name="action" value="addCard">
             
-            <label>Card Number</label><input type="text" name="cardNumber" value="<%=customerCard.getCardnumber()%>"><br>
-            <label>Name on Card</label><input type="text" name="cardName" value="<%=customerCard.getName()%>"><br>
-            <label>Expiration Date</label><input type="text" name="cardDate" value="<%=customerCard.getEndDate()%>"><br>
-            <label>Cvv</label><input type="text" name="cardCvv" value="<%=customerCard.getCvv()%>"><br>
+            <label>Card Number</label><input type="text" name="cardNumber" value="<%=customerCard.getCardnumber()%>" required><br>
+            <label>Name on Card</label><input type="text" name="cardName" placeholder="(optional)" value="<%=customerCard.getName()%>"><br>
+            <label>Expiration Date</label><input type="text" name="cardDate" placeholder="(optional)" value="<%=customerCard.getEndDate()%>"><br>
+            <label>Cvv</label><input type="text" name="cardCvv" placeholder="(optional)" value="<%=customerCard.getCvv()%>"><br>
             <button>Submit</button>
         </form>
         
@@ -115,6 +115,7 @@
             <p>Transaction</p>
         </div>
         
+        <!-- probably should put this in the owner menu as that'll be secured, we don't want customers giving refunds to themselves -->
         <div class="functionButton" id="buttonRefund">
             <p>Refund</p>
         </div>
