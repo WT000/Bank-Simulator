@@ -26,11 +26,7 @@
     String bankCvv = adminSettings.getProperty("org.solent.oodd.ae1.web.cardCvv");
     
     // Edit CreditCard class to make this process easier
-    CreditCard bankCard = new CreditCard();
-    bankCard.setCardnumber(bankCardNo);
-    bankCard.setName(bankCardName);
-    bankCard.setEndDate(bankDate);
-    bankCard.setCvv(bankCvv);
+    CreditCard bankCard = new CreditCard(bankCardNo, bankCardName, bankDate, bankCvv);
         
     // Bank user details
     String bankUser = adminSettings.getProperty("org.solent.oodd.ae1.web.username");
@@ -40,11 +36,7 @@
     CreditCard customerCard = (CreditCard) session.getAttribute("customerCard");
     
     if (customerCard == null) {
-        customerCard = new CreditCard();
-        customerCard.setCardnumber("");
-        customerCard.setName("");
-        customerCard.setEndDate("");
-        customerCard.setCvv("");
+        customerCard = new CreditCard("", "", "", "");
         session.setAttribute("customerCard", customerCard);
     }
     
