@@ -80,14 +80,18 @@ public class PropertiesDao {
     private void loadProperties(boolean firstLoad) {
         InputStream input = null;
         try {
+            // If the file hasn't been made, we need to get the data from the default file, load it into properties and save the file
             if (firstLoad) {
-                LOG.info("loading default properties file");
+                LOG.info("loading default properties file...");
                 input = PropertiesDao.class.getClassLoader().getResourceAsStream("application.properties");
+                properties.load(input);
+                saveProperties();
+            // If it has been created, simply just load it
             } else {
                 LOG.debug("loading properties from: " + propertiesFile.getAbsolutePath());
                 input = new FileInputStream(propertiesFile);
+                properties.load(input);
             }
-            properties.load(input);
         } catch (IOException ex) {
             LOG.error("cannot load properties", ex);
         } finally {
