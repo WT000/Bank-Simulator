@@ -27,7 +27,7 @@ public class WebObjectFactory {
                     // creates a single instance of the dao
                     String TEMP_DIR = System.getProperty("java.io.tmpdir");
                     
-                    File propertiesFile = new File(TEMP_DIR + "/application.properties");
+                    File propertiesFile = new File(TEMP_DIR + "/saleapp.properties");
                     LOG.debug("using system temp directory: " + TEMP_DIR);
                     LOG.debug("using application properties file : " + propertiesFile.getAbsolutePath());
                     propertiesDao = new PropertiesDao(propertiesFile.getAbsolutePath());

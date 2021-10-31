@@ -30,7 +30,7 @@ public class WebObjectFactoryTest {
         // remove properties file after test
         try {
             String TEMP_DIR = System.getProperty("java.io.tmpdir");
-            File propertiesFile = new File(TEMP_DIR + "/application.properties");
+            File propertiesFile = new File(TEMP_DIR + "/saleapp.properties");
             System.out.println("deleting test properties file:"+propertiesFile.getAbsolutePath());
             propertiesFile.delete();
         } catch (Exception ex) {
