@@ -106,7 +106,7 @@
         <form id="addCardForm" class="innerForm" method="post">
             <input type="hidden" name="action" value="addCard">
             
-            <label>Card Number</label><input type="text" name="cardNumber" value="<%=customerCard.getCardnumber()%>" required><br>
+            <label>Card Number [attach credit card UI here]</label><input type="text" name="cardNumber" value="<%=customerCard.getCardnumber()%>" required><br>
             <label>Name on Card</label><input type="text" name="cardName" placeholder="(optional)" value="<%=customerCard.getName()%>"><br>
             <label>Expiration Date</label><input type="text" name="cardDate" placeholder="(optional)" value="<%=customerCard.getEndDate()%>"><br>
             <label>Cvv</label><input type="text" name="cardCvv" placeholder="(optional)" value="<%=customerCard.getCvv()%>"><br>
@@ -116,14 +116,15 @@
         <form id="transactionForm" class="innerForm" method="post">
             <input type="hidden" name="action" value="doTransaction">
             
-            <label>Amount to send</label><input type="text" name="amount"><br>
+            <label>Amount to send [attach credit card UI here]</label><input type="text" name="amount"><br>
             <button>Submit</button>
         </form>
         
         <form id="refundForm" class="innerForm" method="post">
             <input type="hidden" name="action" value="doRefund">
             
-            <label>Amount to refund</label><input type="text" name="amount"><br>
+            <!-- If this is stored in the admin menu, a credit card field will also be needed -->
+            <label>Amount to refund [attach credit card UI here]</label><input type="text" name="amount"><br>
             <button>Submit</button>
         </form>
     </div>
