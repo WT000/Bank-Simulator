@@ -18,8 +18,7 @@
     PropertiesDao adminSettings = WebObjectFactory.getPropertiesDao();
     BankRestClientImpl restClient = new BankRestClientImpl(adminSettings.getProperty("org.solent.oodd.ae1.web.url"));
     
-    // Get the required bank information before ReST transfers
-    // Bank card
+    // Get the required bank information before ReST transfers bank card
     String bankCardNo = adminSettings.getProperty("org.solent.oodd.ae1.web.cardNumber");
     String bankCardName = adminSettings.getProperty("org.solent.oodd.ae1.web.cardName");
     String bankDate = adminSettings.getProperty("org.solent.oodd.ae1.web.cardDate");
@@ -100,7 +99,7 @@
     }
 %>
 <jsp:include page="header.jsp"/>
-<!-- Page start -->
+<!-- Main app start -->
 <div id="appContainer">
     <div id="resultContainer">
         <div id="result">
@@ -151,6 +150,5 @@
         </div>
     </div>
 </div>
-<!-- Page end -->
-
+<!-- Main app end -->
 <jsp:include page="footer.jsp"/>

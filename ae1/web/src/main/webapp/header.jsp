@@ -53,6 +53,7 @@
         <link rel="stylesheet" href="public/styles/style.css">
     </head>
     <body>
+        <!-- Header start -->
         <div id="adminMenu">
             <div id="adminMenuHeader">
                 <h2>OWNER MENU</h2>
@@ -78,3 +79,4 @@
                 </div>
             </form>
         </div>
+        <!-- Header end -->
