@@ -42,7 +42,6 @@
     
     String action = (String) request.getParameter("action");
     String result = "Welcome. Please click one of the buttons below.";
-    String scriptToRun = "";
     
     if ("addCard".equals(action)) {
         String cardNo = (String) request.getParameter("cardNumber");
