@@ -34,15 +34,16 @@
     
     // Check if a card is currently stored in the session and create it if it doesn't exist
     CreditCard customerCard = (CreditCard) session.getAttribute("customerCard");
-    
     if (customerCard == null) {
         customerCard = new CreditCard("", "", "", "");
         session.setAttribute("customerCard", customerCard);
     }
     
+    // Get the current action and set result to the initial value
     String action = (String) request.getParameter("action");
     String result = "Welcome. Please click one of the buttons below.";
     
+    // addCard action (means the user is entering a card)
     if ("addCard".equals(action)) {
         String cardNo = (String) request.getParameter("cardNumber");
         String cardName = (String) request.getParameter("cardName");
@@ -57,6 +58,7 @@
         // Card validation using if statements would be here
         // perhaps run a script so it makes the relevant form stay visible
         result = "<p style=\"color:green;\">SUCCESS - " + cardNo + " is now your current card.</p>";
+    // doTransaction action (means the user is doing a transaction)
     // TRANSACTION REST CONNECTION
     } else if ("doTransaction".equals(action)) {
         // try block / if check here to ensure amount isn't empty
@@ -65,6 +67,7 @@
         // Perform the transfer
         TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
         
+        // Check whether the transaction is successful or not
         if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
             result = "<p style=\"color:green;\">SUCCESS - £" + amount + " has been taken from your account.</p>";
         } else {
@@ -75,6 +78,7 @@
                 result = "<p style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
             }
         }
+    // doRefund action (means the user is sending a refund amount to a card)
     // REFUND REST CONNECTION
     } else if ("doRefund".equals(action)) {
         // try block / if check here to ensure amount isn't empty
@@ -83,6 +87,7 @@
         // Perform the refund, like the notes below, perhaps this could use a seperate form in the future
         TransactionReplyMessage restResponse = restClient.transferMoney(bankCard, customerCard, Double.valueOf(amount));
         
+        // Check whether the transaction is successful or not
         if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
             result = "<p style=\"color:green;\">SUCCESS - £" + amount + " has been refunded to " + restResponse.getToCardNo() + ".</p>";
         } else {
