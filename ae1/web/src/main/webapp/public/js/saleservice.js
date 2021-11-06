@@ -132,3 +132,25 @@ document.getElementById("transactionForm").addEventListener("submit", e => {
         document.getElementById("transactionForm").submit();
     };
 });
+
+// Check refund form
+document.getElementById("refundForm").addEventListener("submit", e => {
+    e.preventDefault();
+    let amount = document.forms["refundForm"]["amount"].value;
+
+    let foundError = false;
+
+    if (amount.trim() == "" || isNaN(amount)) {
+        foundError = true;
+        document.forms["refundForm"]["amount"].style.backgroundColor = "red";
+    } else {
+        document.forms["refundForm"]["amount"].style.backgroundColor = "white";
+    }
+
+    if (foundError) {
+        document.getElementById("resultText").innerHTML = "ERROR: Please enter a valid number.";
+        document.getElementById("resultText").style.color = "red";
+    } else {
+        document.getElementById("refundForm").submit();
+    };
+});

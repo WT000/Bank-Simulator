@@ -76,7 +76,7 @@
         }
         
         if (error) {
-            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - something went wrong, did you enter a valid amount?</p>";
+            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - something went wrong when sending to the bank, did you enter a valid amount?</p>";
         } else {
             // Perform the transfer
             TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
@@ -98,18 +98,29 @@
     } else if ("doRefund".equals(action)) {
         // try block / if check here to ensure amount isn't empty
         String amount = (String) request.getParameter("amount");
+        boolean error = false;
         
-        // Perform the refund, like the notes below, perhaps this could use a seperate form in the future
-        TransactionReplyMessage restResponse = restClient.transferMoney(bankCard, customerCard, Double.valueOf(amount));
+        try {
+            double numAmount = Double.parseDouble(amount);
+        } catch (Exception e) {
+            error = true;
+        }
         
-        // Check whether the transaction is successful or not
-        if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
-            result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been refunded to " + restResponse.getToCardNo() + ".</p>";
+        if (error) {
+            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - something went wrong when refunding, did you enter a valid amount?</p>";
         } else {
-            if (restResponse.getMessage() != null) {
-                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+            // Perform the refund, like the notes below, perhaps this could use a seperate form in the future
+            TransactionReplyMessage restResponse = restClient.transferMoney(bankCard, customerCard, Double.valueOf(amount));
+        
+            // Check whether the transaction is successful or not
+            if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
+                result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been refunded to " + restResponse.getToCardNo() + ".</p>";
             } else {
-                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                if (restResponse.getMessage() != null) {
+                    result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+                } else {
+                    result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                }
             }
         }
     }
@@ -145,7 +156,7 @@
             <input type="hidden" name="action" value="doRefund">
             
             <!-- If this is stored in the admin menu, a credit card field will also be needed -->
-            <label>Amount to refund [attach credit card UI here]</label><input type="text" name="amount" required><br>
+            <label>Amount to refund [attach credit card UI here]</label><input type="text" name="amount" placeholder="£0.00" pattern="\d{1,5}" required><br>
             <button>Submit</button>
         </form>
     </div>
