@@ -148,7 +148,7 @@
         <form id="transactionForm" class="innerForm" method="post">
             <input type="hidden" name="action" value="doTransaction">
             
-            <label>Amount to send [attach credit card UI here]</label><input type="text" name="amount" placeholder="£0.00" pattern="\d{1,5}" required><br>
+            <label>Amount to send [attach credit card UI here] £</label><input type="text" name="amount" placeholder="0.00" pattern="\d{1,5}" required><br>
             <button>Submit</button>
         </form>
         
@@ -156,7 +156,7 @@
             <input type="hidden" name="action" value="doRefund">
             
             <!-- If this is stored in the admin menu, a credit card field will also be needed -->
-            <label>Amount to refund [attach credit card UI here]</label><input type="text" name="amount" placeholder="£0.00" pattern="\d{1,5}" required><br>
+            <label>Amount to refund [attach credit card UI here] £</label><input type="text" name="amount" placeholder="0.00" pattern="\d{1,5}" required><br>
             <button>Submit</button>
         </form>
     </div>
