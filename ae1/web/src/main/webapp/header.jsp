@@ -83,9 +83,9 @@
                 </div>
                 
                 <div class="propertiesFormRow">
-                    <label>Bank User</label><input type="text" name="propertiesUsername" value="<%=bankUsername%>" required>
-                    <label>Bank Password</label><input type="password" name="propertiesPassword" placeholder="(hidden)" required>
-                    <label>Bank Card</label><input type="text" name="propertiesCard" placeholder="(hidden)" pattern="[0-9]{16}" value="<%=bankCard%>" required>
+                    <label>Bank User</label><input type="text" name="propertiesUsername" placeholder="Bank Username" value="<%=bankUsername%>" required>
+                    <label>Bank Password</label><input type="password" name="propertiesPassword" placeholder="Bank Password" required>
+                    <label>Bank Card</label><input type="text" name="propertiesCard" placeholder="Bank Card" pattern="[0-9]{16}" value="<%=bankCard%>" required>
                     <label>Name on card</label><input type="text" name="propertiesCardName" placeholder="(optional)" value="<%=bankCardName%>">
                     <label>Card End Date</label><input type="text" name="propertiesCardDate" placeholder="(optional)" value="<%=bankCardDate%>">
                     <label>Card Cvv</label><input type="text" name="propertiesCardCvv" placeholder="(optional)" value="<%=bankCardCvv%>">

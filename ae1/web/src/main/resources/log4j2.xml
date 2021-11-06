@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="INFO">
+<Configuration status="DEBUG">
     <!-- Logging Properties -->
     <Properties>
         <!-- this sets the output style properties for the log messages -->
@@ -23,7 +23,7 @@
             <AppenderRef ref="Console"/>
         </Logger>
 
-        <!-- this logs to  the Consol (System.out) -->
+        <!-- this logs to  the Console (System.out) -->
         <Root level="DEBUG">
             <AppenderRef ref="Console"/>
         </Root>
