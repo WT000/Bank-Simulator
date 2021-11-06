@@ -23,7 +23,7 @@ document.getElementById("buttonCard").addEventListener("click", e=> {
 
     // Display the form
     if (currentForm != "addCardForm") {
-        if (currentForm != null) {
+        if (currentForm !== null) {
             document.getElementById(currentForm).style.display = "none";
         };
         currentForm = "addCardForm";
@@ -40,7 +40,7 @@ document.getElementById("buttonTransaction").addEventListener("click", e=> {
 
     // Display the form
     if (currentForm != "transactionForm") {
-        if (currentForm != null) {
+        if (currentForm !== null) {
             document.getElementById(currentForm).style.display = "none";
         };
         currentForm = "transactionForm";
@@ -57,7 +57,7 @@ document.getElementById("buttonRefund").addEventListener("click", e=> {
 
     // Display the form
     if (currentForm != "refundForm") {
-        if (currentForm != null) {
+        if (currentForm !== null) {
             document.getElementById(currentForm).style.display = "none";
         };
         currentForm = "refundForm";
@@ -68,19 +68,31 @@ document.getElementById("buttonRefund").addEventListener("click", e=> {
 // Check field lengths to ensure added details are correct
 document.getElementById("addCardForm").addEventListener("submit", e => {
     let cardNo = document.forms["addCardForm"]["cardNumber"].value;
+    let cardName = document.forms["addCardForm"]["cardName"].value;
     let cardDate = document.forms["addCardForm"]["cardDate"].value;
     let cardCvv = document.forms["addCardForm"]["cardCvv"].value;
 
-    foundError = false;
-    result = "";
+    let foundError = false;
+    
+    if (cardNo.trim() == "") {
+        foundError = true;
+        document.forms["addCardForm"]["cardNo"].style.backgroundColor = "red";
+    }
 
-    if (cardNo.trim() == "" || cardNo.length != 16 || cardNo.test("/^[a-zA-Z\s]*$/")) {
+    if (cardName.trim() == "") {
         foundError = true;
-    } else if (cardDate.trim() = "" || cardDate.length != 5 || cardDate[2] != "/") {
+        document.forms["addCardForm"]["cardName"].style.backgroundColor = "red";
+    }
+    
+    if (cardDate.trim() == "" || cardDate.length !== 5 || cardDate[2] !== "/") {
         foundError = true;
-    } else if (cardCvv.trim() = "" || cardCvv.length != 3) {
+        document.forms["addCardForm"]["cardDate"].style.backgroundColor = "red";
+    }
+
+    if (cardCvv.trim() == "" || cardCvv.length != 3 || !cardCvv.test("'^\d+$'")) {
         foundError = true;
-    };
+        document.forms["addCardForm"]["cardCvv"].style.backgroundColor = "red";
+    }
 
     if (foundError) {
         e.preventDefault();
