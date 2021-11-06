@@ -66,9 +66,9 @@
     <body>
         <!-- Header start -->
         <% if (propertiesFail) { %>
-            <script>alert("The entered properties card is not valid.")</script>
+            <script>alert("The entered properties bank card is not valid.")</script>
         <% } else if (setProperties) { %>
-            <script>alert("The new properties were succesfully set.")</script>
+            <script>alert("The new properties were succesfully set. Please remember to enter the bank password again if the system goes offline.")</script>
         <% } %>
         
         <div id="adminMenu">
@@ -85,7 +85,7 @@
                 <div class="propertiesFormRow">
                     <label>Bank User</label><input type="text" name="propertiesUsername" value="<%=bankUsername%>" required>
                     <label>Bank Password</label><input type="password" name="propertiesPassword" placeholder="(hidden)" required>
-                    <label>Bank Card</label><input type="text" name="propertiesCard" placeholder="(hidden)" pattern="[0-9]{16}" required>
+                    <label>Bank Card</label><input type="text" name="propertiesCard" placeholder="(hidden)" pattern="[0-9]{16}" value="<%=bankCard%>" required>
                     <label>Name on card</label><input type="text" name="propertiesCardName" placeholder="(optional)" value="<%=bankCardName%>">
                     <label>Card End Date</label><input type="text" name="propertiesCardDate" placeholder="(optional)" value="<%=bankCardDate%>">
                     <label>Card Cvv</label><input type="text" name="propertiesCardCvv" placeholder="(optional)" value="<%=bankCardCvv%>">

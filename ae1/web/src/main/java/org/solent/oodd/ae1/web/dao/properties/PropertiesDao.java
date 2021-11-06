@@ -13,8 +13,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
+import java.util.Arrays;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.solent.oodd.ae1.password.PasswordUtils;
 
 /**
  *
@@ -27,6 +29,8 @@ public class PropertiesDao {
     private File propertiesFile;
 
     private Properties properties = new Properties();
+    
+    private String storedPassword;
 
     public PropertiesDao(String propertiesFileLocation) {
         try {
@@ -46,13 +50,29 @@ public class PropertiesDao {
         }
     }
 
-    // synchronized ensures changes are not made by another thread while reading
-    public synchronized String getProperty(String propertyName) {
-        return properties.getProperty(propertyName);
+    private String getStoredPassword() {
+        return storedPassword;
     }
-
+    
+    // synchronized ensures changes are not made by another thread while reading
+    public synchronized String getProperty(String propertyKey) {
+        if (propertyKey.equals("org.solent.oodd.ae1.web.password")) {
+            return storedPassword;
+        }
+        
+        return properties.getProperty(propertyKey);
+    }
+    
     public synchronized void setProperty(String propertyKey, String propertyValue) {
-        properties.setProperty(propertyKey, propertyValue);
+        String propertyValueToStore = propertyValue;
+        
+        // Hash if it's a field that should be secured
+        if (propertyKey.equals("org.solent.oodd.ae1.web.password")) {
+            propertyValueToStore = PasswordUtils.hashPassword(propertyValue);
+            storedPassword = propertyValue;
+        }
+        
+        properties.setProperty(propertyKey, propertyValueToStore);
         saveProperties();
     }
 
