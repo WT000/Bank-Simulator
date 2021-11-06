@@ -64,3 +64,27 @@ document.getElementById("buttonRefund").addEventListener("click", e=> {
         document.getElementById(currentForm).style.display = "block";
     };
 });
+
+// Check field lengths to ensure added details are correct
+document.getElementById("addCardForm").addEventListener("submit", e => {
+    let cardNo = document.forms["addCardForm"]["cardNumber"].value;
+    let cardDate = document.forms["addCardForm"]["cardDate"].value;
+    let cardCvv = document.forms["addCardForm"]["cardCvv"].value;
+
+    foundError = false;
+    result = "";
+
+    if (cardNo.trim() == "" || cardNo.length != 16 || cardNo.test("/^[a-zA-Z\s]*$/")) {
+        foundError = true;
+    } else if (cardDate.trim() = "" || cardDate.length != 5 || cardDate[2] != "/") {
+        foundError = true;
+    } else if (cardCvv.trim() = "" || cardCvv.length != 3) {
+        foundError = true;
+    };
+
+    if (foundError) {
+        e.preventDefault();
+        document.getElementById("resultText").innerHTML = "ERROR: Please follow the guidance in the placeholders.";
+        document.getElementById("resultText").style.color = "red";
+    };
+});

@@ -10,6 +10,7 @@
 <%@page import="org.solent.oodd.ae1.web.dao.properties.WebObjectFactory"%>
 <%@page import="org.solent.oodd.ae1.bank.model.dto.CreditCard"%>
 <%@page import="org.solent.oodd.ae1.card.checker.RegexCardValidator"%>
+<%@page import="org.solent.oodd.ae1.card.checker.CardValidationResult"%>
 <%@page import="org.solent.oodd.ae1.bank.client.impl.BankRestClientImpl"%>
 <%@page import="org.solent.oodd.ae1.bank.model.dto.TransactionReplyMessage"%>
 <%@page import="org.solent.oodd.ae1.bank.model.dto.BankTransactionStatus"%>
@@ -40,7 +41,7 @@
     
     // Get the current action and set result to the initial value
     String action = (String) request.getParameter("action");
-    String result = "Welcome. Please click one of the buttons below.";
+    String result = "<p id=\"resultText\"> Welcome. Please click one of the buttons below.</p>";
     
     // addCard action (means the user is entering a card)
     if ("addCard".equals(action)) {
@@ -49,14 +50,19 @@
         String cardDate = (String) request.getParameter("cardDate");
         String cardCvv = (String) request.getParameter("cardCvv");
         
-        customerCard.setCardnumber(cardNo);
-        customerCard.setName(cardName);
-        customerCard.setEndDate(cardDate);
-        customerCard.setCvv(cardCvv);
+        // JS has checked everything apart from the card itself, so we'll do it here
+        CardValidationResult cardResult = RegexCardValidator.isValid(cardNo);
         
-        // Card validation using if statements would be here
-        // perhaps run a script so it makes the relevant form stay visible
-        result = "<p style=\"color:green;\">SUCCESS - " + cardNo + " is now your current card.</p>";
+        if (cardResult.isValid()) {
+            customerCard.setCardnumber(cardNo);
+            customerCard.setName(cardName);
+            customerCard.setEndDate(cardDate);
+            customerCard.setCvv(cardCvv);
+            result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - " + cardNo + " is now your current card.</p>";
+        } else {
+            result = "<p id=\"resultText\" style=\"color:red;\">ERROR - " + cardResult.getError();
+        }
+        
     // doTransaction action (means the user is doing a transaction)
     // TRANSACTION REST CONNECTION
     } else if ("doTransaction".equals(action)) {
@@ -103,7 +109,7 @@
 <div id="appContainer">
     <div id="resultContainer">
         <div id="result">
-            <p id="resultText"><%= result %></p>
+            <%= result %>
         </div>
     </div>
     
@@ -111,10 +117,10 @@
         <form id="addCardForm" class="innerForm" method="post">
             <input type="hidden" name="action" value="addCard">
             
-            <label>Card Number [attach credit card UI here]</label><input type="text" name="cardNumber" value="<%=customerCard.getCardnumber()%>" required><br>
-            <label>Name on Card</label><input type="text" name="cardName" placeholder="(optional)" value="<%=customerCard.getName()%>"><br>
-            <label>Expiration Date</label><input type="text" name="cardDate" placeholder="(optional)" value="<%=customerCard.getEndDate()%>"><br>
-            <label>Cvv</label><input type="text" name="cardCvv" placeholder="(optional)" value="<%=customerCard.getCvv()%>"><br>
+            <label>Card Number</label><input type="text" name="cardNumber" placeholder="1234123412341234" value="<%=customerCard.getCardnumber()%>" pattern="[0-9]{16}" required><br>
+            <label>Name on Card</label><input type="text" name="cardName" placeholder="John Doe" value="<%=customerCard.getName()%>" pattern="[A-Za-z\s]{1,}" required><br>
+            <label>Expiration Date</label><input type="text" name="cardDate" placeholder="01/26" value="<%=customerCard.getEndDate()%>" pattern="([0-9]{2}[/]?){2}" required><br>
+            <label>Cvv</label><input type="text" name="cardCvv" placeholder="123" value="<%=customerCard.getCvv()%>" pattern="[0-9]{3}" required><br>
             <button>Submit</button>
         </form>
         
