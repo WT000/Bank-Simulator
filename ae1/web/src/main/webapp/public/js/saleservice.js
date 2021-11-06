@@ -65,6 +65,52 @@ document.getElementById("buttonRefund").addEventListener("click", e=> {
     };
 });
 
+// Properties form
+document.getElementById("propertiesForm").addEventListener("submit", e => {
+    e.preventDefault();
+    let bankUrl = document.forms["propertiesForm"]["propertiesURL"].value;
+    let bankCardNo = document.forms["propertiesForm"]["propertiesCard"].value;
+    let bankUsername = document.forms["propertiesForm"]["propertiesUsername"].value;
+    let bankPassword = document.forms["propertiesForm"]["propertiesPassword"].value;
+
+    let foundError = false;
+
+    if (bankUrl.trim() == "") {
+        foundError = true;
+        document.forms["propertiesForm"]["propertiesURL"].style.backgroundColor = "red";
+    } else {
+        document.forms["propertiesForm"]["propertiesURL"].style.backgroundColor = "white";
+    }
+
+    if (bankUsername.trim() == "") {
+        foundError = true;
+        document.forms["propertiesForm"]["propertiesUsername"].style.backgroundColor = "red";
+    } else {
+        document.forms["propertiesForm"]["propertiesUsername"].style.backgroundColor = "white";
+    }
+
+    if (bankPassword.trim() == "") {
+        foundError = true;
+        document.forms["propertiesForm"]["propertiesPassword"].style.backgroundColor = "red";
+    } else {
+        document.forms["propertiesForm"]["propertiesPassword"].style.backgroundColor = "white";
+    }
+
+    if (bankCardNo.trim() == "" || bankCardNo.length !== 16 || isNaN(bankCardNo)) {
+        foundError = true;
+        document.forms["propertiesForm"]["propertiesCard"].style.backgroundColor = "red";
+    } else {
+        document.forms["propertiesForm"]["propertiesCard"].style.backgroundColor = "white";
+    }
+    
+    if (foundError) {
+        document.getElementById("resultText").innerHTML = "ERROR: Bank information is incorrect.";
+        document.getElementById("resultText").style.color = "red";
+    } else {
+        document.getElementById("propertiesForm").submit();
+    }
+});
+
 // Check addCard form
 document.getElementById("addCardForm").addEventListener("submit", e => {
     e.preventDefault();
