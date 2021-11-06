@@ -65,7 +65,7 @@ document.getElementById("buttonRefund").addEventListener("click", e=> {
     };
 });
 
-// Check field lengths to ensure added details are correct
+// Check addCard form
 document.getElementById("addCardForm").addEventListener("submit", e => {
     e.preventDefault();
     let cardNo = document.forms["addCardForm"]["cardNumber"].value;
@@ -108,5 +108,27 @@ document.getElementById("addCardForm").addEventListener("submit", e => {
         document.getElementById("resultText").style.color = "red";
     } else {
         document.getElementById("addCardForm").submit();
+    };
+});
+
+// Check transaction form
+document.getElementById("transactionForm").addEventListener("submit", e => {
+    e.preventDefault();
+    let amount = document.forms["transactionForm"]["amount"].value;
+
+    let foundError = false;
+
+    if (amount.trim() == "" || isNaN(amount)) {
+        foundError = true;
+        document.forms["transactionForm"]["amount"].style.backgroundColor = "red";
+    } else {
+        document.forms["transactionForm"]["amount"].style.backgroundColor = "white";
+    }
+
+    if (foundError) {
+        document.getElementById("resultText").innerHTML = "ERROR: Please enter a valid number.";
+        document.getElementById("resultText").style.color = "red";
+    } else {
+        document.getElementById("transactionForm").submit();
     };
 });

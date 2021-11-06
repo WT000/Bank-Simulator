@@ -66,21 +66,31 @@
     // doTransaction action (means the user is doing a transaction)
     // TRANSACTION REST CONNECTION
     } else if ("doTransaction".equals(action)) {
-        // try block / if check here to ensure amount isn't empty
         String amount = (String) request.getParameter("amount");
+        boolean error = false;
         
-        // Perform the transfer
-        TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
+        try {
+            double numAmount = Double.parseDouble(amount);
+        } catch (Exception e) {
+            error = true;
+        }
         
-        // Check whether the transaction is successful or not
-        if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
-            result = "<p style=\"color:green;\">SUCCESS - £" + amount + " has been taken from your account.</p>";
+        if (error) {
+            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - something went wrong, did you enter a valid amount?</p>";
         } else {
-            // null isn't a helpful message if the bank properties haven't been correctly configured.
-            if (restResponse.getMessage() != null) {
-                result = "<p style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+            // Perform the transfer
+            TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
+        
+            // Check whether the transaction is successful or not
+            if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
+                result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been taken from your account.</p>";
             } else {
-                result = "<p style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                // null isn't a helpful message if the bank properties haven't been correctly configured.
+                if (restResponse.getMessage() != null) {
+                    result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+                } else {
+                    result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                }
             }
         }
     // doRefund action (means the user is sending a refund amount to a card)
@@ -94,12 +104,12 @@
         
         // Check whether the transaction is successful or not
         if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
-            result = "<p style=\"color:green;\">SUCCESS - £" + amount + " has been refunded to " + restResponse.getToCardNo() + ".</p>";
+            result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been refunded to " + restResponse.getToCardNo() + ".</p>";
         } else {
             if (restResponse.getMessage() != null) {
-                result = "<p style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
             } else {
-                result = "<p style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
             }
         }
     }
@@ -127,7 +137,7 @@
         <form id="transactionForm" class="innerForm" method="post">
             <input type="hidden" name="action" value="doTransaction">
             
-            <label>Amount to send [attach credit card UI here]</label><input type="text" name="amount" required><br>
+            <label>Amount to send [attach credit card UI here]</label><input type="text" name="amount" placeholder="£0.00" pattern="\d{1,5}" required><br>
             <button>Submit</button>
         </form>
         
