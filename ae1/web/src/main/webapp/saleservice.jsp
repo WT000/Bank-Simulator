@@ -79,18 +79,22 @@
             result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - something went wrong when sending to the bank, did you enter a valid amount?</p>";
         } else {
             // Perform the transfer
-            TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
-        
-            // Check whether the transaction is successful or not
-            if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
-                result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been taken from your account.</p>";
-            } else {
-                // null isn't a helpful message if the bank properties haven't been correctly configured.
-                if (restResponse.getMessage() != null) {
-                    result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+            try {
+                TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
+            
+                // Check whether the transaction is successful or not
+                if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
+                    result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been taken from your account.</p>";
                 } else {
-                    result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                    // null isn't a helpful message if the bank properties haven't been correctly configured.
+                    if (restResponse.getMessage() != null) {
+                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+                    } else {
+                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                    }
                 }
+            } catch (Exception e) {
+                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank: " + e.getMessage() + "</p>";
             }
         }
     // doRefund action (means the user is sending a refund amount to a card)
@@ -109,18 +113,22 @@
         if (error) {
             result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - something went wrong when refunding, did you enter a valid amount?</p>";
         } else {
-            // Perform the refund, like the notes below, perhaps this could use a seperate form in the future
-            TransactionReplyMessage restResponse = restClient.transferMoney(bankCard, customerCard, Double.valueOf(amount));
-        
-            // Check whether the transaction is successful or not
-            if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
-                result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been refunded to " + restResponse.getToCardNo() + ".</p>";
-            } else {
-                if (restResponse.getMessage() != null) {
-                    result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+            // Perform the refund
+            try {
+                TransactionReplyMessage restResponse = restClient.transferMoney(bankCard, customerCard, Double.valueOf(amount));
+
+                // Check whether the transaction is successful or not
+                if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
+                    result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been refunded to " + restResponse.getToCardNo() + ".</p>";
                 } else {
-                    result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                    if (restResponse.getMessage() != null) {
+                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+                    } else {
+                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                    }
                 }
+            } catch (Exception e) {
+                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank: " + e.getMessage() + "</p>";
             }
         }
     }
