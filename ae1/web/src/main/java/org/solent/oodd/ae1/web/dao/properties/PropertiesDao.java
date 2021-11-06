@@ -30,6 +30,7 @@ public class PropertiesDao {
 
     private Properties properties = new Properties();
     
+    // The stored password is never written to a file, only the hashed version is
     private String storedPassword;
 
     public PropertiesDao(String propertiesFileLocation) {
