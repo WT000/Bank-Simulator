@@ -90,11 +90,11 @@
                     if (restResponse.getMessage() != null) {
                         result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
                     } else {
-                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
                     }
                 }
             } catch (Exception e) {
-                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
             }
         }
     // doRefund action (means the user is sending a refund amount to a card)
@@ -124,11 +124,11 @@
                     if (restResponse.getMessage() != null) {
                         result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
                     } else {
-                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
                     }
                 }
             } catch (Exception e) {
-                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
             }
         }
     }
