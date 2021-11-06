@@ -94,7 +94,7 @@
                     }
                 }
             } catch (Exception e) {
-                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank: " + e.getMessage() + "</p>";
+                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
             }
         }
     // doRefund action (means the user is sending a refund amount to a card)
@@ -128,7 +128,7 @@
                     }
                 }
             } catch (Exception e) {
-                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank: " + e.getMessage() + "</p>";
+                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
             }
         }
     }
