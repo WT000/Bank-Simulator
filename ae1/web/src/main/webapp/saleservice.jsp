@@ -117,8 +117,8 @@
         <form id="addCardForm" class="innerForm" method="post">
             <input type="hidden" name="action" value="addCard">
             
-            <label>Card Number</label><input type="text" name="cardNumber" placeholder="1234123412341234" value="<%=customerCard.getCardnumber()%>" pattern="[0-9]{16}" required><br>
-            <label>Name on Card</label><input type="text" name="cardName" placeholder="John Doe" value="<%=customerCard.getName()%>" pattern="{1,}" required><br>
+            <label>Card Number</label><input type="text" name="cardNumber" placeholder="1111222233334444" value="<%=customerCard.getCardnumber()%>" pattern="[0-9]{16}" required><br>
+            <label>Name on Card</label><input type="text" name="cardName" placeholder="John Doe" value="<%=customerCard.getName()%>" required><br>
             <label>Expiration Date</label><input type="text" name="cardDate" placeholder="01/26" value="<%=customerCard.getEndDate()%>" pattern="([0-9]{2}[/]?){2}" required><br>
             <label>Cvv</label><input type="text" name="cardCvv" placeholder="123" value="<%=customerCard.getCvv()%>" pattern="[0-9]{3}" required><br>
             <button>Submit</button>
