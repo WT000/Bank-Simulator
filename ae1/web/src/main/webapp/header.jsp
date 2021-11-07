@@ -51,6 +51,7 @@
             try {
                 TransactionReplyMessage propertiesResponse = propertiesRestClient.transferMoney(propertiesCard, propertiesCard, 0.00, bankUsername, bankPassword);
                 
+                // If the test transfer works, set the properties
                 if (propertiesResponse.getStatus() == BankTransactionStatus.SUCCESS) {
                     adminSettings.setProperty("org.solent.oodd.ae1.web.url", bankUrl);
                     adminSettings.setProperty("org.solent.oodd.ae1.web.cardNumber", bankCard);
@@ -60,13 +61,15 @@
                     adminSettings.setProperty("org.solent.oodd.ae1.web.username", bankUsername);
                     adminSettings.setProperty("org.solent.oodd.ae1.web.password", bankPassword);
                     setProperties = true;
+                // Else, it's an invalid login
                 } else {
                     propertiesFail = true;
                     propertiesFailMessage = "Invalid login.";
                 }
+            // If an exception happens, return the exception reason
             } catch (Exception e) {
                 propertiesFail = true;
-                propertiesFailMessage = "The URL isn't valid: " + e.toString();
+                propertiesFailMessage = "The URL isn't valid: " + e.getMessage();
             }
         } else {
             propertiesFail = true;
