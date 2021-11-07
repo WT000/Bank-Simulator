@@ -7,8 +7,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="org.solent.oodd.ae1.web.dao.properties.PropertiesDao"%>
 <%@page import="org.solent.oodd.ae1.web.dao.properties.WebObjectFactory"%>
+<%@page import="org.solent.oodd.ae1.bank.model.dto.CreditCard"%>
 <%@page import="org.solent.oodd.ae1.card.checker.RegexCardValidator"%>
 <%@page import="org.solent.oodd.ae1.card.checker.CardValidationResult"%>
+<%@page import="org.solent.oodd.ae1.bank.client.impl.BankRestClientImpl"%>
+<%@page import="org.solent.oodd.ae1.bank.model.dto.TransactionReplyMessage"%>
+<%@page import="org.solent.oodd.ae1.bank.model.dto.BankTransactionStatus"%>
 <%
     // Create / load (if already created) the properties file
     PropertiesDao adminSettings = WebObjectFactory.getPropertiesDao();
@@ -26,6 +30,7 @@
     String propertiesAction = (String) request.getParameter("action");
     boolean setProperties = false;
     boolean propertiesFail = false;
+    String propertiesFailMessage = "";
     
     if ("setProperties".equals(propertiesAction)) {
         bankUrl = (String) request.getParameter("propertiesURL");
@@ -38,18 +43,34 @@
         
         CardValidationResult cardResult = RegexCardValidator.isValid(bankCard);
         
-        // The result was valid, so next we'll test the new properties through 
+        // The result was valid, so next we'll test the new properties through a ReST transfer
         if (cardResult.isValid()) {
-            adminSettings.setProperty("org.solent.oodd.ae1.web.url", bankUrl);
-            adminSettings.setProperty("org.solent.oodd.ae1.web.cardNumber", bankCard);
-            adminSettings.setProperty("org.solent.oodd.ae1.web.cardName", bankCardName);
-            adminSettings.setProperty("org.solent.oodd.ae1.web.cardDate", bankCardDate);
-            adminSettings.setProperty("org.solent.oodd.ae1.web.cardCvv", bankCardCvv);
-            adminSettings.setProperty("org.solent.oodd.ae1.web.username", bankUsername);
-            adminSettings.setProperty("org.solent.oodd.ae1.web.password", bankPassword);
-            setProperties = true;
+            BankRestClientImpl propertiesRestClient = new BankRestClientImpl(bankUrl);
+            CreditCard propertiesCard = new CreditCard(bankCard, bankCardName, bankCardDate, bankCardCvv);
+            
+            try {
+                TransactionReplyMessage propertiesResponse = propertiesRestClient.transferMoney(propertiesCard, propertiesCard, 0.00, bankUsername, bankPassword);
+                
+                if (propertiesResponse.getStatus() == BankTransactionStatus.SUCCESS) {
+                    adminSettings.setProperty("org.solent.oodd.ae1.web.url", bankUrl);
+                    adminSettings.setProperty("org.solent.oodd.ae1.web.cardNumber", bankCard);
+                    adminSettings.setProperty("org.solent.oodd.ae1.web.cardName", bankCardName);
+                    adminSettings.setProperty("org.solent.oodd.ae1.web.cardDate", bankCardDate);
+                    adminSettings.setProperty("org.solent.oodd.ae1.web.cardCvv", bankCardCvv);
+                    adminSettings.setProperty("org.solent.oodd.ae1.web.username", bankUsername);
+                    adminSettings.setProperty("org.solent.oodd.ae1.web.password", bankPassword);
+                    setProperties = true;
+                } else {
+                    propertiesFail = true;
+                    propertiesFailMessage = "Invalid login.";
+                }
+            } catch (Exception e) {
+                propertiesFail = true;
+                propertiesFailMessage = "The URL isn't valid: " + e.toString();
+            }
         } else {
             propertiesFail = true;
+            propertiesFailMessage = "The card isn't valid.";
         }
     }
 %>
@@ -67,7 +88,7 @@
     <body>
         <!-- Header start -->
         <% if (propertiesFail) { %>
-            <script>alert("The entered properties bank card is not valid.")</script>
+            <script>alert("The entered properties are incorrect, rejecting changes. Reason: <%=propertiesFailMessage%>")</script>
         <% } else if (setProperties) { %>
             <script>alert("The new properties were succesfully set. Please remember to enter the bank password again if the system goes offline.")</script>
         <% } %>
