@@ -45,6 +45,5 @@ public class PasswordUtilsTest {
             LOG.debug("password " + TEST_PASSWORD + " does not match");
         }
         assertFalse(PasswordUtils.checkPassword(WRONG_PASSWORD, hashed));
-
     }
 }

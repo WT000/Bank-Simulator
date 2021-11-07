@@ -91,9 +91,9 @@
     <body>
         <!-- Header start -->
         <% if (propertiesFail) { %>
-            <script>alert("The entered properties are incorrect, rejecting changes. Reason: <%=propertiesFailMessage%>")</script>
+            <script>alert("The entered properties are incorrect, is the remote bank running? Rejecting changes: <%=propertiesFailMessage%>")</script>
         <% } else if (setProperties) { %>
-            <script>alert("The new properties were succesfully set. Please remember to enter the bank password again if the system goes offline.")</script>
+            <script>alert("The new properties were succesfully set.")</script>
         <% } %>
         
         <div id="adminMenu">

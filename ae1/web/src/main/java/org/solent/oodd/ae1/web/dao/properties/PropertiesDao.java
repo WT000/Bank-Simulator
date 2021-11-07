@@ -29,9 +29,6 @@ public class PropertiesDao {
     private File propertiesFile;
 
     private Properties properties = new Properties();
-    
-    // The stored password is never written to a file, only the hashed version is
-    private String storedPassword;
 
     public PropertiesDao(String propertiesFileLocation) {
         try {
@@ -50,30 +47,20 @@ public class PropertiesDao {
             LOG.error("cannot load properties", ex);
         }
     }
-
-    private String getStoredPassword() {
-        return storedPassword;
-    }
     
     // synchronized ensures changes are not made by another thread while reading
     public synchronized String getProperty(String propertyKey) {
-        if (propertyKey.equals("org.solent.oodd.ae1.web.password")) {
-            return storedPassword;
-        }
-        
         return properties.getProperty(propertyKey);
     }
     
     public synchronized void setProperty(String propertyKey, String propertyValue) {
-        String propertyValueToStore = propertyValue;
-        
-        // Hash if it's a field that should be secured
+        // Passwords are allowed to be stored in plain text, but this demonstrates hashing the password
         if (propertyKey.equals("org.solent.oodd.ae1.web.password")) {
-            propertyValueToStore = PasswordUtils.hashPassword(propertyValue);
-            storedPassword = propertyValue;
+            String propertyValueToStore = PasswordUtils.hashPassword(propertyValue);
+            properties.setProperty("org.solent.oodd.ae1.web.hashedPassword", propertyValueToStore);
         }
         
-        properties.setProperty(propertyKey, propertyValueToStore);
+        properties.setProperty(propertyKey, propertyValue);
         saveProperties();
     }
 
