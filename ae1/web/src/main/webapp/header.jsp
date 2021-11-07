@@ -38,6 +38,7 @@
         
         CardValidationResult cardResult = RegexCardValidator.isValid(bankCard);
         
+        // The result was valid, so next we'll test the new properties through 
         if (cardResult.isValid()) {
             adminSettings.setProperty("org.solent.oodd.ae1.web.url", bankUrl);
             adminSettings.setProperty("org.solent.oodd.ae1.web.cardNumber", bankCard);
