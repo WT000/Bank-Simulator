@@ -28,7 +28,7 @@ import org.solent.oodd.ae1.bank.model.dto.TransactionRequestMessage;
 
 /**
  *
- * @author cgallen
+ * @author WT000
  */
 public class BankRestClientImpl implements BankRestClient {
 

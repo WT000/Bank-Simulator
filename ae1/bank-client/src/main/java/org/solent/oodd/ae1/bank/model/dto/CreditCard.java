@@ -2,6 +2,10 @@ package org.solent.oodd.ae1.bank.model.dto;
 
 import javax.persistence.Embeddable;
 
+/**
+ *
+ * @author WT000
+ */
 @Embeddable
 public class CreditCard {
 

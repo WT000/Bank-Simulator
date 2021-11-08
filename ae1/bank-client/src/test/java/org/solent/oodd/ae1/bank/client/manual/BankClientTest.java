@@ -18,7 +18,7 @@ import org.solent.oodd.ae1.bank.model.dto.TransactionReplyMessage;
 
 /**
  *
- * @author cgallen
+ * @author WT000
  */
 public class BankClientTest {
 

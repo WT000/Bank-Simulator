@@ -20,7 +20,7 @@ import org.solent.oodd.ae1.password.PasswordUtils;
 
 /**
  *
- * @author cgallen
+ * @author WT000
  */
 public class PropertiesDao {
 
