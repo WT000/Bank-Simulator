@@ -81,7 +81,7 @@
             // Perform the transfer
             try {
                 TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
-            
+                
                 // Check whether the transaction is successful or not
                 if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
                     result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been taken from your account.</p>";
