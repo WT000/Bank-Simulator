@@ -1,6 +1,3 @@
 # WEB
-This is the website itself, which can be run on NetBeans directly or through commands. Through commands, you can run it by going to this directory and running:
-```
-mvn cargo:run
-```
-After this, go to http://localhost:8080/web/
+
+This is the website itself, look (here)[https://github.com/WT000/COM528AE1/blob/main/README.md] for run instructions.
