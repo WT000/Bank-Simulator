@@ -6,7 +6,7 @@ ae1 contains code and resources related to our project.
 
 # APPLICATION SETUP
 
-Firstly, ensure that you've got Java JDK 8 or newer installed on your system. Furtheremore, you'll need Apache Maven to ensure the application can build its dependencies and function correctly.
+Firstly, ensure that you've got [Java JDK 8](https://www.oracle.com/java/technologies/downloads/#java8) or newer installed on your system. You'll also need [Apache Maven](https://maven.apache.org/download.cgi) to ensure the application can build its dependencies and function correctly.
 
 Once installed, navigate to the parent folder (ae1) and run:
 ```
