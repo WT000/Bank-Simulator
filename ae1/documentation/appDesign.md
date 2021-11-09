@@ -2,7 +2,7 @@
 
 - requirements
 - use cases
-- task allocation (look at Projects for details)
+- task allocation (look at [Projects](https://github.com/WT000/COM528AE1/projects) for details)
 - initial design
 
 # FINISHED APP
