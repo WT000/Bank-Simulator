@@ -23,4 +23,4 @@ After doing one of these, navigate to http://localhost:8080/web/ for credits and
 # DOCUMENTATION
 
 - Click [here](https://github.com/WT000/COM528AE1/blob/main/ae1/documentation/appDesign.md) to see documentation for the app.
-- Click [here](https://github.com/WT000/COM528AE1/blob/main/ae1/documentation/appDesign.md) to see tests against the requirements / use cases.
+- Click [here](https://github.com/WT000/COM528AE1/blob/main/ae1/documentation/appTestPlan.md) to see tests against the requirements / use cases.
