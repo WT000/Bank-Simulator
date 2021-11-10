@@ -1,5 +1,7 @@
 # TEST PLAN
 
-- list features from appDesign and the different tests for them here
+- list use cases / features from appDesign and state how they'll be tested here, then describe if the test was successful or not, it would be good to have in a table with these headers:
 
-- perhaps show results
+Use Case / Feature --- Test Method --- Result
+
+- perhaps show screenshots where useful too
