@@ -7,6 +7,7 @@ package org.solent.oodd.ae1.card.checker;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.Arrays;
 
 /**
  * Tests of various cards
@@ -90,6 +91,42 @@ public class TestRegexCardValidator {
         assertFalse(result.isValid());
 
     }
+        @Test
+    public void checkCalculateLuhnnullpan() {
+        //checks when the pan is null
+        
+        String pan = null; 
+
+           
+        CardValidationResult result = RegexCardValidator.isValid(pan);
+        
+        
+        System.out.println(result.getError());
+
+        assertFalse(result.isValid());
+        assertEquals(result.getError(),"card cannot be null" );
+                
+    }
+    @Test
+    public void checkCalculateLuhnnchecklengh() {
+        //checks when card lenght is less than 13 and greater than 19 then then 
+        //the lenght is invalid otherwise the lengh is valid(continue)
+        
+        for(int i=0; i<50;i++){  
+            if (i>=13 && i<=19) continue;
+            char[] chars = new char[i];
+            Arrays.fill(chars, '5');
+            String pan = new String(chars);
+            CardValidationResult result = RegexCardValidator.isValid(pan);     
+        
+            System.out.println(result.getError());
+            assertFalse(result.isValid());
+            assertEquals(result.getError(),"failed length check" );
+                
+
+        }
+    }
+    
 
     /**
      * Check a card number and print the result
