@@ -6,7 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
         
+        <!-- Footer start -->
         <script src="public/js/bootstrap.min.js"></script>
         <script src="public/js/saleservice.js"></script>
     </body>
 </html>
+<!-- Footer end -->

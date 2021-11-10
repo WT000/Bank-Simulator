@@ -13,12 +13,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
+import java.util.Arrays;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.solent.oodd.ae1.password.PasswordUtils;
 
 /**
  *
- * @author cgallen
+ * @author WT000
  */
 public class PropertiesDao {
 
@@ -45,13 +47,19 @@ public class PropertiesDao {
             LOG.error("cannot load properties", ex);
         }
     }
-
+    
     // synchronized ensures changes are not made by another thread while reading
-    public synchronized String getProperty(String propertyName) {
-        return properties.getProperty(propertyName);
+    public synchronized String getProperty(String propertyKey) {
+        return properties.getProperty(propertyKey);
     }
-
+    
     public synchronized void setProperty(String propertyKey, String propertyValue) {
+        // Passwords are allowed to be stored in plain text, but this demonstrates hashing the password
+        if (propertyKey.equals("org.solent.oodd.ae1.web.password")) {
+            String propertyValueToStore = PasswordUtils.hashPassword(propertyValue);
+            properties.setProperty("org.solent.oodd.ae1.web.hashedPassword", propertyValueToStore);
+        }
+        
         properties.setProperty(propertyKey, propertyValue);
         saveProperties();
     }
@@ -83,7 +91,7 @@ public class PropertiesDao {
             // If the file hasn't been made, we need to get the data from the default file, load it into properties and save the file
             if (firstLoad) {
                 LOG.info("loading default properties file...");
-                input = PropertiesDao.class.getClassLoader().getResourceAsStream("saleapp.properties");
+                input = PropertiesDao.class.getClassLoader().getResourceAsStream("application.properties");
                 properties.load(input);
                 saveProperties();
             // If it has been created, simply just load it 

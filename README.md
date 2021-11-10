@@ -1,28 +1,26 @@
-# COM528AE1
+# COM528AE1 - GROUP A5
+
 This is our groups submission for the AE1 for COM528, a credit card app that uses ReST with a front-facing UI built with JSP for users.
 
 ae1 contains code and resources related to our project.
 
-# REPO INSTRUCTIONS
-Because we're working on this as a team, always ensure you pull the repo before git pushing! We don't want peoples work to be overwritten.
+# APPLICATION SETUP
 
-In a nutshell, do git pull whenever you open the project and git pull whenever you're about to git push, allowing you to check for merge conflicts.
+Firstly, ensure that you've got [Java JDK 8](https://www.oracle.com/java/technologies/downloads/#java8) or newer installed on your system. You'll also need [Apache Maven](https://maven.apache.org/download.cgi) to ensure the application can build its dependencies and function correctly.
 
-If you're going to do a potentially damaging change, make sure you create and try the changes on a new branch and merge it with main if you know it works & tests didn't fail.
+Once installed, navigate to the parent folder (ae1) and run:
+```
+mvn clean install
+```
 
-If changes you make cause tests to fail then please try to fix them or revert the change until someone else can!
+You can now deploy the web application using Tomcat! Furthermore, you could navigate to the web directory and run:
+```
+mvn cargo:run
+```
 
-# CODE FORMATTING
-When coding, make sure you follow standards and general practices:
+After doing one of these, navigate to http://localhost:8080/web/ for credits and a gateway to the running app!
 
-ClassName
+# DOCUMENTATION
 
-methodName
-
-Don't start classes or methods with a number.
-
-Don't use confusing variable names.
-
-Space out code where needed, make sure it's readable to everyone as we're working on this as a group!
-
-Comment your code.
+- Click [here](https://github.com/WT000/COM528AE1/blob/main/ae1/documentation/appDesign.md) to see documentation for the app.
+- Click [here](https://github.com/WT000/COM528AE1/blob/main/ae1/documentation/appTestPlan.md) to see tests against the requirements / use cases.

@@ -28,11 +28,12 @@ import org.solent.oodd.ae1.bank.model.dto.TransactionRequestMessage;
 
 /**
  *
- * @author cgallen
+ * @author WT000
  */
 public class BankRestClientImpl implements BankRestClient {
 
     final static Logger LOG = LogManager.getLogger(BankRestClientImpl.class);
+    final static Logger TRANSACTION_LOGGER = LogManager.getLogger("TRANSACTION_LOGGER");
 
     String urlStr;
 
@@ -64,8 +65,16 @@ public class BankRestClientImpl implements BankRestClient {
         Response response = invocationBuilder.post(Entity.entity(transactionRequestMessage, MediaType.APPLICATION_JSON));
 
         TransactionReplyMessage transactionReplyMessage = response.readEntity(TransactionReplyMessage.class);
-
+        
         LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + transactionReplyMessage);
+        
+        // Log to file with a title depending on the transaction
+        if (fromCard.getCardnumber().equals(toCard.getCardnumber())) {
+            TRANSACTION_LOGGER.info("--- TRANSACTION (to own card) ---");
+        } else {
+            TRANSACTION_LOGGER.info("--- TRANSACTION (to other card) ---");
+        }
+        TRANSACTION_LOGGER.info(transactionReplyMessage);
 
         return transactionReplyMessage;
 
@@ -102,6 +111,14 @@ public class BankRestClientImpl implements BankRestClient {
         TransactionReplyMessage transactionReplyMessage = response.readEntity(TransactionReplyMessage.class);
 
         LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + transactionReplyMessage);
+        
+        // Log to file with a title depending on the transaction
+        if (!fromCard.getCardnumber().equals(toCard.getCardnumber())) {
+            TRANSACTION_LOGGER.info("--- TRANSACTION (to other card) ---");
+        } else {
+            TRANSACTION_LOGGER.info("--- TRANSACTION (to own card) ---");
+        }
+        TRANSACTION_LOGGER.info(transactionReplyMessage);
 
         return transactionReplyMessage;
 

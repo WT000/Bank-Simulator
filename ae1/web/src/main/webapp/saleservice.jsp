@@ -10,6 +10,7 @@
 <%@page import="org.solent.oodd.ae1.web.dao.properties.WebObjectFactory"%>
 <%@page import="org.solent.oodd.ae1.bank.model.dto.CreditCard"%>
 <%@page import="org.solent.oodd.ae1.card.checker.RegexCardValidator"%>
+<%@page import="org.solent.oodd.ae1.card.checker.CardValidationResult"%>
 <%@page import="org.solent.oodd.ae1.bank.client.impl.BankRestClientImpl"%>
 <%@page import="org.solent.oodd.ae1.bank.model.dto.TransactionReplyMessage"%>
 <%@page import="org.solent.oodd.ae1.bank.model.dto.BankTransactionStatus"%>
@@ -18,8 +19,7 @@
     PropertiesDao adminSettings = WebObjectFactory.getPropertiesDao();
     BankRestClientImpl restClient = new BankRestClientImpl(adminSettings.getProperty("org.solent.oodd.ae1.web.url"));
     
-    // Get the required bank information before ReST transfers
-    // Bank card
+    // Get the required bank information before ReST transfers bank card
     String bankCardNo = adminSettings.getProperty("org.solent.oodd.ae1.web.cardNumber");
     String bankCardName = adminSettings.getProperty("org.solent.oodd.ae1.web.cardName");
     String bankDate = adminSettings.getProperty("org.solent.oodd.ae1.web.cardDate");
@@ -34,97 +34,137 @@
     
     // Check if a card is currently stored in the session and create it if it doesn't exist
     CreditCard customerCard = (CreditCard) session.getAttribute("customerCard");
-    
     if (customerCard == null) {
         customerCard = new CreditCard("", "", "", "");
         session.setAttribute("customerCard", customerCard);
     }
     
+    // Get the current action and set result to the initial value
     String action = (String) request.getParameter("action");
-    String result = "Welcome. Please click one of the buttons below.";
-    String scriptToRun = "";
+    String result = "<p id=\"resultText\"> Welcome. Please click one of the buttons below.</p>";
     
+    // addCard action (means the user is entering a card)
     if ("addCard".equals(action)) {
         String cardNo = (String) request.getParameter("cardNumber");
         String cardName = (String) request.getParameter("cardName");
         String cardDate = (String) request.getParameter("cardDate");
         String cardCvv = (String) request.getParameter("cardCvv");
         
-        customerCard.setCardnumber(cardNo);
-        customerCard.setName(cardName);
-        customerCard.setEndDate(cardDate);
-        customerCard.setCvv(cardCvv);
+        // JS has checked everything apart from the card itself, so we'll do it here
+        CardValidationResult cardResult = RegexCardValidator.isValid(cardNo);
         
-        // Card validation using if statements would be here
-        // perhaps run a script so it makes the relevant form stay visible
-        result = "<p style=\"color:green;\">SUCCESS - " + cardNo + " is now your current card.</p>";
+        if (cardResult.isValid()) {
+            customerCard.setCardnumber(cardNo);
+            customerCard.setName(cardName);
+            customerCard.setEndDate(cardDate);
+            customerCard.setCvv(cardCvv);
+            result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - " + cardNo + " is now your current card.</p>";
+        } else {
+            result = "<p id=\"resultText\" style=\"color:red;\">ERROR - " + cardResult.getError() + ".</p>";
+        }
+        
+    // doTransaction action (means the user is doing a transaction)
     // TRANSACTION REST CONNECTION
     } else if ("doTransaction".equals(action)) {
         String amount = (String) request.getParameter("amount");
+        boolean error = false;
         
-        // Perform the transfer
-        TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
+        try {
+            double numAmount = Double.parseDouble(amount);
+        } catch (Exception e) {
+            error = true;
+        }
         
-        if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
-            result = "<p style=\"color:green;\">SUCCESS - £" + amount + " has been taken from your account.</p>";
+        if (error) {
+            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - something went wrong when sending to the bank, did you enter a valid amount?</p>";
         } else {
-            // null isn't a helpful message if the bank properties haven't been correctly configured.
-            if (restResponse.getMessage() != null) {
-                result = "<p style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
-            } else {
-                result = "<p style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+            // Perform the transfer
+            try {
+                TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
+                
+                // Check whether the transaction is successful or not
+                if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
+                    result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been taken from your account.</p>";
+                } else {
+                    // null isn't a helpful message if the bank properties haven't been correctly configured.
+                    if (restResponse.getMessage() != null) {
+                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+                    } else {
+                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
+                    }
+                }
+            } catch (Exception e) {
+                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
             }
         }
+    // doRefund action (means the user is sending a refund amount to a card)
     // REFUND REST CONNECTION
     } else if ("doRefund".equals(action)) {
+        // try block / if check here to ensure amount isn't empty
         String amount = (String) request.getParameter("amount");
+        boolean error = false;
         
-        // Perform the refund, like the notes below, perhaps this could use a seperate form in the future
-        TransactionReplyMessage restResponse = restClient.transferMoney(bankCard, customerCard, Double.valueOf(amount));
+        try {
+            double numAmount = Double.parseDouble(amount);
+        } catch (Exception e) {
+            error = true;
+        }
         
-        if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
-            result = "<p style=\"color:green;\">SUCCESS - £" + amount + " has been refunded to " + restResponse.getToCardNo() + ".</p>";
+        if (error) {
+            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - something went wrong when refunding, did you enter a valid amount?</p>";
         } else {
-            if (restResponse.getMessage() != null) {
-                result = "<p style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
-            } else {
-                result = "<p style=\"color:red;\">FAILURE - couldn't perform operations on the currently configured bank.</p>";
+            // Perform the refund
+            try {
+                TransactionReplyMessage restResponse = restClient.transferMoney(bankCard, customerCard, Double.valueOf(amount));
+
+                // Check whether the transaction is successful or not
+                if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
+                    result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been refunded to " + restResponse.getToCardNo() + ".</p>";
+                } else {
+                    if (restResponse.getMessage() != null) {
+                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+                    } else {
+                        result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
+                    }
+                }
+            } catch (Exception e) {
+                result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
             }
         }
     }
 %>
 <jsp:include page="header.jsp"/>
-<!-- Page start -->
+<!-- Main app start -->
 <div id="appContainer">
     <div id="resultContainer">
         <div id="result">
-            <p id="resultText"><%= result %></p>
+            <%= result %>
         </div>
     </div>
     
     <div id="formContainer">
-        <form id="addCardForm" class="innerForm" method="post">
+        <form id="addCardForm" class="innerForm" method="post" autocomplete="off">
             <input type="hidden" name="action" value="addCard">
             
-            <label>Card Number [attach credit card UI here]</label><input type="text" name="cardNumber" value="<%=customerCard.getCardnumber()%>" required><br>
-            <label>Name on Card</label><input type="text" name="cardName" placeholder="(optional)" value="<%=customerCard.getName()%>"><br>
-            <label>Expiration Date</label><input type="text" name="cardDate" placeholder="(optional)" value="<%=customerCard.getEndDate()%>"><br>
-            <label>Cvv</label><input type="text" name="cardCvv" placeholder="(optional)" value="<%=customerCard.getCvv()%>"><br>
+            <label>Card Number</label><input type="text" name="cardNumber" placeholder="1111222233334444" value="<%=customerCard.getCardnumber()%>" pattern="[0-9]{16}" required><br>
+            <label>Name on Card</label><input type="text" name="cardName" placeholder="John Doe" value="<%=customerCard.getName()%>" required><br>
+            <label>Expiration Date</label><input type="text" name="cardDate" placeholder="01/26" value="<%=customerCard.getEndDate()%>" pattern="([0-9]{2}[/]?){2}" required><br>
+            <label>Cvv</label><input type="text" name="cardCvv" placeholder="123" value="<%=customerCard.getCvv()%>" pattern="[0-9]{3}" required><br>
             <button>Submit</button>
         </form>
         
-        <form id="transactionForm" class="innerForm" method="post">
+        <form id="transactionForm" class="innerForm" method="post" autocomplete="off">
             <input type="hidden" name="action" value="doTransaction">
             
-            <label>Amount to send [attach credit card UI here]</label><input type="text" name="amount"><br>
+            <label>Amount to send [attach credit card UI here] £</label><input type="text" name="amount" placeholder="0.00" pattern="\d{1,5}" required><br>
             <button>Submit</button>
         </form>
         
-        <form id="refundForm" class="innerForm" method="post">
+        <form id="refundForm" class="innerForm" method="post" autocomplete="off">
             <input type="hidden" name="action" value="doRefund">
             
             <!-- If this is stored in the admin menu, a credit card field will also be needed -->
-            <label>Amount to refund [attach credit card UI here]</label><input type="text" name="amount"><br>
+            <label>Amount to refund [attach credit card UI here] £</label><input type="text" name="amount" placeholder="0.00" pattern="\d{1,5}" required><br>
             <button>Submit</button>
         </form>
     </div>
@@ -145,6 +185,5 @@
         </div>
     </div>
 </div>
-<!-- Page end -->
-
+<!-- Main app end -->
 <jsp:include page="footer.jsp"/>
