@@ -11,10 +11,9 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author cgallen
+ * @author nastaransharifisadr
  */
 public class CheckCalculateLunnTest {
-    
 
     @Test
     public void checkCalculateLunn() {
@@ -32,22 +31,17 @@ public class CheckCalculateLunnTest {
 
         assertTrue(result.isValid());     
     }
-     @Test
+    
+    @Test
     public void checkCalculateLuhnnullpan() {
         //checks when the pan is null
-        
         String pan = null; 
-
-           
         CardValidationResult result = RegexCardValidator.isValid(pan);
-        
         
         System.out.println(result.getError());
 
         assertFalse(result.isValid());
-        assertEquals(result.getError(),"card cannot be null" );
-                
+        assertEquals(result.getError(),"card cannot be null");
     }
-
 }
 

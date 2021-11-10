@@ -156,7 +156,7 @@
         <form id="transactionForm" class="innerForm" method="post" autocomplete="off">
             <input type="hidden" name="action" value="doTransaction">
             
-            <label>Amount to send [attach credit card UI here] £</label><input type="text" name="amount" placeholder="0.00" pattern="\d{1,5}" required><br>
+            <label>Amount to send [attach credit card UI here, currently the max is 99999] £</label><input type="text" name="amount" placeholder="0.00" pattern="\d{1,5}" required><br>
             <button>Submit</button>
         </form>
         

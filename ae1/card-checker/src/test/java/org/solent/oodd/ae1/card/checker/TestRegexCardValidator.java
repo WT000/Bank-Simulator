@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 /**
  * Tests of various cards
- * @author gallenc
+ * @author nastaransharifisadr 
  */
 public class TestRegexCardValidator {
 
@@ -22,7 +22,6 @@ public class TestRegexCardValidator {
     public static final String VALID_DISCOVER_1 = "6011016011016011";
     public static final String VALID_JCB_1 = "3566003566003566";
     public static final String LHUN_FAIL_1 = "1111111111111111";
-
     public static final String INVALID_STRING = "abcdabcdabcdabcd";
 
     @Test
@@ -32,6 +31,7 @@ public class TestRegexCardValidator {
         assertTrue(result.isValid());
         assertEquals(result.getCardType(),CardCompany.VISA );
     }
+    
     @Test
     public void testCardVisafail() {
         CardValidationResult result = RegexCardValidator.isValid("4454444444444448");
@@ -57,21 +57,17 @@ public class TestRegexCardValidator {
 
     @Test
     public void testCardAmex() {
-
         CardValidationResult result = RegexCardValidator.isValid(VALID_AMEX_1);
         printResult(result);
         assertTrue(result.isValid());
         assertEquals(result.getCardType(),CardCompany.AMEX );
-
     }
     
     @Test
     public void testCardAmexfail() {
-
         CardValidationResult result = RegexCardValidator.isValid("37/449635398431");
         printResult(result);
         assertFalse(result.isValid());
-
     }
 
     @Test
@@ -81,6 +77,7 @@ public class TestRegexCardValidator {
         assertTrue(result.isValid());
         assertEquals(result.getCardType(),CardCompany.DINERS );
     }
+    
     @Test
     public void testCardDinersfail() {
         CardValidationResult result = RegexCardValidator.isValid("39438936438936");
@@ -94,29 +91,28 @@ public class TestRegexCardValidator {
         printResult(result);
         assertTrue(result.isValid());
         assertEquals(result.getCardType(),CardCompany.DISCOVER);
-
     }
+    
     @Test
     public void testCardDiscoverfail() {
         CardValidationResult result = RegexCardValidator.isValid("6029016011016011");
         printResult(result);
         assertFalse(result.isValid());
-
     }
+    
     @Test
     public void testCardJcb() {
         CardValidationResult result = RegexCardValidator.isValid(VALID_JCB_1);
         printResult(result);
         assertTrue(result.isValid());
         assertEquals(result.getCardType(),CardCompany.JCB );
-
     }
+    
     @Test
     public void testCardJcbfail() {
         CardValidationResult result = RegexCardValidator.isValid("3866003566003566");
         printResult(result);
         assertFalse(result.isValid());
-
     }
 
     @Test
@@ -131,16 +127,14 @@ public class TestRegexCardValidator {
         CardValidationResult result = RegexCardValidator.isValid(LHUN_FAIL_1);
         printResult(result);
         assertFalse(result.isValid());
-
     }
-    
    
     @Test
     public void checkCalculateLuhnnchecklengh() {
-        //checks when card lenght is less than 13 and greater than 19 then then 
-        //the lenght is invalid otherwise the lengh is valid(continue)
+        //checks when card length is less than 13 and greater than 19 then 
+        //the length is invalid otherwise the lengh is valid (continue)
         
-        for(int i=0; i<50;i++){  
+        for (int i=0; i<50;i++){  
             if (i>=13 && i<=19) continue;
             char[] chars = new char[i];
             Arrays.fill(chars, '5');
@@ -149,12 +143,9 @@ public class TestRegexCardValidator {
         
             System.out.println(result.getError());
             assertFalse(result.isValid());
-            assertEquals(result.getError(),"failed length check" );
-                
-
+            assertEquals(result.getError(), "failed length check");
         }
     }
-    
 
     /**
      * Check a card number and print the result
