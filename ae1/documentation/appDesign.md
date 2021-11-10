@@ -10,3 +10,4 @@
 - UML class / robustness diagrams
 - list of features and what requirements they solve, include other features at the end of the table
 - images of final site
+- javadoc (implement it, say how someone can access it)
