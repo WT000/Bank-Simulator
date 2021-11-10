@@ -32,6 +32,22 @@ public class CheckCalculateLunnTest {
 
         assertTrue(result.isValid());     
     }
+     @Test
+    public void checkCalculateLuhnnullpan() {
+        //checks when the pan is null
+        
+        String pan = null; 
+
+           
+        CardValidationResult result = RegexCardValidator.isValid(pan);
+        
+        
+        System.out.println(result.getError());
+
+        assertFalse(result.isValid());
+        assertEquals(result.getError(),"card cannot be null" );
+                
+    }
 
 }
 
