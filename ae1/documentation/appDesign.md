@@ -3,7 +3,7 @@
 - requirements
 - use cases
 - task allocation (look at [Projects](https://github.com/WT000/COM528AE1/projects) for details)
-- initial design
+- initial design (screenshots of the images from the PowerPoint)
 
 # FINISHED APP
 
