@@ -18,7 +18,7 @@ You can now deploy the web application using Tomcat! Furthermore, you could navi
 mvn cargo:run
 ```
 
-After doing one of these, navigate to http://localhost:8080/web/ for credits and a gateway to the running app! I recommend using a browser which supports JavaScript. 
+After doing one of these, navigate to http://localhost:8080/web/ for credits and a gateway to the running app! I recommend using a modern browser which supports JavaScript. 
 
 # DOCUMENTATION
 
