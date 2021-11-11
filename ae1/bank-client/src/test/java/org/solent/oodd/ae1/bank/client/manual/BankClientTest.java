@@ -70,7 +70,7 @@ public class BankClientTest {
 
         BankRestClient client = new BankRestClientImpl(bankUrl);
     
-        double amount = Double.parseDouble("100.0");
+        double amount = Double.parseDouble("1.0");
         
         // First get the money from the bank account (if someone from another group has changed it)
         client.transferMoney(toCard, fromCard, amount);
@@ -78,11 +78,12 @@ public class BankClientTest {
         // Then, now that we know the balance is in the account, we can send the transfer
         TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount);
         
+        // Send it back into the appropriate account
         client.transferMoney(toCard, fromCard, amount);
        
         LOG.debug("transaction reply:" + reply);
 
-        assertEquals("100.0",reply.getAmount().toString());
+        assertEquals("1.0",reply.getAmount().toString());
     }
 
     @Test
