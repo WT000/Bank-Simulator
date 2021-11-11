@@ -54,7 +54,6 @@ public class BankClientTest {
 
     @Test
     public void testClient() {
-
         BankRestClient client = new BankRestClientImpl(bankUrl);
 
         Double amount = 0.0;
@@ -63,11 +62,10 @@ public class BankClientTest {
         LOG.debug("transaction reply:" + reply);
 
         assertEquals(BankTransactionStatus.SUCCESS, reply.getStatus());
-
     }
+    
     @Test
     public void testtransfermoney() {
-
         BankRestClient client = new BankRestClientImpl(bankUrl);
     
         double amount = Double.parseDouble("1.0");
@@ -94,11 +92,9 @@ public class BankClientTest {
         Double amount = 0.0;
 
         // testing with auth
- 
         TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount, toUsername, toPassword);
         LOG.debug("transaction with auth reply:" + reply);
         
         assertEquals(BankTransactionStatus.SUCCESS, reply.getStatus());
-
     }
 }
