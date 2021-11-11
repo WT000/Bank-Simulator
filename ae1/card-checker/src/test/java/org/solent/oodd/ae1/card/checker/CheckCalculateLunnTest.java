@@ -17,7 +17,6 @@ public class CheckCalculateLunnTest {
 
     @Test
     public void checkCalculateLunn() {
-        
         String pan =  "550000555555555"; // correct mastercard 5500005555555559
 
         String check = CalculateLunnDigit.calculateCheckDigit(pan);
