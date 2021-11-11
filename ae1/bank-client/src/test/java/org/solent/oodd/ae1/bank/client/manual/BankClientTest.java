@@ -78,12 +78,13 @@ public class BankClientTest {
         BankRestClient client = new BankRestClientImpl(bankUrl);
         assertEquals(fromCard.getIssueNumber(), "01");
     }
-    @Test
-    public void testCardNumber() {
-        BankRestClient client = new BankRestClientImpl(bankUrl);
-        assertEquals(fromCard.getCardnumber(), "5133880000000012");
-    }
     
+    
+    @Test
+    public void testName() {
+        BankRestClient client = new BankRestClientImpl(bankUrl);
+        assertEquals(fromCard.getName(), "test user1");
+    }
     @Test
     public void testtransfermoney() {
         BankRestClient client = new BankRestClientImpl(bankUrl);
