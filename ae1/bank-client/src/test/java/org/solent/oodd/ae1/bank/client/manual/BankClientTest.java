@@ -69,6 +69,16 @@ public class BankClientTest {
         assertEquals(fromCard.getCvv(), "123");
     }
     @Test
+    public void testEndDate() {
+        BankRestClient client = new BankRestClientImpl(bankUrl);
+        assertEquals(fromCard.getEndDate(), "11/21");
+    }
+    @Test
+    public void testIssueNumber() {
+        BankRestClient client = new BankRestClientImpl(bankUrl);
+        assertEquals(fromCard.getIssueNumber(), "01");
+    }
+    @Test
     public void testCardNumber() {
         BankRestClient client = new BankRestClientImpl(bankUrl);
         assertEquals(fromCard.getCardnumber(), "5133880000000012");
