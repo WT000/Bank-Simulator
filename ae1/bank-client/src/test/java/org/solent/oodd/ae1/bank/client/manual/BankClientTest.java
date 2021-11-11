@@ -63,6 +63,16 @@ public class BankClientTest {
 
         assertEquals(BankTransactionStatus.SUCCESS, reply.getStatus());
     }
+    @Test
+    public void testCVV() {
+        BankRestClient client = new BankRestClientImpl(bankUrl);
+        assertEquals(fromCard.getCvv(), "123");
+    }
+    @Test
+    public void testCardNumber() {
+        BankRestClient client = new BankRestClientImpl(bankUrl);
+        assertEquals(fromCard.getCardnumber(), "5133880000000012");
+    }
     
     @Test
     public void testtransfermoney() {
