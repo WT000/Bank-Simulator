@@ -52,4 +52,29 @@ public class PropertiesDaoTest {
         // with an extra | escape characters. see discussion here
         // https://stackoverflow.com/questions/21711562/java-properties-class-adding-characters-when-url-is-entered
     }
+    @Test
+    public void testPropertiesUsername() {
+        PropertiesDao propertiesDao = new PropertiesDao(TEST_PROPERTIES_FILE);
+
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.testPropertiesFile", TEST_PROPERTIES_FILE);
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.username", "testUserName");
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.password", "testPassword");
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.url", "http://google.com");
+        
+        String Username = propertiesDao.getProperty("org.solent.oodd.ae1.web.username");
+        assertEquals("testUserName", Username);        
+    }
+    @Test
+    public void testPropertiesUpassword() {
+        PropertiesDao propertiesDao = new PropertiesDao(TEST_PROPERTIES_FILE);
+
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.testPropertiesFile", TEST_PROPERTIES_FILE);
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.username", "testUserName");
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.password", "testPassword");
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.url", "http://google.com");
+        
+        String Password = propertiesDao.getProperty("org.solent.oodd.ae1.web.password");
+        assertEquals("testPassword", Password);        
+    }
+    
 }
