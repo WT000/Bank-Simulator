@@ -103,6 +103,15 @@ public class PropertiesDaoTest {
         String cardNumber = propertiesDao.getProperty("org.solent.oodd.ae1.web.cardNumber");
         assertEquals("123456789", cardNumber);        
     }
+    @Test
+    public void testPropertiesHashPassword() {
+        PropertiesDao propertiesDao = new PropertiesDao(TEST_PROPERTIES_FILE);
+
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.testPropertiesFile", TEST_PROPERTIES_FILE);
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.hashedPassword", "$2a$12$gXPR0dBcA0OvlQD2SpJMb.QUoj9xXvdqjQ44Ns1zxxpEJjJoC.Hhu");        
+        String hash = propertiesDao.getProperty("org.solent.oodd.ae1.web.hashedPassword");
+        assertEquals("$2a$12$gXPR0dBcA0OvlQD2SpJMb.QUoj9xXvdqjQ44Ns1zxxpEJjJoC.Hhu", hash);        
+    }
     
     
 }
