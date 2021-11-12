@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author cgallen
+ * @author Nastaransharifisadr
  */
 public class PropertiesDaoTest {
 
@@ -93,6 +93,15 @@ public class PropertiesDaoTest {
         propertiesDao.setProperty("org.solent.oodd.ae1.web.cardDate", "11/10/2021");        
         String cardDate = propertiesDao.getProperty("org.solent.oodd.ae1.web.cardDate");
         assertEquals("11/10/2021", cardDate);        
+    }
+    @Test
+    public void testPropertiesCardNumber() {
+        PropertiesDao propertiesDao = new PropertiesDao(TEST_PROPERTIES_FILE);
+
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.testPropertiesFile", TEST_PROPERTIES_FILE);
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.cardNumber", "123456789");        
+        String cardNumber = propertiesDao.getProperty("org.solent.oodd.ae1.web.cardNumber");
+        assertEquals("123456789", cardNumber);        
     }
     
     
