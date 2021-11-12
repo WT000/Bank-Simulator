@@ -76,5 +76,24 @@ public class PropertiesDaoTest {
         String Password = propertiesDao.getProperty("org.solent.oodd.ae1.web.password");
         assertEquals("testPassword", Password);        
     }
+    @Test
+    public void testPropertiesCardName() {
+        PropertiesDao propertiesDao = new PropertiesDao(TEST_PROPERTIES_FILE);
+
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.testPropertiesFile", TEST_PROPERTIES_FILE);
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.cardCvv", "nasi");        
+        String cardCVV = propertiesDao.getProperty("org.solent.oodd.ae1.web.cardCvv");
+        assertEquals("nasi", cardCVV);        
+    }
+    @Test
+    public void testPropertiesCardDate() {
+        PropertiesDao propertiesDao = new PropertiesDao(TEST_PROPERTIES_FILE);
+
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.testPropertiesFile", TEST_PROPERTIES_FILE);
+        propertiesDao.setProperty("org.solent.oodd.ae1.web.cardDate", "11/10/2021");        
+        String cardDate = propertiesDao.getProperty("org.solent.oodd.ae1.web.cardDate");
+        assertEquals("11/10/2021", cardDate);        
+    }
+    
     
 }
