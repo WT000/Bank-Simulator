@@ -54,6 +54,7 @@
         CardValidationResult cardResult = RegexCardValidator.isValid(cardNo);
         
         if (cardResult.isValid()) {
+            // Check strings here again in case JS is disabled
             customerCard.setCardnumber(cardNo);
             customerCard.setName(cardName);
             customerCard.setEndDate(cardDate);
