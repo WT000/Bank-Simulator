@@ -37,7 +37,7 @@
     
     // Get the current action and set result to the initial value
     String action = (String) request.getParameter("action");
-    String result = "<p id=\"resultText\"> Welcome. Please click one of the buttons below.</p>";
+    String result = "<p id=\"resultText\"> Please enter your details and an amount to send below.</p>";
         
     // doTransaction action (means the user is doing a transaction)
     // TRANSACTION REST CONNECTION

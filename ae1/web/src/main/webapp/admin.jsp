@@ -48,7 +48,7 @@
         if (PasswordUtils.checkPassword(enteredPassword, bankHashedPassword) && enteredUsername.equals(bankUsername)) {
             loggedIn = true;
             session.setAttribute("loggedIn", true);
-            result = "<p id=\"resultText\" style=\"color:green;\"> SUCCESS - You've now been logged in. </p>";
+            result = "<p id=\"resultText\" style=\"color:green;\"> SUCCESS - This session will expire when you return to the home page. </p>";
         } else {
             result = "<p id=\"resultText\" style=\"color:red;\"> ERROR - The account details are incorrect, you may want to check the properties file. </p>";
         }
@@ -136,8 +136,8 @@
         <div id="adminContainer">
             <form id="loginForm" method="post" autocomplete="off">
                 <input type="hidden" name="action" value="adminLogin">
-                <label>--- Username ---</label><input type="text" name="propertiesUsername" placeholder="(blank if not set, or values in default properties)">
-                <label>--- Password ---</label><input type="password" name="propertiesPassword" placeholder="(blank if not set, or values in default properties)">
+                <label>--- Username ---</label><input type="text" name="propertiesUsername" required>
+                <label>--- Password ---</label><input type="password" name="propertiesPassword" required>
                 <button>Submit</button>
             </form>
         </div>
