@@ -72,15 +72,15 @@
                     adminSettings.setProperty("org.solent.oodd.ae1.web.username", bankUsername);
                     adminSettings.setProperty("org.solent.oodd.ae1.web.password", bankPassword);
                     adminSettings.setProperty("org.solent.oodd.ae1.web.cardNumber", bankCardNo);
-                    result = "<p id=\"resultText\" style=\"color:green;\"> SUCCESS - The properties were set. </p>";
+                    result = "<p id=\"resultText\" style=\"color:green;\"> SUCCESS - The new properties were saved. </p>";
                 } else {
-                    result = "<p id=\"resultText\" style=\"color:red;\"> ERROR - Invalid bank credentials. </p>";
+                    result = "<p id=\"resultText\" style=\"color:red;\"> ERROR - Invalid bank credentials, changes won't be saved. </p>";
                 }
             } catch (Exception e) {
                 result = "<p id=\"resultText\" style=\"color:red;\"> ERROR - Something went wrong when setting properties: " + e.getMessage() + "</p>";
             }
         } else {
-            result = "<p id=\"resultText\" style=\"color:red;\"> ERROR - The card isn't valid. </p>";
+            result = "<p id=\"resultText\" style=\"color:red;\"> ERROR - The card isn't valid, changes won't be saved. </p>";
         }
     } else if ("doRefund".equals(action)) {
         String cardNo = (String) request.getParameter("cardNumber");
