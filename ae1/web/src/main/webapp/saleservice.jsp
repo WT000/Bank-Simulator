@@ -15,6 +15,9 @@
 <%@page import="org.solent.oodd.ae1.bank.model.dto.TransactionReplyMessage"%>
 <%@page import="org.solent.oodd.ae1.bank.model.dto.BankTransactionStatus"%>
 <%
+    // Always set logged in back to false when this page is gone onto
+    session.setAttribute("loggedIn", false);
+    
     // Setup the ReST client, note that the URL updates would have already been done in the header jsp
     PropertiesDao adminSettings = WebObjectFactory.getPropertiesDao();
     BankRestClientImpl restClient = new BankRestClientImpl(adminSettings.getProperty("org.solent.oodd.ae1.web.url"));
@@ -32,54 +35,44 @@
     String bankUser = adminSettings.getProperty("org.solent.oodd.ae1.web.username");
     String bankPass = adminSettings.getProperty("org.solent.oodd.ae1.web.password");
     
-    // Check if a card is currently stored in the session and create it if it doesn't exist
-    CreditCard customerCard = (CreditCard) session.getAttribute("customerCard");
-    if (customerCard == null) {
-        customerCard = new CreditCard("", "", "", "");
-        session.setAttribute("customerCard", customerCard);
-    }
-    
     // Get the current action and set result to the initial value
     String action = (String) request.getParameter("action");
     String result = "<p id=\"resultText\"> Welcome. Please click one of the buttons below.</p>";
-    
-    // addCard action (means the user is entering a card)
-    if ("addCard".equals(action)) {
+        
+    // doTransaction action (means the user is doing a transaction)
+    // TRANSACTION REST CONNECTION
+    if ("doTransaction".equals(action)) {
         String cardNo = (String) request.getParameter("cardNumber");
         String cardName = (String) request.getParameter("cardName");
         String cardDate = (String) request.getParameter("cardDate");
         String cardCvv = (String) request.getParameter("cardCvv");
-        
-        // JS has checked everything apart from the card itself, so we'll do it here
-        CardValidationResult cardResult = RegexCardValidator.isValid(cardNo);
-        
-        if (cardResult.isValid()) {
-            // Check strings here again in case JS is disabled
-            customerCard.setCardnumber(cardNo);
-            customerCard.setName(cardName);
-            customerCard.setEndDate(cardDate);
-            customerCard.setCvv(cardCvv);
-            result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - " + cardNo + " is now your current card.</p>";
-        } else {
-            result = "<p id=\"resultText\" style=\"color:red;\">ERROR - " + cardResult.getError() + ".</p>";
-        }
-        
-    // doTransaction action (means the user is doing a transaction)
-    // TRANSACTION REST CONNECTION
-    } else if ("doTransaction".equals(action)) {
         String amount = (String) request.getParameter("amount");
         boolean error = false;
         
+        // Check if the amount is a valid double, card validation result will overwrite this
+        // First check to see if it's a valid double
         try {
-            double numAmount = Double.parseDouble(amount);
+           double numAmount = Double.parseDouble(amount);
         } catch (Exception e) {
             error = true;
         }
         
-        if (error) {
-            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - something went wrong when sending to the bank, did you enter a valid amount?</p>";
+        // Check if the card is valid
+        CardValidationResult cardResult = RegexCardValidator.isValid(cardNo);
+        CreditCard customerCard = new CreditCard();
+        
+        if (cardResult.isValid()) {
+            customerCard.setCardnumber(cardNo);
+            customerCard.setName(cardName);
+            customerCard.setEndDate(cardDate);
+            customerCard.setCvv(cardCvv);
         } else {
-            // Perform the transfer
+            result = "<p id=\"resultText\" style=\"color:red;\">ERROR - " + cardResult.getError() + ".</p>";
+            error = true;
+        }
+        
+        // Only attempt the transfer if no errors happened (meaning the card and amount are completely valid)
+        if (!error) {
             try {
                 TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
                 
@@ -116,6 +109,7 @@
         } else {
             // Perform the refund
             try {
+                CreditCard customerCard = new CreditCard();
                 TransactionReplyMessage restResponse = restClient.transferMoney(bankCard, customerCard, Double.valueOf(amount));
 
                 // Check whether the transaction is successful or not
@@ -134,7 +128,7 @@
         }
     }
 %>
-<jsp:include page="header.jsp"/>
+<jsp:include page="headersaleservice.jsp"/>
 <!-- Main app start -->
 <div id="appContainer">
     <div id="resultContainer">
@@ -145,46 +139,16 @@
     
     <div id="formContainer">
         <form id="addCardForm" class="innerForm" method="post" autocomplete="off">
-            <input type="hidden" name="action" value="addCard">
-            
-            <label>Card Number</label><input type="text" name="cardNumber" placeholder="1111222233334444" value="<%=customerCard.getCardnumber()%>" pattern="[0-9]{16}" required><br>
-            <label>Name on Card</label><input type="text" name="cardName" placeholder="John Doe" value="<%=customerCard.getName()%>" required><br>
-            <label>Expiration Date</label><input type="text" name="cardDate" placeholder="01/26" value="<%=customerCard.getEndDate()%>" pattern="([0-9]{2}[/]?){2}" required><br>
-            <label>Cvv</label><input type="text" name="cardCvv" placeholder="123" value="<%=customerCard.getCvv()%>" pattern="[0-9]{3}" required><br>
-            <button>Submit</button>
-        </form>
-        
-        <form id="transactionForm" class="innerForm" method="post" autocomplete="off">
             <input type="hidden" name="action" value="doTransaction">
             
-            <label>Amount to send [attach credit card UI here, currently the max is 99999] £</label><input type="text" name="amount" placeholder="0.00" pattern="\d{1,5}" required><br>
+            <label>Card Number</label><input type="text" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" required><br>
+            <label>Name on Card</label><input type="text" name="cardName" placeholder="John Doe" required><br>
+            <label>Expiration Date</label><input type="text" name="cardDate" placeholder="01/26" pattern="([0-9]{2}[/]?){2}" required><br>
+            <label>Cvv</label><input type="text" name="cardCvv" placeholder="123" pattern="[0-9]{3}" required><br>
+            <label>Amount to send £</label><input type="text" name="amount" placeholder="0.00" required><br>
             <button>Submit</button>
         </form>
-        
-        <form id="refundForm" class="innerForm" method="post" autocomplete="off">
-            <input type="hidden" name="action" value="doRefund">
-            
-            <!-- If this is stored in the admin menu, a credit card field will also be needed -->
-            <label>Amount to refund [attach credit card UI here] £</label><input type="text" name="amount" placeholder="0.00" pattern="\d{1,5}" required><br>
-            <button>Submit</button>
-        </form>
-    </div>
-    
-    <div id="functionContainer">
-        <div class="functionButton" id="buttonCard">
-            <p>Enter Card</p>
-        </div>
-        
-        <div class="functionButton" id="buttonTransaction">
-            <p>Transaction</p>
-        </div>
-        
-        <!-- probably should put this in the owner menu as that'll be secured, we don't want customers giving refunds to themselves -->
-        <!-- if it's done this way, we should add a separate field for entering a customer card number -->
-        <div class="functionButton" id="buttonRefund">
-            <p>Refund</p>
-        </div>
     </div>
 </div>
 <!-- Main app end -->
-<jsp:include page="footer.jsp"/>
+<jsp:include page="footersaleservice.jsp"/>

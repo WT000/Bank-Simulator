@@ -26,6 +26,13 @@ public class CreditCard {
         this.cvv = "111";
     }
     
+    public CreditCard(String cardnumber) {
+        this.cardnumber = cardnumber;
+        this.name = "";
+        this.endDate = "";
+        this.cvv = "111";
+    }
+    
     public CreditCard(String cardnumber, String name, String endDate, String cvv) {
         this.cardnumber = cardnumber;
         this.name = name;
