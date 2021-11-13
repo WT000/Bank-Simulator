@@ -136,8 +136,8 @@
         <div id="adminContainer">
             <form id="loginForm" method="post" autocomplete="off">
                 <input type="hidden" name="action" value="adminLogin">
-                <label>--- Username ---</label><input type="text" name="propertiesUsername" required>
-                <label>--- Password ---</label><input type="password" name="propertiesPassword" required>
+                <label>--- Properties Username ---</label><input type="text" name="propertiesUsername" required>
+                <label>--- Properties Password ---</label><input type="password" name="propertiesPassword" required>
                 <button>Submit</button>
             </form>
         </div>

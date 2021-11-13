@@ -8,38 +8,37 @@ for (let i = 0; i < forms.length; i++) {
     forms[i].style.display = "none";
 };
 
-// Properties Button
-document.getElementById("buttonProperties").addEventListener("click", e => {
+function displayText(string) {
+    document.getElementById("resultText").style.color = "black";
+    document.getElementById("resultText").innerHTML = string;
+};
+
+function displayForm(name) {
     // Display the form container if it's not showing
     if (!showingFormContainer) {
         formContainer.style.display = "block";
     };
 
     // Display the form
-    if (currentForm != "propertiesForm") {
+    if (currentForm !== name) {
         if (currentForm !== null) {
             document.getElementById(currentForm).style.display = "none";
         };
-        currentForm = "propertiesForm";
+        currentForm = name;
         document.getElementById(currentForm).style.display = "block";
     };
+};
+
+// Properties Button
+document.getElementById("buttonProperties").addEventListener("click", e => {
+    displayForm("propertiesForm");
+    displayText("Properties Controller");
 });
 
 // Refund Button
 document.getElementById("buttonRefund").addEventListener("click", e => {
-    // Display the form container if it's not showing
-    if (!showingFormContainer) {
-        formContainer.style.display = "block";
-    };
-
-    // Display the form
-    if (currentForm != "refundForm") {
-        if (currentForm !== null) {
-            document.getElementById(currentForm).style.display = "none";
-        };
-        currentForm = "refundForm";
-        document.getElementById(currentForm).style.display = "block";
-    };
+    displayForm("refundForm");
+    displayText("Refund to Card")
 });
 
 // Properties form

@@ -107,6 +107,10 @@ body{
     margin: 0;
 }
 
+.functionButton:hover{
+    font-weight: bold;
+}
+
 #adminContainer{
     display: flex;
     justify-content: center;

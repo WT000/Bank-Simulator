@@ -102,7 +102,7 @@
     </div>
     
     <div id="formContainer">
-        <form id="addCardForm" class="innerForm" method="post" autocomplete="off">
+        <form id="addCardForm" method="post" autocomplete="off">
             <input type="hidden" name="action" value="doTransaction">
             
             <label>Card Number</label><input type="text" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" required><br>
