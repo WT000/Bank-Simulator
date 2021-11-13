@@ -109,7 +109,7 @@
             <label>Name on Card</label><input type="text" name="cardName" placeholder="John Doe" required><br>
             <label>Expiration Date</label><input type="text" name="cardDate" placeholder="01/26" pattern="([0-9]{2}[/]?){2}" required><br>
             <label>Cvv</label><input type="text" name="cardCvv" placeholder="123" pattern="[0-9]{3}" required><br>
-            <label>Amount to send £</label><input type="text" name="amount" placeholder="0.00" required><br>
+            <label>Amount to send £</label><input type="text" name="amount" placeholder="0.00" pattern="[0-9]*\.?[0-9]*" required><br>
             <button>Submit</button>
         </form>
     </div>
