@@ -1,9 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 // Get the forms and make them invisible
 const formContainer = document.getElementById("adminFormContainer");
 const forms = document.getElementsByClassName("innerForm");
@@ -15,7 +9,7 @@ for (let i = 0; i < forms.length; i++) {
 };
 
 // Properties Button
-document.getElementById("buttonProperties").addEventListener("click", e=> {
+document.getElementById("buttonProperties").addEventListener("click", e => {
     // Display the form container if it's not showing
     if (!showingFormContainer) {
         formContainer.style.display = "block";
@@ -32,7 +26,7 @@ document.getElementById("buttonProperties").addEventListener("click", e=> {
 });
 
 // Refund Button
-document.getElementById("buttonRefund").addEventListener("click", e=> {
+document.getElementById("buttonRefund").addEventListener("click", e => {
     // Display the form container if it's not showing
     if (!showingFormContainer) {
         formContainer.style.display = "block";
@@ -87,7 +81,7 @@ document.getElementById("propertiesForm").addEventListener("submit", e => {
     }
     
     if (foundError) {
-        document.getElementById("resultText").innerHTML = "ERROR: Bank information is incorrect.";
+        document.getElementById("resultText").innerHTML = "ERROR - Bank information is incorrect.";
         document.getElementById("resultText").style.color = "red";
     } else {
         document.getElementById("propertiesForm").submit();

@@ -48,7 +48,7 @@
         if (PasswordUtils.checkPassword(enteredPassword, bankHashedPassword) && enteredUsername.equals(bankUsername)) {
             loggedIn = true;
             session.setAttribute("loggedIn", true);
-            result = "<p id=\"resultText\" style=\"color:green;\"> SUCCESS - This session will expire when you return to the home page. </p>";
+            result = "<p id=\"resultText\" style=\"color:green;\"> SUCCESS - This session will expire when you return to the sale service. </p>";
         } else {
             result = "<p id=\"resultText\" style=\"color:red;\"> ERROR - The account details are incorrect, you may want to check the properties file. </p>";
         }
@@ -171,4 +171,9 @@
             </div>
         </div>
     <% } %>
+
+<% if (loggedIn) { %>
 <jsp:include page="footeradmin.jsp"/>
+<% } else { %>
+<jsp:include page="footeradminmin.jsp"/>
+<% } %>
