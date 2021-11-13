@@ -156,7 +156,7 @@
             <form id="refundForm" class="innerForm" method="post" autocomplete="off">
                 <input type="hidden" name="action" value="doRefund">
                 <label>Card Number</label><input type="text" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" required><br>
-                <label>Amount to refund £</label><input type="text" name="amount" placeholder="0.00" required><br>
+                <label>Amount to refund £</label><input type="text" name="amount" placeholder="0.00" pattern="[0-9]*\.?[0-9]*" required><br>
                 <button>Submit</button>
             </form>
         </div>
