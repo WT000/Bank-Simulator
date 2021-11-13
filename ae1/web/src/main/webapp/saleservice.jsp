@@ -91,12 +91,9 @@
                 result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
             }
         }
-    // doRefund action (means the user is sending a refund amount to a card)
-    // REFUND REST CONNECTION
     }
 %>
 <jsp:include page="headersaleservice.jsp"/>
-<!-- Main app start -->
 <div id="appContainer">
     <div id="resultContainer">
         <div id="result">
@@ -117,5 +114,4 @@
         </form>
     </div>
 </div>
-<!-- Main app end -->
 <jsp:include page="footersaleservice.jsp"/>
