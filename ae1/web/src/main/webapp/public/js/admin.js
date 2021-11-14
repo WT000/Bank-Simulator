@@ -1,9 +1,4 @@
-// Get the forms and make them invisible
-const formContainer = document.getElementById("adminFormContainer");
-const forms = document.getElementsByClassName("innerForm");
-let showingFormContainer = false;
-let currentForm = null;
-
+// Function ran 8 seconds after a page is loaded
 function clearResult() {
     document.getElementById("resultText").style.color = "black";
     
@@ -16,15 +11,13 @@ function clearResult() {
     }
 };
 
-for (let i = 0; i < forms.length; i++) {
-    forms[i].style.display = "none";
-};
-
+// Function that displays text within the result div
 function displayText(string) {
     document.getElementById("resultText").style.color = "black";
     document.getElementById("resultText").innerHTML = string;
 };
 
+// Function that displays a given form
 function displayForm(name) {
     // Display the form container if it's not showing
     if (!showingFormContainer) {
@@ -37,9 +30,34 @@ function displayForm(name) {
             document.getElementById(currentForm).style.display = "none";
         };
         currentForm = name;
+        window.sessionStorage.setItem("currentForm", currentForm);
         document.getElementById(currentForm).style.display = "block";
     };
 };
+
+// Function that gets the last loaded form and displays it
+function displayPreviousForm() {
+    toDisplay = window.sessionStorage.getItem("currentForm");
+    
+    if (toDisplay == "propertiesForm") {
+        displayForm("propertiesForm");
+    } else if (toDisplay == "refundForm") {
+        displayForm("refundForm");
+    };
+};
+
+// Get the forms and make them invisible
+const formContainer = document.getElementById("adminFormContainer");
+const forms = document.getElementsByClassName("innerForm");
+let showingFormContainer = false;
+let currentForm = null;
+
+for (let i = 0; i < forms.length; i++) {
+    forms[i].style.display = "none";
+};
+forms[0].style.display = "block";
+
+displayPreviousForm();
 
 // Properties Button
 document.getElementById("buttonProperties").addEventListener("click", e => {

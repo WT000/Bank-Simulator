@@ -1,3 +1,4 @@
+// Function ran 8 seconds after a page is loaded
 function clearResult() {
     document.getElementById("resultText").style.color = "black";
     document.getElementById("resultText").innerHTML = "Please enter your details and an amount to send below.";
