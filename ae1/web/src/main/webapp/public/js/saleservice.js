@@ -56,7 +56,7 @@ document.getElementById("transactionForm").addEventListener("submit", e => {
     let cardMonth = (parseInt(rawCardMonth)).toString();
     // Gets the last day of the month, we then add 1 day onto it
     let exprDate = new Date(cardYear, cardMonth, 0);
-    exprDate.setDate(exprDate.getDate() + 1)
+    exprDate.setDate(exprDate.getDate() + 1);
     
     // Note that if it expires in a month, then it'll still be valid on the final day of that month
     if (cardDate.trim() == "" || cardDate.length !== 5 || cardDate[2] !== "/" || !(validMonths.includes(rawCardMonth)) || exprDate < currentDate) {
