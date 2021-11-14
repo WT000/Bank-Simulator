@@ -95,23 +95,52 @@
 %>
 <jsp:include page="headersaleservice.jsp"/>
 <div id="appContainer">
-    <div id="resultContainer">
+    <div id="resultContainer" class="bg-dark">
         <div id="result">
             <%= result %>
         </div>
     </div>
     
-    <div id="formContainer">
-        <form id="addCardForm" method="post" autocomplete="off">
-            <input type="hidden" name="action" value="doTransaction">
-            
-            <label>Card Number</label><input type="text" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" required><br>
-            <label>Name on Card</label><input type="text" name="cardName" placeholder="John Doe" required><br>
-            <label>Expiration Date</label><input type="text" name="cardDate" placeholder="01/26" pattern="([0-9]{2}[/]?){2}" required><br>
-            <label>Cvv</label><input type="text" name="cardCvv" placeholder="123" pattern="[0-9]{3}" required><br>
-            <label>Amount to send £</label><input type="text" name="amount" placeholder="0.00" pattern="[0-9]*\.?[0-9]*" required><br>
-            <button>Submit</button>
-        </form>
+    <div id="formPlacer">
+        <div id="formContainer" class="container-md">
+            <form id="addCardForm" method="post" autocomplete="off">
+                <input type="hidden" name="action" value="doTransaction">
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="customerCardNo">Card Number</label>
+                        <input type="text" class="form-control" id="customerCardNo" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="customerNameOnCard">Name on Card</label>
+                        <input type="text" class="form-control" id="customerNameOnCard" name="cardName" placeholder="John Doe" required>
+                    </div>
+                </div>
+                
+                <div class="row mt-3 mb-3">
+                    <div class="col">
+                        <label for="customerExpireDate">Expr Date</label>
+                        <input type="text" class="form-control" id="customerExpireDate" name="cardDate" placeholder="01/26" pattern="([0-9]{2}[/]?){2}" required>
+                    </div>
+                    
+                    <div class="col">
+                        <label for="customerCvv">Cvv</label>
+                        <input type="text" class="form-control" id="customerCvv" name="cardCvv" placeholder="123" pattern="[0-9]{3}" required>
+                    </div>
+                    
+                    <div class="col">
+                        <label for="customerAmount">Amount</label>
+                        <input type="text" class="form-control" id="customerAmount" name="amount" placeholder="£0.00" pattern="[0-9]*\.?[0-9]*" required>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="btn btn-dark submitButton">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <jsp:include page="footersaleservice.jsp"/>
