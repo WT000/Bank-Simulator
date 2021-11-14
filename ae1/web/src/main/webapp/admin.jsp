@@ -37,7 +37,7 @@
         loggedIn = true;
     }
     
-    String result = "<p id=\"resultText\"> Welcome to the control panel. </p>";
+    String result = "<p id=\"resultText\"> Admin control panel </p>";
     
     String action = (String) request.getParameter("action");
     if ("adminLogin".equals(action)) {

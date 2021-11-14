@@ -1,3 +1,19 @@
+function clearResult() {
+    document.getElementById("resultText").style.color = "black";
+    document.getElementById("resultText").innerHTML = "Please enter your details and an amount to send below.";
+};
+
+// Get validMonths and append them to the list
+let validMonths = [];
+
+for (i=1; i<13; i++) {
+    if (i<10) {
+        validMonths.push(`0${i}`);
+    } else {
+        validMonths.push(`${i}`);
+    }
+};
+
 // Check addCard form
 document.getElementById("addCardForm").addEventListener("submit", e => {
     e.preventDefault();
@@ -23,7 +39,8 @@ document.getElementById("addCardForm").addEventListener("submit", e => {
         document.forms["addCardForm"]["cardName"].style.backgroundColor = "white";
     }
     
-    if (cardDate.trim() == "" || cardDate.length !== 5 || cardDate[2] !== "/") {
+    cardMonth = cardDate[0] + cardDate[1];
+    if (cardDate.trim() == "" || cardDate.length !== 5 || cardDate[2] !== "/" || !(validMonths.includes(cardMonth))) {
         foundError = true;
         document.forms["addCardForm"]["cardDate"].style.backgroundColor = "red";
     } else {
@@ -37,7 +54,7 @@ document.getElementById("addCardForm").addEventListener("submit", e => {
         document.forms["addCardForm"]["cardCvv"].style.backgroundColor = "white";
     }
     
-    if (amount.trim() == "" || isNaN(amount)) {
+    if (amount.trim() == "" || isNaN(amount) || parseFloat(amount) < 0.01) {
         foundError = true;
         document.forms["addCardForm"]["amount"].style.backgroundColor = "red";
     } else {
@@ -51,3 +68,5 @@ document.getElementById("addCardForm").addEventListener("submit", e => {
         document.getElementById("addCardForm").submit();
     };
 });
+
+setTimeout(() => {  clearResult(); }, 8000);

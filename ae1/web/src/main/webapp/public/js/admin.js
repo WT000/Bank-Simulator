@@ -4,6 +4,18 @@ const forms = document.getElementsByClassName("innerForm");
 let showingFormContainer = false;
 let currentForm = null;
 
+function clearResult() {
+    document.getElementById("resultText").style.color = "black";
+    
+    if (currentForm == "propertiesForm") {
+        document.getElementById("resultText").innerHTML = "Properties Controller";
+    } else if (currentForm == "refundForm") {
+        document.getElementById("resultText").innerHTML = "Refund to Card";
+    } else {
+        document.getElementById("resultText").innerHTML = "Admin control panel";
+    }
+};
+
 for (let i = 0; i < forms.length; i++) {
     forms[i].style.display = "none";
 };
@@ -102,7 +114,7 @@ document.getElementById("refundForm").addEventListener("submit", e => {
         document.forms["refundForm"]["cardNumber"].style.backgroundColor = "white";
     }
     
-    if (amount.trim() == "" || isNaN(amount)) {
+    if (amount.trim() == "" || isNaN(amount) || parseFloat(amount) < 0.01) {
         foundError = true;
         document.forms["refundForm"]["amount"].style.backgroundColor = "red";
     } else {
@@ -116,3 +128,5 @@ document.getElementById("refundForm").addEventListener("submit", e => {
         document.getElementById("refundForm").submit();
     };
 });
+
+setTimeout(() => {  clearResult(); }, 8000);
