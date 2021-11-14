@@ -2,47 +2,89 @@ let _outputID = "";
 let _minValue = null;
 let _maxValue = null;
 let _isInRange = true;
+let _doingDate = false;
 
-function show_easy_numpad(thisElement)
+function show_easy_numpad(thisElement, type)
 {
+    _doingDate = false;
     let easy_numpad = document.createElement("div");
     easy_numpad.id = "easy-numpad-frame";
     easy_numpad.className = "easy-numpad-frame";
-    easy_numpad.innerHTML = `
-    <div class="easy-numpad-container">
-        <div class="easy-numpad-output-container">
-            <p class="easy-numpad-output" id="easy-numpad-output"></p>
-        </div>
-        <div class="easy-numpad-number-container">
-            <table>
-                <tr>
-                    <td><a href="7" onclick="easynum(this)">7</a></td>
-                    <td><a href="8" onclick="easynum(this)">8</a></td>
-                    <td><a href="9" onclick="easynum(this)">9</a></td>
-                    <td><a href="Del" class="del" id="del" onclick="easy_numpad_del()">Del</a></td>
-                </tr>
-                <tr>
-                    <td><a href="4" onclick="easynum(this)">4</a></td>
-                    <td><a href="5" onclick="easynum(this)">5</a></td>
-                    <td><a href="6" onclick="easynum(this)">6</a></td>
-                    <td><a href="Clear" class="clear" id="clear" onclick="easy_numpad_clear()">Clear</a></td>
-                </tr>
-                <tr>
-                    <td><a href="1" onclick="easynum(this)">1</a></td>
-                    <td><a href="2" onclick="easynum(this)">2</a></td>
-                    <td><a href="3" onclick="easynum(this)">3</a></td>
-                    <td><a href="Cancel" class="cancel" id="cancel" onclick="easy_numpad_cancel()">Cancel</a></td>
-                </tr>
-                <tr>
-                    <td></td>
-					<td ><a href="0"onclick="easynum(this)">0</a></td>
-                    <td></td>
-                    <td><a href="Done" class="done" id="done" onclick="easy_numpad_done()">Done</a></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    `;
+    
+    if (type == "decimal") {
+        
+        easy_numpad.innerHTML = `
+        <div class="easy-numpad-container">
+            <div class="easy-numpad-output-container">
+                <p class="easy-numpad-output" id="easy-numpad-output"></p>
+            </div>
+            <div class="easy-numpad-number-container">
+                <table>
+                    <tr>
+                        <td><a href="7" onclick="easynum(this)">7</a></td>
+                        <td><a href="8" onclick="easynum(this)">8</a></td>
+                        <td><a href="9" onclick="easynum(this)">9</a></td>
+                        <td><a href="Del" class="del" id="del" onclick="easy_numpad_del()">Del</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="4" onclick="easynum(this)">4</a></td>
+                        <td><a href="5" onclick="easynum(this)">5</a></td>
+                        <td><a href="6" onclick="easynum(this)">6</a></td>
+                        <td><a href="Clear" class="clear" id="clear" onclick="easy_numpad_clear()">Clear</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="1" onclick="easynum(this)">1</a></td>
+                        <td><a href="2" onclick="easynum(this)">2</a></td>
+                        <td><a href="3" onclick="easynum(this)">3</a></td>
+                        <td><a href="Cancel" class="cancel" id="cancel" onclick="easy_numpad_cancel()">Cancel</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="0"onclick="easynum(this)">0</a></td>
+                        <td><a href="."onclick="easynum(this)">.</a></td>
+                        <td><a href="Done" class="done" id="done" onclick="easy_numpad_done()">Done</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>`;
+    } else if (type == "number" || type == "date") {
+        if (type == "date") {_doingDate = true;};
+        
+        easy_numpad.innerHTML = `
+        <div class="easy-numpad-container">
+            <div class="easy-numpad-output-container">
+                <p class="easy-numpad-output" id="easy-numpad-output"></p>
+            </div>
+            <div class="easy-numpad-number-container">
+                <table>
+                    <tr>
+                        <td><a href="7" onclick="easynum(this)">7</a></td>
+                        <td><a href="8" onclick="easynum(this)">8</a></td>
+                        <td><a href="9" onclick="easynum(this)">9</a></td>
+                        <td><a href="Del" class="del" id="del" onclick="easy_numpad_del()">Del</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="4" onclick="easynum(this)">4</a></td>
+                        <td><a href="5" onclick="easynum(this)">5</a></td>
+                        <td><a href="6" onclick="easynum(this)">6</a></td>
+                        <td><a href="Clear" class="clear" id="clear" onclick="easy_numpad_clear()">Clear</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="1" onclick="easynum(this)">1</a></td>
+                        <td><a href="2" onclick="easynum(this)">2</a></td>
+                        <td><a href="3" onclick="easynum(this)">3</a></td>
+                        <td><a href="Cancel" class="cancel" id="cancel" onclick="easy_numpad_cancel()">Cancel</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="0"onclick="easynum(this)">0</a></td>
+                        <td></td>
+                        <td><a href="Done" class="done" id="done" onclick="easy_numpad_done()">Done</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>`;
+    }
 
     document.getElementsByTagName('body')[0].appendChild(easy_numpad);
     _outputID = thisElement.id;
@@ -85,11 +127,11 @@ function easynum(thisElement)
             {
                 if(currentValue.length === 0)
                 {
-                    document.getElementById("easy-numpad-output").innerText = "0.";
+                    document.getElementById("easy-numpad-output").innerText = "0";
                 }
                 else if(currentValue.length === 1 && currentValue === "-")
                 {
-                    document.getElementById("easy-numpad-output").innerText = currentValue + "0.";
+                    document.getElementById("easy-numpad-output").innerText = currentValue + "0";
                 }
                 else
                 {
@@ -105,11 +147,11 @@ function easynum(thisElement)
             {
                 if(currentValue.length === 0)
                 {
-                    document.getElementById("easy-numpad-output").innerText = "0.";
+                    document.getElementById("easy-numpad-output").innerText = "0";
                 }
                 else if(currentValue.length === 1 && currentValue === "-")
                 {
-                    document.getElementById("easy-numpad-output").innerText = currentValue + "0.";
+                    document.getElementById("easy-numpad-output").innerText = currentValue + "0";
                 }
                 else
                 {
@@ -120,7 +162,11 @@ function easynum(thisElement)
         default:
             if(_isInRange)
             {
-                document.getElementById("easy-numpad-output").innerText += thisElement.innerText;
+                if (document.getElementById("easy-numpad-output").innerText.length == 1 && _doingDate) {
+                    document.getElementById("easy-numpad-output").innerText += (thisElement.innerText + "/");
+                } else {
+                    document.getElementById("easy-numpad-output").innerText += thisElement.innerText;
+                }
             }
         break;
     }
@@ -133,12 +179,16 @@ function easy_numpad_del()
 {
     event.preventDefault();
     let easy_numpad_output_val = document.getElementById("easy-numpad-output").innerText;
-    if(easy_numpad_output_val.slice(-2) !== "0." && easy_numpad_output_val.slice(-3) !== "-0.")
-    {
+
+    if (easy_numpad_output_val.slice(-2) == "0.") {
+        var easy_numpad_output_val_deleted = easy_numpad_output_val.slice(0, -2);
+    } else if (easy_numpad_output_val.slice(-1) == "/") {
+        var easy_numpad_output_val_deleted = easy_numpad_output_val.slice(0, -3);
+    } else {
         var easy_numpad_output_val_deleted = easy_numpad_output_val.slice(0, -1);
-        document.getElementById("easy-numpad-output").innerText = easy_numpad_output_val_deleted;
-        easy_numpad_check_range(Number(easy_numpad_output_val_deleted));
     }
+    document.getElementById("easy-numpad-output").innerText = easy_numpad_output_val_deleted;
+    easy_numpad_check_range(Number(easy_numpad_output_val_deleted));
 }
 
 function easy_numpad_clear()
@@ -147,32 +197,28 @@ function easy_numpad_clear()
     document.getElementById("easy-numpad-output").innerText="";
 }
 
+// if statements removed
+
 function easy_numpad_cancel()
 {
     event.preventDefault();
 
-    if(_isInRange)
-    {
-        easy_numpad_close();
-    }
+    easy_numpad_close();
 }
 
 function easy_numpad_done() 
 {
     event.preventDefault();
+    
+    let easy_numpad_output_val = document.getElementById("easy-numpad-output").innerText;
 
-    if(_isInRange)
+    if(easy_numpad_output_val.indexOf(".") === (easy_numpad_output_val.length - 1))
     {
-        let easy_numpad_output_val = document.getElementById("easy-numpad-output").innerText;
-
-        if(easy_numpad_output_val.indexOf(".") === (easy_numpad_output_val.length - 1))
-        {
-            easy_numpad_output_val = easy_numpad_output_val.substring(0,easy_numpad_output_val.length - 1);
-        }
-
-        document.getElementById(_outputID).value = easy_numpad_output_val;
-        easy_numpad_close();
+        easy_numpad_output_val = easy_numpad_output_val.substring(0,easy_numpad_output_val.length - 1);
     }
+
+    document.getElementById(_outputID).value = easy_numpad_output_val;
+    easy_numpad_close();
 }
 
 function easy_numpad_check_range(value)
@@ -189,7 +235,7 @@ function easy_numpad_check_range(value)
         }
         else
         {
-            outputElement.style.color = "red";
+            outputElement.style.color = "green";
             _isInRange = false;
         }
     }
@@ -204,7 +250,7 @@ function easy_numpad_check_range(value)
         }
         else
         {
-            outputElement.style.color = "red";
+            outputElement.style.color = "green";
             _isInRange = false;
         }
     }

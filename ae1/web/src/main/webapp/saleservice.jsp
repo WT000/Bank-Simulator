@@ -115,7 +115,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="customerCardNo">Card Number</label>
-                        <input type="text" class="form-control" id="customerCardNo" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" required>
+                        <input type="text" class="form-control" id="customerCardNo" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" max="999999999999999" onclick="show_easy_numpad(this, 'number');" required>
                     </div>
                     <div class="col-md-6">
                         <label for="customerNameOnCard">Name on Card</label>
@@ -126,15 +126,15 @@
                 <div class="row mt-3 mb-3">
                     <div class="col">
                         <label for="customerExpireDate">Expiry Date</label>
-                        <input type="text" class="form-control" id="customerExpireDate" name="cardDate" placeholder="MM/YY" pattern="([0-9]{2}[/]?){2}" required>
+                        <input type="text" class="form-control" id="customerExpireDate" name="cardDate" placeholder="MM/YY" pattern="([0-9]{2}[/]?){2}" onclick="show_easy_numpad(this, 'date');" required>
                     </div>
                     <div class="col">
                         <label for="customerCvv">Cvv</label>
-                        <input type="text" class="form-control" id="customerCvv" name="cardCvv" placeholder="123" pattern="[0-9]{3}" required>
+                        <input type="text" class="form-control" id="customerCvv" name="cardCvv" placeholder="123" pattern="[0-9]{3}" max="99" onclick="show_easy_numpad(this, 'number');" required>
                     </div>
                     <div class="col">
                         <label for="customerAmount">Amount</label>
-                        <input type="text" class="form-control" id="customerAmount" name="amount" placeholder="£0.00" pattern="[0-9]*\.?[0-9]*" required>
+                        <input type="text" class="form-control" id="customerAmount" name="amount" placeholder="£0" pattern="[0-9]*\.?[0-9]*" max="1000000" onclick="show_easy_numpad(this, 'decimal');" required>
                     </div>
                 </div>
                 
