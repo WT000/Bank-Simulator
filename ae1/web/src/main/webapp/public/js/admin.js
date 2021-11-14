@@ -12,7 +12,7 @@ function clearResult() {
     } else if (currentForm == "refundForm") {
         document.getElementById("resultText").innerHTML = "Refund to Card";
     } else {
-        document.getElementById("resultText").innerHTML = "Admin control panel";
+        document.getElementById("resultText").innerHTML = "Admin Control Panel";
     }
 };
 
