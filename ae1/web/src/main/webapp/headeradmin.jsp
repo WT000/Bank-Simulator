@@ -13,6 +13,9 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="public/styles/bootstrap.min.css">
 
+        <!-- Easy numpad -->
+        <link rel="stylesheet" href="public/styles/easy-numpad.css">
+        
         <!-- Custom stylesheet -->
         <link rel="stylesheet" href="public/styles/style.css">
     </head>

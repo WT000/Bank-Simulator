@@ -70,14 +70,12 @@ public class BankRestClientImpl implements BankRestClient {
         
         // Log to file with a title depending on the transaction
         if (fromCard.getCardnumber().equals(toCard.getCardnumber())) {
-            TRANSACTION_LOGGER.info("--- TRANSACTION (to own card) ---");
+            TRANSACTION_LOGGER.info(transactionReplyMessage.getStatus() + " TRANSACTION (to own card): " + transactionReplyMessage);
         } else {
-            TRANSACTION_LOGGER.info("--- TRANSACTION (to other card) ---");
+            TRANSACTION_LOGGER.info(transactionReplyMessage.getStatus() + " TRANSACTION (to other card): " + transactionReplyMessage);
         }
-        TRANSACTION_LOGGER.info(transactionReplyMessage);
 
         return transactionReplyMessage;
-
     }
 
     @Override
