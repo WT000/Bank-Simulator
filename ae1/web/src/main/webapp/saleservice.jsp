@@ -120,7 +120,7 @@
                 <div class="row mt-3 mb-3">
                     <div class="col">
                         <label for="customerExpireDate">Expiry Date</label>
-                        <input type="text" class="form-control" id="customerExpireDate" name="cardDate" placeholder="MM/YYYY" pattern="([0-9]{2}[/]?){3}" required>
+                        <input type="text" class="form-control" id="customerExpireDate" name="cardDate" placeholder="MM/YY" pattern="([0-9]{2}[/]?){2}" required>
                     </div>
                     <div class="col">
                         <label for="customerCvv">Cvv</label>
