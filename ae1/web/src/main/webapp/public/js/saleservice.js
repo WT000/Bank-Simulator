@@ -45,9 +45,15 @@ document.getElementById("transactionForm").addEventListener("submit", e => {
     } else {
         document.forms["transactionForm"]["cardName"].style.backgroundColor = "white";
     }
+    // Get the current date
+    let currentDate = new Date()
     
-    cardMonth = cardDate[0] + cardDate[1];
-    if (cardDate.trim() == "" || cardDate.length !== 5 || cardDate[2] !== "/" || !(validMonths.includes(cardMonth))) {
+    // Get the card expiration date
+    let cardYear = cardDate[3] + cardDate[4] + cardDate[5] + cardDate[6];
+    let cardMonth = cardDate[0] + cardDate[1];
+    let exprDate = new Date(cardYear, cardMonth)
+    
+    if (cardDate.trim() == "" || cardDate.length !== 7 || cardDate[2] !== "/" || !(validMonths.includes(cardMonth)) || exprDate < currentDate) {
         foundError = true;
         document.forms["transactionForm"]["cardDate"].style.backgroundColor = "red";
     } else {

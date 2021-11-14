@@ -69,10 +69,10 @@ public class BankRestClientImpl implements BankRestClient {
         LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + transactionReplyMessage);
         
         // Log to file with a title depending on the transaction
-        if (fromCard.getCardnumber().equals(toCard.getCardnumber())) {
-            TRANSACTION_LOGGER.info(transactionReplyMessage.getStatus() + " TRANSACTION (to own card): " + transactionReplyMessage);
+        if (!fromCard.getCardnumber().equals(toCard.getCardnumber())) {
+            TRANSACTION_LOGGER.info("TRANSACTION " + transactionReplyMessage.getStatus() + " (to other card): " + transactionReplyMessage);
         } else {
-            TRANSACTION_LOGGER.info(transactionReplyMessage.getStatus() + " TRANSACTION (to other card): " + transactionReplyMessage);
+            TRANSACTION_LOGGER.info("TRANSACTION " + transactionReplyMessage.getStatus() + " (to own card): " + transactionReplyMessage);
         }
 
         return transactionReplyMessage;
@@ -112,15 +112,11 @@ public class BankRestClientImpl implements BankRestClient {
         
         // Log to file with a title depending on the transaction
         if (!fromCard.getCardnumber().equals(toCard.getCardnumber())) {
-            TRANSACTION_LOGGER.info("--- TRANSACTION (to other card) ---");
+            TRANSACTION_LOGGER.info("TRANSACTION " + transactionReplyMessage.getStatus() + " (to other card): " + transactionReplyMessage);
         } else {
-            TRANSACTION_LOGGER.info("--- TRANSACTION (to own card) ---");
+            TRANSACTION_LOGGER.info("TRANSACTION " + transactionReplyMessage.getStatus() + " (to own card): " + transactionReplyMessage);
         }
-        TRANSACTION_LOGGER.info(transactionReplyMessage);
 
         return transactionReplyMessage;
-
     }
-
-
 }
