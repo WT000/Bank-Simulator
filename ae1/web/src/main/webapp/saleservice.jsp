@@ -62,10 +62,16 @@
         CreditCard customerCard = new CreditCard();
         
         if (cardResult.isValid()) {
-            customerCard.setCardnumber(cardNo);
-            customerCard.setName(cardName);
+            // Validate the Expiry date
             customerCard.setEndDate(cardDate);
-            customerCard.setCvv(cardCvv);
+            if (!customerCard.cardDateExpiredOrError()) {
+                customerCard.setCardnumber(cardNo);
+                customerCard.setName(cardName);
+                customerCard.setCvv(cardCvv);
+            } else {
+                result = "<p id=\"resultText\" style=\"color:red;\">ERROR - The card has expired.</p>";
+                error = true;
+            }
         } else {
             result = "<p id=\"resultText\" style=\"color:red;\">ERROR - " + cardResult.getError() + ".</p>";
             error = true;

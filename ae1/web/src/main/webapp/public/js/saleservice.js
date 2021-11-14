@@ -45,21 +45,11 @@ document.getElementById("transactionForm").addEventListener("submit", e => {
     } else {
         document.forms["transactionForm"]["cardName"].style.backgroundColor = "white";
     }
-    // Get the current date
-    let currentDate = new Date();
-    let currentYear = currentDate.getFullYear().toString();
-    
-    // Get the card expiration date
-    // Note that JS dates are inputted from 0 - 11, not 1 - 12
-    let cardYear = currentYear[0] + currentYear[1] + cardDate[3] + cardDate[4];
-    let rawCardMonth = cardDate[0] + cardDate[1];
-    let cardMonth = (parseInt(rawCardMonth)).toString();
-    // Gets the last day of the month, we then add 1 day onto it
-    let exprDate = new Date(cardYear, cardMonth, 0);
-    exprDate.setDate(exprDate.getDate() + 1);
+
+    let cardMonth = cardDate[0] + cardDate[1];
     
     // Note that if it expires in a month, then it'll still be valid on the final day of that month
-    if (cardDate.trim() == "" || cardDate.length !== 5 || cardDate[2] !== "/" || !(validMonths.includes(rawCardMonth)) || exprDate < currentDate) {
+    if (cardDate.trim() == "" || cardDate.length !== 5 || cardDate[2] !== "/" || !(validMonths.includes(cardMonth))) {
         foundError = true;
         document.forms["transactionForm"]["cardDate"].style.backgroundColor = "red";
     } else {
