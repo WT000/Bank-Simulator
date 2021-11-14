@@ -76,17 +76,19 @@ body{
     padding: 15px;
     width: 70%;
     background-color: #34383c;
+    border-radius: 20px;
+}
+
+#formContainerSmall{
+    padding: 15px;
+    padding-bottom: 5px;
+    width: 55%;
+    background-color: #34383c;
+    border-radius: 20px;
 }
 
 label{
     color: white;
-}
-
-#adminFormContainer {
-    display: none;
-    width: 100%;
-    height: 45vh;
-    background-color: gray;
 }
 
 #functionContainer{
@@ -104,7 +106,9 @@ label{
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: gray;
+    color: white;
+    background-color: #34383c;
+    border-radius: 20px;
 }
 
 .functionButton p{
@@ -119,28 +123,6 @@ label{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#loginForm{
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: gray;
-}
-
-#loginForm label{
-    margin-top: 5px;
-}
-
-#loginForm input{
-    text-align: center;
-    width: 60%;
-}
-
-#loginForm ::placeholder {
-  text-align: center;
 }
 
 #loginForm button{

@@ -132,34 +132,90 @@
     </div>
 </div>
         
-    <% if (!loggedIn) { %>
-        <div id="adminContainer">
+<% if (!loggedIn) { %>
+    <div id="formPlacer">    
+        <div id="formContainerSmall" class="container-md">
             <form id="loginForm" method="post" autocomplete="off">
                 <input type="hidden" name="action" value="adminLogin">
-                <label>--- Properties Username ---</label><input type="text" name="propertiesUsername" required>
-                <label>--- Properties Password ---</label><input type="password" name="propertiesPassword" required>
-                <button>Submit</button>
+                
+                <div class="row">
+                    <div class="col">
+                        <label for="loginUsername">Properties Username</label>
+                        <input type="text" class="form-control" id="loginUsername" name="propertiesUsername" required>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <label for="loginPassword">Properties Password</label>
+                        <input type="password" class="form-control" id="loginPassword" name="propertiesPassword" required>
+                    </div>
+                </div>
+                
+                <div class="row mt-2">
+                    <div class="col text-center">
+                        <button class="btn btn-dark submitButton">Login</button>
+                    </div>
+                </div>
             </form>
         </div>
-    <% } else if (loggedIn) { %>
-        <div id="adminFormContainer">
+    </div>
+<% } else if (loggedIn) { %>
+    <div id="formPlacer">
+        <div id="formContainer">
             <form id="propertiesForm" class="innerForm" method="post" autocomplete="off">
                 <input type="hidden" name="action" value="setProperties">
-                <label>Bank URL</label><input type="url" name="propertiesURL" placeholder="Bank URL" value="<%=bankUrl%>" required><br>
-                <label>Bank Username</label><input type="text" name="propertiesUsername" placeholder="Bank Username" value="<%=bankUsername%>" required><br>
-                <label>Bank Password</label><input type="password" name="propertiesPassword" placeholder="Bank Password" required><br>
-                <label>Bank Card</label><input type="text" name="propertiesCard" placeholder="Bank Card" pattern="[0-9]{16}" value="<%=bankCardNo%>" required><br>
                 
-                <button>Submit</button>
+                <div class="row">
+                    <div class="col">
+                        <label for="propertyURL">Bank URL</label>
+                        <input type="url" class="form-control" id="propertyURL" name="propertiesURL" placeholder="Bank URL" value="<%=bankUrl%>" required>
+                    </div>
+                </div>
+                    
+                    <div class="row mt-3 mb-3">
+                        <div class="col-md-4">
+                            <label for="propertyUser">Username</label>
+                            <input type="text" class="form-control" id="propertyUser" name="propertiesUsername" placeholder="Bank Username" value="<%=bankUsername%>" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="propertyPass">Password</label>
+                            <input type="password" class="form-control" id="propertyPass" name="propertiesPassword" placeholder="Bank Password" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="propertyCard">Card Number</label>
+                            <input type="text" class="form-control" id="propertyCard" name="propertiesCard" placeholder="Bank Card" pattern="[0-9]{16}" value="<%=bankCardNo%>" required>
+                        </div>
+                    </div>
+                
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="btn btn-dark submitButton">Submit</button>
+                    </div>
+                </div>
             </form>
             
             <form id="refundForm" class="innerForm" method="post" autocomplete="off">
                 <input type="hidden" name="action" value="doRefund">
-                <label>Card Number</label><input type="text" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" required><br>
-                <label>Amount to refund £</label><input type="text" name="amount" placeholder="0.00" pattern="[0-9]*\.?[0-9]*" required><br>
-                <button>Submit</button>
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="refundCard">Card Number</label>
+                        <input type="text" class="form-control" id="refundCard" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="refundAmount">Refund amount</label>
+                        <input type="text" class="form-control" id="refundAmount" name="amount" placeholder="£0.00" pattern="[0-9]*\.?[0-9]*" required>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="btn btn-dark submitButton">Submit</button>
+                    </div>
+                </div>
             </form>
         </div>
+    </div>
     
         <div id="functionContainer">
             <div class="functionButton" id="buttonProperties">
@@ -170,7 +226,7 @@
                 <p>Refund to Card</p>
             </div>
         </div>
-    <% } %>
+<% } %>
 
 <% if (loggedIn) { %>
 <jsp:include page="footeradmin.jsp"/>

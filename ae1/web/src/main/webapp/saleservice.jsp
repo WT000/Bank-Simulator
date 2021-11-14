@@ -103,7 +103,7 @@
     
     <div id="formPlacer">
         <div id="formContainer" class="container-md">
-            <form id="addCardForm" method="post" autocomplete="off">
+            <form id="transactionForm" method="post" autocomplete="off">
                 <input type="hidden" name="action" value="doTransaction">
                 
                 <div class="row">
@@ -122,12 +122,10 @@
                         <label for="customerExpireDate">Expr Date</label>
                         <input type="text" class="form-control" id="customerExpireDate" name="cardDate" placeholder="01/26" pattern="([0-9]{2}[/]?){2}" required>
                     </div>
-                    
                     <div class="col">
                         <label for="customerCvv">Cvv</label>
                         <input type="text" class="form-control" id="customerCvv" name="cardCvv" placeholder="123" pattern="[0-9]{3}" required>
                     </div>
-                    
                     <div class="col">
                         <label for="customerAmount">Amount</label>
                         <input type="text" class="form-control" id="customerAmount" name="amount" placeholder="£0.00" pattern="[0-9]*\.?[0-9]*" required>

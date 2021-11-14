@@ -47,7 +47,7 @@ function displayPreviousForm() {
 };
 
 // Get the forms and make them invisible
-const formContainer = document.getElementById("adminFormContainer");
+const formContainer = document.getElementById("formContainer");
 const forms = document.getElementsByClassName("innerForm");
 let showingFormContainer = false;
 let currentForm = null;
@@ -55,7 +55,6 @@ let currentForm = null;
 for (let i = 0; i < forms.length; i++) {
     forms[i].style.display = "none";
 };
-forms[0].style.display = "block";
 
 displayPreviousForm();
 
@@ -113,6 +112,7 @@ document.getElementById("propertiesForm").addEventListener("submit", e => {
         document.getElementById("resultText").innerHTML = "ERROR - Bank information is incorrect.";
         document.getElementById("resultText").style.color = "red";
     } else {
+        displayText("Applying properties...");
         document.getElementById("propertiesForm").submit();
     }
 });
@@ -143,6 +143,7 @@ document.getElementById("refundForm").addEventListener("submit", e => {
         document.getElementById("resultText").innerHTML = "ERROR - Please follow the guidance in the placeholders.";
         document.getElementById("resultText").style.color = "red";
     } else {
+        displayText("Sending refund...");
         document.getElementById("refundForm").submit();
     };
 });
