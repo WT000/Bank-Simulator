@@ -115,7 +115,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="customerCardNo">Card Number</label>
-                        <input type="text" class="form-control" id="customerCardNo" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" max="999999999999999" onclick="show_easy_numpad(this, 'number');" required>
+                        <input type="text" class="form-control" id="customerCardNo" name="cardNumber" placeholder="1111222233334444" pattern="[0-9]{16}" max="16" onclick="show_easy_numpad(this, 'number');" required>
                     </div>
                     <div class="col-md-6">
                         <label for="customerNameOnCard">Name on Card</label>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="col">
                         <label for="customerAmount">Amount</label>
-                        <input type="text" class="form-control" id="customerAmount" name="amount" placeholder="£0" pattern="[0-9]*\.?[0-9]*" max="1000000" onclick="show_easy_numpad(this, 'decimal');" required>
+                        <input type="text" class="form-control" id="customerAmount" name="amount" placeholder="£0" pattern="[0-9]*\.?[0-9]*" max="8" onclick="show_easy_numpad(this, 'decimal');" required>
                     </div>
                 </div>
                 
