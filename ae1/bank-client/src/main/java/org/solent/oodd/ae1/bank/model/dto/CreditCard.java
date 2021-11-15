@@ -57,7 +57,7 @@ public class CreditCard {
             Integer endYear = null;
             
             if (parts[1].length() == 2) {
-                endYear = (currentDate.getYear() - (currentDate.getYear() % 1000)) + Integer.valueOf(parts[1]);
+                endYear = (currentDate.getYear() - (currentDate.getYear() % 100)) + Integer.valueOf(parts[1]);
             } else if (parts[1].length() == 4) {
                 endYear = Integer.valueOf(parts[1]);
             } else {
