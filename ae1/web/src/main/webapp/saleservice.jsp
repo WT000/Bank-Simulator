@@ -126,11 +126,11 @@
                 <div class="row mt-3 mb-3">
                     <div class="col">
                         <label for="customerExpireDate">Expiry Date</label>
-                        <input type="text" class="form-control" id="customerExpireDate" name="cardDate" placeholder="MM/YY" pattern="([0-9]{2}[/]?){2}" onclick="show_easy_numpad(this, 'date');" required>
+                        <input type="text" class="form-control" id="customerExpireDate" name="cardDate" placeholder="MM/YY" pattern="([0-9]{2}[/]?){2}" max="5" onclick="show_easy_numpad(this, 'date');" required>
                     </div>
                     <div class="col">
                         <label for="customerCvv">Cvv</label>
-                        <input type="text" class="form-control" id="customerCvv" name="cardCvv" placeholder="123" pattern="[0-9]{3}" max="99" onclick="show_easy_numpad(this, 'number');" required>
+                        <input type="text" class="form-control" id="customerCvv" name="cardCvv" placeholder="123" pattern="[0-9]{3}" max="3" onclick="show_easy_numpad(this, 'number');" required>
                     </div>
                     <div class="col">
                         <label for="customerAmount">Amount</label>

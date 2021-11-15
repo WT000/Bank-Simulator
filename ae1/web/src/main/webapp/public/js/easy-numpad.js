@@ -1,3 +1,6 @@
+// Edited version of the numpad by WT000, supports other types of numpad styles
+// such as decimal, mm/yy, no decimal, etc
+
 let _outputID = "";
 let _minValue = null;
 let _maxValue = null;
@@ -102,6 +105,7 @@ function easy_numpad_close()
 {
         let elementToRemove = document.querySelectorAll("div.easy-numpad-frame")[0];
         elementToRemove.parentNode.removeChild(elementToRemove);
+        _isInRange = true;
 }
 
 function easynum(thisElement)
@@ -109,7 +113,7 @@ function easynum(thisElement)
     event.preventDefault();
 
     let currentValue = document.getElementById("easy-numpad-output").innerText;
-
+    
     switch(thisElement.innerText)
     {
         case "±":
@@ -160,7 +164,7 @@ function easynum(thisElement)
             }
         break;
         default:
-            if(_isInRange)
+            if(_isInRange && document.getElementById("easy-numpad-output").innerText.length < parseInt(_maxValue))
             {
                 if (document.getElementById("easy-numpad-output").innerText.length == 1 && _doingDate) {
                     document.getElementById("easy-numpad-output").innerText += (thisElement.innerText + "/");
@@ -183,7 +187,7 @@ function easy_numpad_del()
     if (easy_numpad_output_val.slice(-2) == "0.") {
         var easy_numpad_output_val_deleted = easy_numpad_output_val.slice(0, -2);
     } else if (easy_numpad_output_val.slice(-1) == "/") {
-        var easy_numpad_output_val_deleted = easy_numpad_output_val.slice(0, -3);
+        var easy_numpad_output_val_deleted = easy_numpad_output_val.slice(0, -2);
     } else {
         var easy_numpad_output_val_deleted = easy_numpad_output_val.slice(0, -1);
     }
@@ -202,7 +206,6 @@ function easy_numpad_clear()
 function easy_numpad_cancel()
 {
     event.preventDefault();
-
     easy_numpad_close();
 }
 
@@ -224,11 +227,11 @@ function easy_numpad_done()
 function easy_numpad_check_range(value)
 {
     let outputElement = document.getElementById("easy-numpad-output");
-    if(_maxValue != null && _minValue != null)
+    if(_maxValue !== null && _minValue !== null)
     {
         console.log("Range limit");
         
-        if(value <= _maxValue && value >= _minValue)
+        if(outputElement.innerText.length < _maxValue && outputElement.innerText.length > _minValue)
         {
             outputElement.style.color = "black";
             _isInRange = true;
@@ -239,11 +242,11 @@ function easy_numpad_check_range(value)
             _isInRange = false;
         }
     }
-    else if(_maxValue != null)
+    else if(_maxValue !== null)
     {
         console.log("Only upper limit");
 
-        if(value <= _maxValue)
+        if(outputElement.innerText.length < _maxValue)
         {
             outputElement.style.color = "black";
             _isInRange = true;
@@ -254,11 +257,11 @@ function easy_numpad_check_range(value)
             _isInRange = false;
         }
     }
-    else if (_minValue != null)
+    else if (_minValue !== null)
     {
         console.log("Only lower limit");
 
-        if(value >= _minValue)
+        if(outputElement.innerText.length > _minValue)
         {
             outputElement.style.color = "black";
             _isInRange = true;
