@@ -25,7 +25,7 @@
               <div class="bg-dark bg-gradient p-4">
                 <div class="container text-center">
                     <h2 class="text-white text-center">Online Sale Service V1</h2>
-                    <a href="./admin.jsp" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Control Panel</a>
+                    <a href="./admin" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Control Panel</a>
                 </div>
               </div>
             </div>

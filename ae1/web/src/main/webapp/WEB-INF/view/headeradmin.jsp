@@ -25,7 +25,7 @@
               <div class="bg-dark bg-gradient p-4">
                 <div class="container text-center">
                     <h2 class="text-white text-center">Online Sale Service V1</h2>
-                    <a href="./saleservice.jsp" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Sale Service</a>
+                    <a href="./saleservice" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Sale Service</a>
                 </div>
               </div>
             </div>
