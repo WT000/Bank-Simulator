@@ -210,23 +210,6 @@ function easynum(thisElement)
                 }
             }
         break;
-        case "0":
-            if(_isInRange)
-            {
-                if(currentValue.length === 0)
-                {
-                    document.getElementById("easy-numpad-output").innerText = "0";
-                }
-                else if(currentValue.length === 1 && currentValue === "-")
-                {
-                    document.getElementById("easy-numpad-output").innerText = currentValue + "0";
-                }
-                else
-                {
-                    document.getElementById("easy-numpad-output").innerText += thisElement.innerText;
-                }
-            }
-        break;
         default:
             if(_isInRange && document.getElementById("easy-numpad-output").innerText.length < parseInt(_maxValue))
             {

@@ -49,7 +49,7 @@ document.getElementById("transactionForm").addEventListener("submit", e => {
     let cardMonth = cardDate[0] + cardDate[1];
     
     // Note that if it expires in a month, then it'll still be valid on the final day of that month
-    if (cardDate.trim() == "" || (cardDate.length !== 5 || cardDate.length !== 7) || cardDate[2] !== "/" || !(validMonths.includes(cardMonth))) {
+    if (cardDate.trim() == "" || !(cardDate.length == 5 || cardDate.length == 7) || cardDate[2] !== "/" || !(validMonths.includes(cardMonth))) {
         foundError = true;
         document.forms["transactionForm"]["cardDate"].style.backgroundColor = "red";
     } else {
