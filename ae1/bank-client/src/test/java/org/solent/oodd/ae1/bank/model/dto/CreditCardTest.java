@@ -54,7 +54,7 @@ public class CreditCardTest {
     }
     
     @Test
-    public void secondTest() {
+    public void testRecentExpired() {
         CreditCard instance = new CreditCard();
         
         instance.setEndDate("01/2021");
