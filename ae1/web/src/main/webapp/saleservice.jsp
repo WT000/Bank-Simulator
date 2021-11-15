@@ -119,7 +119,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="customerNameOnCard">Name on Card</label>
-                        <input type="text" class="form-control" id="customerNameOnCard" name="cardName" placeholder="John Doe" required>
+                        <input type="text" class="form-control" id="customerNameOnCard" name="cardName" placeholder="John Doe" max="30" onclick="show_easy_numpad(this, 'letter');" required>
                     </div>
                 </div>
                 

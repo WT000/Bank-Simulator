@@ -27,25 +27,24 @@ function show_easy_numpad(thisElement, type)
                         <td><a href="7" onclick="easynum(this)">7</a></td>
                         <td><a href="8" onclick="easynum(this)">8</a></td>
                         <td><a href="9" onclick="easynum(this)">9</a></td>
-                        <td><a href="Del" class="del" id="del" onclick="easy_numpad_del()">Del</a></td>
+                        <td><a href="Cancel" class="cancel" id="cancel" onclick="easy_numpad_cancel()">X</a></td>
                     </tr>
                     <tr>
                         <td><a href="4" onclick="easynum(this)">4</a></td>
                         <td><a href="5" onclick="easynum(this)">5</a></td>
                         <td><a href="6" onclick="easynum(this)">6</a></td>
-                        <td><a href="Clear" class="clear" id="clear" onclick="easy_numpad_clear()">Clear</a></td>
+                        <td><a href="Del" class="del" id="del" onclick="easy_numpad_del()"><</a></td>
                     </tr>
                     <tr>
                         <td><a href="1" onclick="easynum(this)">1</a></td>
                         <td><a href="2" onclick="easynum(this)">2</a></td>
                         <td><a href="3" onclick="easynum(this)">3</a></td>
-                        <td><a href="Cancel" class="cancel" id="cancel" onclick="easy_numpad_cancel()">Cancel</a></td>
+                        <td><a href="Done" class="done" id="done" onclick="easy_numpad_done()">O</a></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td><a href="0"onclick="easynum(this)">0</a></td>
                         <td><a href="."onclick="easynum(this)">.</a></td>
-                        <td><a href="Done" class="done" id="done" onclick="easy_numpad_done()">Done</a></td>
                     </tr>
                 </table>
             </div>
@@ -64,30 +63,95 @@ function show_easy_numpad(thisElement, type)
                         <td><a href="7" onclick="easynum(this)">7</a></td>
                         <td><a href="8" onclick="easynum(this)">8</a></td>
                         <td><a href="9" onclick="easynum(this)">9</a></td>
-                        <td><a href="Del" class="del" id="del" onclick="easy_numpad_del()">Del</a></td>
+                        <td><a href="Cancel" class="cancel" id="cancel" onclick="easy_numpad_cancel()">X</a></td>
                     </tr>
                     <tr>
                         <td><a href="4" onclick="easynum(this)">4</a></td>
                         <td><a href="5" onclick="easynum(this)">5</a></td>
                         <td><a href="6" onclick="easynum(this)">6</a></td>
-                        <td><a href="Clear" class="clear" id="clear" onclick="easy_numpad_clear()">Clear</a></td>
+                        <td><a href="Del" class="del" id="del" onclick="easy_numpad_del()"><</a></td>
                     </tr>
                     <tr>
                         <td><a href="1" onclick="easynum(this)">1</a></td>
                         <td><a href="2" onclick="easynum(this)">2</a></td>
                         <td><a href="3" onclick="easynum(this)">3</a></td>
-                        <td><a href="Cancel" class="cancel" id="cancel" onclick="easy_numpad_cancel()">Cancel</a></td>
+                        <td><a href="Done" class="done" id="done" onclick="easy_numpad_done()">O</a></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td><a href="0"onclick="easynum(this)">0</a></td>
                         <td></td>
-                        <td><a href="Done" class="done" id="done" onclick="easy_numpad_done()">Done</a></td>
                     </tr>
                 </table>
             </div>
         </div>`;
-    }
+    } else if (type == "letter") {
+        easy_numpad.innerHTML = `
+        <div id="letterPad" class="easy-numpad-container">
+            <div class="easy-numpad-output-container">
+                <p class="easy-numpad-output" id="easy-numpad-output"></p>
+            </div>
+            <div class="easy-numpad-number-container">
+                <table>
+                    <tr>
+                        <td><a href="Q" onclick="easynum(this)">Q</a></td>
+                        <td><a href="W" onclick="easynum(this)">W</a></td>
+                        <td><a href="E" onclick="easynum(this)">E</a></td>
+                        <td><a href="R" onclick="easynum(this)">R</a></td>
+                        <td><a href="T" onclick="easynum(this)">T</a></td>
+                        <td><a href="Y" onclick="easynum(this)">Y</a></td>
+                        <td><a href="U" onclick="easynum(this)">U</a></td>
+                        <td><a href="I" onclick="easynum(this)">I</a></td>
+                        <td><a href="O" onclick="easynum(this)">O</a></td>
+                        <td><a href="P" onclick="easynum(this)">P</a></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="Cancel" class="cancel" id="cancel" onclick="easy_numpad_cancel()">X</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="A" onclick="easynum(this)">A</a></td>
+                        <td><a href="S" onclick="easynum(this)">S</a></td>
+                        <td><a href="D" onclick="easynum(this)">D</a></td>
+                        <td><a href="F" onclick="easynum(this)">F</a></td>
+                        <td><a href="G" onclick="easynum(this)">G</a></td>
+                        <td><a href="H" onclick="easynum(this)">H</a></td>
+                        <td><a href="J" onclick="easynum(this)">J</a></td>
+                        <td><a href="K" onclick="easynum(this)">K</a></td>
+                        <td><a href="L" onclick="easynum(this)">L</a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="Del" class="del" id="del" onclick="easy_numpad_del()"><</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="Z" onclick="easynum(this)">Z</a></td>
+                        <td><a href="X" onclick="easynum(this)">X</a></td>
+                        <td><a href="C" onclick="easynum(this)">C</a></td>
+                        <td><a href="V" onclick="easynum(this)">V</a></td>
+                        <td><a href="B" onclick="easynum(this)">B</a></td>
+                        <td><a href="N" onclick="easynum(this)">N</a></td>
+                        <td><a href="M" onclick="easynum(this)">M</a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="Done" class="done" id="done" onclick="easy_numpad_done()">O</a></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td colspan='5'><a href="&nbsp;"onclick="easynum(this)">&nbsp;</a></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>`;
+    };
 
     document.getElementsByTagName('body')[0].appendChild(easy_numpad);
     _outputID = thisElement.id;
