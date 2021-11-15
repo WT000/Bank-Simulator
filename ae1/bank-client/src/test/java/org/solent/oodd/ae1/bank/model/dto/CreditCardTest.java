@@ -36,5 +36,28 @@ public class CreditCardTest {
         
         instance.setEndDate("12/99");
         assertEquals(instance.cardDateExpiredOrError(), false);
+        
+        instance.setEndDate("12/2020");
+        assertEquals(instance.cardDateExpiredOrError(), true);
+        
+        instance.setEndDate("12/2099");
+        assertEquals(instance.cardDateExpiredOrError(), false);
+        
+        instance.setEndDate("12/2100");
+        assertEquals(instance.cardDateExpiredOrError(), false);
+        
+        instance.setEndDate("12/2199");
+        assertEquals(instance.cardDateExpiredOrError(), false);
+        
+        instance.setEndDate("12/3000");
+        assertEquals(instance.cardDateExpiredOrError(), false);
+    }
+    
+    @Test
+    public void secondTest() {
+        CreditCard instance = new CreditCard();
+        
+        instance.setEndDate("01/2021");
+        assertEquals(instance.cardDateExpiredOrError(), true);
     }
 }

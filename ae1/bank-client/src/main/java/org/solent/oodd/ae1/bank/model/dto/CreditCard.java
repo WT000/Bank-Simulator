@@ -54,7 +54,15 @@ public class CreditCard {
             // Get the endDate year and month
             String[] parts = this.endDate.split("/");
             int endMonth = Integer.parseInt(parts[0]);
-            int endYear = (currentDate.getYear() - (currentDate.getYear() % 1000)) + Integer.valueOf(parts[1]);
+            Integer endYear = null;
+            
+            if (parts[1].length() == 2) {
+                endYear = (currentDate.getYear() - (currentDate.getYear() % 1000)) + Integer.valueOf(parts[1]);
+            } else if (parts[1].length() == 4) {
+                endYear = Integer.valueOf(parts[1]);
+            } else {
+                return true;
+            }
 
             // Get the first day of the month for the endDate, then find the first day of the next month
             LocalDate endDate = LocalDate.of(endYear, endMonth, 1);
