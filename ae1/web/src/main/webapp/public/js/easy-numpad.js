@@ -294,7 +294,6 @@ function easy_numpad_check_range(value)
     if(_maxValue !== null && _minValue !== null)
     {
         console.log("Range limit");
-        
         if(outputElement.innerText.length < _maxValue && outputElement.innerText.length > _minValue)
         {
             outputElement.style.color = "black";
@@ -312,7 +311,11 @@ function easy_numpad_check_range(value)
 
         if(outputElement.innerText.length < _maxValue)
         {
-            outputElement.style.color = "black";
+            if (_doingDate && outputElement.innerText.length == 5) {
+                outputElement.style.color = "green";
+            } else {
+                outputElement.style.color = "black";
+            }
             _isInRange = true;
         }
         else
