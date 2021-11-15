@@ -29,27 +29,27 @@ public class CreditCardTest {
     public void testCardDateExpiredOrError() {
         CreditCard instance = new CreditCard();
         
+        LOG.debug("Testing card without endDate: " + instance.getEndDate());
         assertEquals(instance.cardDateExpiredOrError(), true);
         
         instance.setEndDate("aw98eu89auwf");
+        LOG.debug("Testing card with bad endDate: " + instance.getEndDate());
         assertEquals(instance.cardDateExpiredOrError(), true);
         
         instance.setEndDate("12/99");
+        LOG.debug("Testing card with valid short endDate: " + instance.getEndDate());
         assertEquals(instance.cardDateExpiredOrError(), false);
         
         instance.setEndDate("12/2020");
+        LOG.debug("Testing card with expired endDate: " + instance.getEndDate());
         assertEquals(instance.cardDateExpiredOrError(), true);
         
-        instance.setEndDate("12/2099");
-        assertEquals(instance.cardDateExpiredOrError(), false);
-        
-        instance.setEndDate("12/2100");
-        assertEquals(instance.cardDateExpiredOrError(), false);
-        
-        instance.setEndDate("12/2199");
+        instance.setEndDate("12/2999");
+        LOG.debug("Testing valid boundary endDate: " + instance.getEndDate());
         assertEquals(instance.cardDateExpiredOrError(), false);
         
         instance.setEndDate("12/3000");
+        LOG.debug("Testing valid boundary endDate: " + instance.getEndDate());
         assertEquals(instance.cardDateExpiredOrError(), false);
     }
     
