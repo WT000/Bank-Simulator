@@ -92,14 +92,27 @@ a#easy-numpad-close {
 }
 
 .easy-numpad-number-container .del {
-    background-color: #ffc738
+    background-color: #edb832;
+}
+
+.easy-numpad-number-container .del:hover {
+    background-color: #ffc940;
 }
 
 .easy-numpad-number-container .cancel {
-    background-color: #FE642E;
+    background-color: #e8511c;
 }
+
+.easy-numpad-number-container .cancel:hover {
+    background-color: #ff6029;
+}
+
 .easy-numpad-number-container .done {
-    background-color: #388E3C;
+    background-color: #44ad49;
+}
+
+.easy-numpad-number-container .done:hover {
+    background-color: #4cc251;
 }
 
 @media only screen and (min-width : 300px) and (max-width : 767px) {
