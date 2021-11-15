@@ -33,5 +33,8 @@ public class CreditCardTest {
         
         instance.setEndDate("aw98eu89auwf");
         assertEquals(instance.cardDateExpiredOrError(), true);
+        
+        instance.setEndDate("12/99");
+        assertEquals(instance.cardDateExpiredOrError(), false);
     }
 }
