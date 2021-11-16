@@ -15,11 +15,10 @@
     <body>
         <h1>ERROR</h1>
         <p>The Sale Service has encountered an error, <a href="./saleservice">click here to return to the app</a>.</p>
-        <p>${error}</p>
-        <p>${status}</p>
-        <p>Failed URL: ${requestUrl}</p>
+        <p>${status} - ${error}</p>
         <p>Exception:  ${exception.message}</p>
         <p>Stack trace:</p>
         <p>${strStackTrace}</p>
+        <p>Failed URL: ${requestUrl}</p>
     </body>
 </html>

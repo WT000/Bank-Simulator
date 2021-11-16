@@ -16,7 +16,7 @@
 package org.solent.oodd.ae1.card.checker;
 
 /**
- *
+ * Algorithm to calculate the Lunn digit
  * @author cgallen
  */
 public class CalculateLunnDigit {
@@ -24,8 +24,8 @@ public class CalculateLunnDigit {
     /**
      * Calculates the last digits for the card number received as parameter
      *
-     * @param card number
-     * @return the check digit
+     * @param card The card to calculate the digit for
+     * @return The check digit
      */
     public static String calculateCheckDigit(String card) {
         if (card == null) {

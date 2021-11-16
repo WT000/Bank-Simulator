@@ -17,7 +17,7 @@
 package org.solent.oodd.ae1.card.checker;
 
 /**
- * enum for card company specifics
+ * Enum for card company specifics
  * 
  */
 public enum CardCompany {
@@ -37,18 +37,27 @@ public enum CardCompany {
         this.issuerName = issuerName;
     }
 
+    /**
+     * Used to test if a card matches another card.
+     * @param card The card attempted to match to
+     * @return Boolean depending on if it matches or not
+     */
     public boolean matches(String card) {
         return card.matches(this.regex);
     }
     
+    /**
+     *
+     * @return The cards issuer name
+     */
     public String getIssuerName() {
         return this.issuerName;
     }
     
     /**
-     * get an enum from a card number
-     * @param card
-     * @return
+     * Gets a CardCompany enum from a card number
+     * @param card The card to get an enum from
+     * @return The CardCompany object 
      */
     public static CardCompany gleanCompany(String card) {
         for (CardCompany cc : CardCompany.values()){
@@ -60,9 +69,9 @@ public enum CardCompany {
     }
 
     /**
-     * get an enum from an issuerName
-     * @param issuerName
-     * @return
+     * Gets a CardCompany enum from an issuerName
+     * @param issuerName The issuer being inputted
+     * @return The CardCompany object
      */
     public static CardCompany gleanCompanyByIssuerName(String issuerName) {
         for (CardCompany cc : CardCompany.values()){

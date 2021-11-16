@@ -13,6 +13,7 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
  */
+
 package org.solent.oodd.ae1.card.checker;
 
 /**
@@ -28,11 +29,21 @@ public class CardValidationResult {
     public CardValidationResult() {
     }
 
+    /**
+     *
+     * @param cardNo The card number to contain
+     * @param error The error to contain (if any)
+     */
     public CardValidationResult(String cardNo, String error) {
         this.cardNo = cardNo;
         this.error = error;
     }
 
+    /**
+     *
+     * @param cardNo The card number to contain
+     * @param cardType The card type (CardCompany) to contain
+     */
     public CardValidationResult(String cardNo, CardCompany cardType) {
         this.cardNo = cardNo;
         this.valid = true;
@@ -41,7 +52,7 @@ public class CardValidationResult {
 
     /**
      *
-     * @return true if the card value is valid
+     * @return True if the card value is valid
      */
     public boolean isValid() {
         return valid;
@@ -50,16 +61,16 @@ public class CardValidationResult {
     /**
      * If the card is valid
      *
-     * @return an enum value corresponding to the issuer of the card
+     * @return An enum value corresponding to the issuer of the card
      */
     public CardCompany getCardType() {
         return cardType;
     }
 
     /**
-     * if the card is not valid or there is an unknown issuer
+     * If the card is not valid or there is an unknown issuer
      *
-     * @return error string explaining the problem
+     * @return Error string explaining the problem
      */
     public String getError() {
         return error;
@@ -67,24 +78,40 @@ public class CardValidationResult {
 
     /**
      *
-     * @return the number of the card
+     * @return The number of the card
      */
     public String getCardNo() {
         return this.cardNo;
     }
 
+    /**
+     *
+     * @param cardNo The card to set to
+     */
     public void setCardNo(String cardNo) {
         this.cardNo = cardNo;
     }
 
+    /**
+     *
+     * @param valid The validation boolean to set to
+     */
     public void setValid(boolean valid) {
         this.valid = valid;
     }
 
+    /**
+     *
+     * @param cardType The CardCompany to set to
+     */
     public void setCardType(CardCompany cardType) {
         this.cardType = cardType;
     }
 
+    /**
+     *
+     * @param error The contained error message to set
+     */
     public void setError(String error) {
         this.error = error;
     }
@@ -100,8 +127,7 @@ public class CardValidationResult {
     /**
      * not used but needed for jackson to generate json
      *
-     * @param message
-     * @return
+     * @param message The contained message to set
      */
     public void setMessage(String message) {
     }
