@@ -19,7 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.solent.oodd.ae1.password.PasswordUtils;
 
 /**
- *
+ * Used to load, save and delete properties to a properties file
  * @author WT000
  */
 public class PropertiesDao {
@@ -30,6 +30,10 @@ public class PropertiesDao {
 
     private Properties properties = new Properties();
 
+    /**
+     *
+     * @param propertiesFileLocation The file location to load from
+     */
     public PropertiesDao(String propertiesFileLocation) {
         try {
             boolean firstLoad = false;
@@ -49,10 +53,23 @@ public class PropertiesDao {
     }
     
     // synchronized ensures changes are not made by another thread while reading
+
+    /**
+     * Used to get properties in a key / value format
+     * 
+     * @param propertyKey The property key to retrieve
+     * @return The value tied to the property
+     */
     public synchronized String getProperty(String propertyKey) {
         return properties.getProperty(propertyKey);
     }
     
+    /**
+     * Used to set properties in a key / value format
+     * 
+     * @param propertyKey The property key
+     * @param propertyValue The property value
+     */
     public synchronized void setProperty(String propertyKey, String propertyValue) {
         // Passwords are allowed to be stored in plain text, but this demonstrates hashing the password
         if (propertyKey.equals("org.solent.oodd.ae1.web.password")) {
@@ -64,6 +81,9 @@ public class PropertiesDao {
         saveProperties();
     }
 
+    /**
+     * Used to save a set property to the file
+     */
     private void saveProperties() {
         OutputStream output = null;
         try {
@@ -85,6 +105,11 @@ public class PropertiesDao {
         }
     }
 
+    /**
+     * Used to load written properties
+     * 
+     * @param firstLoad A boolean which determines if the default properties needs to be read
+     */
     private void loadProperties(boolean firstLoad) {
         InputStream input = null;
         try {
@@ -111,5 +136,4 @@ public class PropertiesDao {
             }
         }
     }
-
 }

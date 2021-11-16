@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.solent.oodd.ae1.bank.client.impl;
 
 import java.util.logging.Level;
@@ -27,7 +22,7 @@ import org.solent.oodd.ae1.bank.model.dto.TransactionReplyMessage;
 import org.solent.oodd.ae1.bank.model.dto.TransactionRequestMessage;
 
 /**
- *
+ * The implemented version of BankRestClient
  * @author WT000
  */
 public class BankRestClientImpl implements BankRestClient {
@@ -37,10 +32,22 @@ public class BankRestClientImpl implements BankRestClient {
 
     String urlStr;
 
+    /**
+     *
+     * @param urlStr The REST URL to use
+     */
     public BankRestClientImpl(String urlStr) {
         this.urlStr = urlStr;
     }
 
+    /**
+     * Used to send money without to user auth
+     * 
+     * @param fromCard The card sending money
+     * @param toCard The card getting money
+     * @param amount The amount to send
+     * @return An object which represents the transaction status
+     */
     @Override
     public TransactionReplyMessage transferMoney(CreditCard fromCard, CreditCard toCard, Double amount) {
         LOG.debug("transferMoney called: ");
@@ -77,7 +84,17 @@ public class BankRestClientImpl implements BankRestClient {
 
         return transactionReplyMessage;
     }
-
+    
+    /**
+     * Used to send money with to user auth
+     * 
+     * @param fromCard The card sending money
+     * @param toCard The card getting money
+     * @param amount The amount to send
+     * @param userName Username of to card
+     * @param password Password of to card
+     * @return An object which represents the transaction status
+     */
     @Override
     public TransactionReplyMessage transferMoney(CreditCard fromCard, CreditCard toCard, Double amount, String userName, String password) {
         // Note that userName and password are for the account tied to toCard.

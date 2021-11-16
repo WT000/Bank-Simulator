@@ -18,7 +18,6 @@ package org.solent.oodd.ae1.card.checker;
 
 /**
  * Validator for credit card numbers
- * Checks validity and returns card type
  * 
  * @author ian.chen
  */

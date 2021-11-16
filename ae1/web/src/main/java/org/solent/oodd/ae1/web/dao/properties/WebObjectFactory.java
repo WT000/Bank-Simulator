@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.solent.oodd.ae1.web.dao.properties;
 
 import java.io.File;
@@ -11,7 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- *
+ * Used to create or get properties 
  * @author cgallen
  */
 public class WebObjectFactory {
@@ -20,6 +15,10 @@ public class WebObjectFactory {
 
     private static PropertiesDao propertiesDao = null;
 
+    /**
+     * Used to get the PropertiesDao of the application
+     * @return The properties DAO
+     */
     public static PropertiesDao getPropertiesDao() {
         if (propertiesDao == null) {
             synchronized (WebObjectFactory.class) {
@@ -36,5 +35,4 @@ public class WebObjectFactory {
         }
         return propertiesDao;
     }
-
 }

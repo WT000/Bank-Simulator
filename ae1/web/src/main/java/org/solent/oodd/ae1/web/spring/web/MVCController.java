@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.solent.oodd.ae1.web.spring.web;
 
 import java.io.PrintWriter;
@@ -29,7 +24,7 @@ import org.solent.oodd.ae1.bank.model.dto.CreditCard;
 import org.solent.oodd.ae1.password.PasswordUtils;
 
 /**
- *
+ * The MVC controller for the website
  * @author Will
  */
 @Controller
@@ -37,13 +32,32 @@ import org.solent.oodd.ae1.password.PasswordUtils;
 public class MVCController {
     private final PropertiesDao adminSettings = WebObjectFactory.getPropertiesDao();
     
-    
+    /**
+     * Ran when the user visits root / application starts up
+     * 
+     * @param model Model
+     * @return Redirect link to index.html
+     */
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public String index(Model model) {
         return "redirect:/index.html";
     }
 
     // Call the sale service page
+
+    /**
+     * Call to the sale service page, the main part of this application
+     * 
+     * @param model Model
+     * @param session The users session
+     * @param action The form action to perform
+     * @param cardNo The entered card number
+     * @param cardName The entered card name
+     * @param cardDate The entered card expiry date
+     * @param cardCvv The entered card cvv
+     * @param amount The entered amount to send to the bank
+     * @return Redirect to the saleservice.jsp page
+     */
     @RequestMapping(value = "/saleservice", method = {RequestMethod.GET, RequestMethod.POST})
     public String saleservice(Model model, HttpSession session,
                               @RequestParam(name = "action", required = false) String action,
@@ -130,6 +144,21 @@ public class MVCController {
     }
 
     // Call the admin page
+
+    /**
+     * Call to the admin page, which is used for configuring properties and issuing refunds
+     * 
+     * @param model Model
+     * @param session The users session
+     * @param action The form action to perform
+     * @param enteredUsername The entered username for auth / setting
+     * @param enteredPassword The entered password for auth / setting
+     * @param enteredBankUrl The entered bank REST URL
+     * @param enteredBankCardNo The entered bank card number
+     * @param cardNumber The card number to refund to
+     * @param amount The amount to refund
+     * @return Redirect to the admin.jsp page
+     */
     @RequestMapping(value = "/admin", method = {RequestMethod.GET, RequestMethod.POST})
     public String admin(Model model, HttpSession session,
                         @RequestParam(name = "action", required = false) String action,
@@ -257,6 +286,15 @@ public class MVCController {
     }
 
     // Error handling
+
+    /**
+     * Error page in case the page couldn't be loaded, found, etc
+     * 
+     * @param e The exception
+     * @param model Model
+     * @param request The request
+     * @return A redirect to the error page with relevant messages displayed
+     */
     @ExceptionHandler(Exception.class)
     public String myExceptionHandler(final Exception e, Model model, HttpServletRequest request) {
         final StringWriter sw = new StringWriter();

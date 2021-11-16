@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Bank Account object representation
+ * @author Will
+ */
 @Entity
 public class BankAccount {
 
@@ -23,62 +27,118 @@ public class BankAccount {
 
     private boolean active = true;
 
+    /**
+     *
+     * @return The account ID
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id The ID to set to
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return The owner (user object)
+     */
     @Embedded
     public User getOwner() {
         return owner;
     }
 
+    /**
+     *
+     * @param owner The owner (user object) of the account
+     */
     public void setOwner(User owner) {
         this.owner = owner;
     }
 
+    /**
+     *
+     * @return The Sortcode of the account
+     */
     public String getSortcode() {
         return sortcode;
     }
 
+    /**
+     *
+     * @param sortcode The Sortcode to set to
+     */
     public void setSortcode(String sortcode) {
         this.sortcode = sortcode;
     }
 
+    /**
+     *
+     * @return The account number for this account
+     */
     public String getAccountNo() {
         return accountNo;
     }
 
+    /**
+     *
+     * @param accountNo The account number to set to
+     */
     public void setAccountNo(String accountNo) {
         this.accountNo = accountNo;
     }
 
+    /**
+     *
+     * @return The credit card (object) of this account
+     */
     @Embedded
     public CreditCard getCreditcard() {
         return creditcard;
     }
 
+    /**
+     *
+     * @param creditcard The credit card object to set to
+     */
     public void setCreditcard(CreditCard creditcard) {
         this.creditcard = creditcard;
     }
 
+    /**
+     *
+     * @return The status of the account
+     */
     public boolean isActive() {
         return active;
     }
 
+    /**
+     *
+     * @param active The status to set to
+     */
     public void setActive(boolean active) {
         this.active = active;
     }
 
+    /**
+     *
+     * @return The balance of the account
+     */
     public Double getBalance() {
         return balance;
     }
 
+    /**
+     *
+     * @param balance The balance to set to
+     */
     public void setBalance(Double balance) {
         this.balance = balance;
     }
@@ -87,9 +147,4 @@ public class BankAccount {
     public String toString() {
         return "BankAccount{" + "id=" + id + ", owner=" + owner + ", sortcode=" + sortcode + ", accountNo=" + accountNo + ", balance=" + balance + ", creditcard=" + creditcard + ", active=" + active + '}';
     }
-
-
-    
-    
-    
 }
