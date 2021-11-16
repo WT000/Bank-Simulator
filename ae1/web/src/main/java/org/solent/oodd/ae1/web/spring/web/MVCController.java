@@ -114,7 +114,7 @@ public class MVCController {
                         if (restResponse.getMessage() != null) {
                             result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
                         } else {
-                            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
+                            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations, please ensure your card is added to an account.</p>";
                         }
                     }
                 // An exception could happen during the transfer, catch it here
