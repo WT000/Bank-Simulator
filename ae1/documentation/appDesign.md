@@ -42,7 +42,7 @@ The following are use cases for the application based on the previously identifi
 ### Bank Actor
 - **UC6**: The bank will transfer money between accounts
 
-A visual representation of the use cases can be found here.
+A visual representation of the use cases can be found [here](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/use-case-v2.drawio.png).
 
 ## Initial Designs
 - initial design (screenshots of the images from the PowerPoint)
