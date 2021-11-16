@@ -28,15 +28,25 @@ From these requirements, a set of development phases could be created and tasks 
 | Benjamin (unknown github)    | Nothing                                                                                       | Nothing                                          | Nothing                                                                                |
   
 ## Use Cases
-- use cases (also link to test plan)
+The following are use cases for the application based on the previously identified requirements:
+
+### User Actor
+- **UC1**: Users must be able to add their card details and an amount to send
+- **UC2**: Users must have their card details and amount to send validated
+- **UC3**: Users must be able to use their card details in a transaction against a remote URL
+
+### Admin Actor
+- **UC4**: Admins must be able to log into a secure control panel
+- **UC5**: Admins must be able to enter new properties / overwrite default properties
+- **UC6**: Admins must be able to refund to cards
 
 ## Initial Designs
 - initial design (screenshots of the images from the PowerPoint)
 
 # FINISHED APP
 
-## List of Features
-- list of features and what requirements they solve, include other features at the end of the table
+## List of finished features
+- list of use cases and if they're completed, features and what requirements they solve, include other features at the end of the table
 
 ## Diagrams
 - UML class / robustness diagrams
