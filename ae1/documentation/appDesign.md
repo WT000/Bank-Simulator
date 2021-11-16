@@ -30,15 +30,20 @@ From these requirements, a set of development phases could be created and tasks 
 ## Use Cases
 The following are use cases for the application based on the previously identified requirements:
 
-### User Actor
-- **UC1**: Users must be able to add their card details and an amount to send
-- **UC2**: Users must have their card details and amount to send validated
-- **UC3**: Users must be able to use their card details in a transaction against a remote URL
-
 ### Admin Actor
-- **UC4**: Admins must be able to log into a secure control panel
-- **UC5**: Admins must be able to enter new properties / overwrite default properties
-- **UC6**: Admins must be able to refund to cards
+- **UC1**: Admins must be able to log into a secure control panel
+- **UC2**: Admins must be able to enter new properties / overwrite default properties
+- **UC3**: Admins must be able to refund to cards
+
+### User Actor
+- **UC4**: Users must be able to add their card details and an amount to send
+- **UC5**: Users must have their card details and amount to send validated
+- **UC6**: Users must be able to use their card details in a transaction against the configured remote bank URL
+
+### Bank Actor
+- **UC7**: The bank will transfer money between accounts
+
+A visual representation of the use cases can be found here.
 
 ## Initial Designs
 - initial design (screenshots of the images from the PowerPoint)
