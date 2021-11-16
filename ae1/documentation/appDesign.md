@@ -1,6 +1,16 @@
-# APP DESIGN
+## Contents
+- **[APP DESIGN](#appDesign)**
+- [Requirements and Planning](#requirements)
+- [Use Cases](#usecases)
+- [Initial Designs](#designs)
+- **[FINISHED APP](#finished)**
+- [List of features](#features)
+- [Diagrams](#diagrams)
+- [Javadoc](#javadoc)
 
-## Requirements and Planning
+# <a name="appDesign"></a> APP DESIGN
+
+## <a name="requirements"></a> Requirements and Planning
 This application is built to resemble a modern point of sale application, allowing users to enter their credit card details into a website and see a result depending on the information they put in. From knowing this, it allows us to split the program into a short list of simple requirements: 
 
 - **Users must be able to enter credit card details**
@@ -27,7 +37,7 @@ From these requirements, a set of development phases could be created and tasks 
 | [Hayri](https://github.com/hairicko21)       | Nothing                                                                                       | Nothing                                          | Nothing                                                                                |
 | Benjamin (unknown github)    | Nothing                                                                                       | Nothing                                          | Nothing                                                                                |
   
-## Use Cases
+## <a name="usecases"></a> Use Cases
 The following are use cases for the application based on the previously identified requirements:
 
 ### Admin Actor
@@ -44,19 +54,19 @@ The following are use cases for the application based on the previously identifi
 
 ![UML Diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/use-case-v2.drawio.png "UML Diagram")
 
-## Initial Designs
+## <a name="designs"></a> Initial Designs
 - initial design (screenshots of the images from the PowerPoint)
 
-# FINISHED APP
+# <a name="finished"></a> FINISHED APP
 
-## List of finished features
+## <a name="features"></a> List of finished features
 - list of use cases and if they're completed, features and what requirements they solve, include other features at the end of the table
 - link to the test plan
 
-## Diagrams
+## <a name="diagrams"></a> Diagrams
 - UML class / robustness diagrams
 
 - images of final site
 
-## Javadoc
+## <a name="javadoc"></a> Javadoc
 For those who want a greater understanding of our program works, Javadoc has been used across the code to give details on how things are done. To view it, go to the ae1 parent folder and use ``` mvn javadoc:javadoc ```.
