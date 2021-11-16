@@ -33,15 +33,14 @@ The following are use cases for the application based on the previously identifi
 ### Admin Actor
 - **UC1**: Admins must be able to log into a secure control panel
 - **UC2**: Admins must be able to enter new properties / overwrite default properties
-- **UC3**: Admins must be able to refund to cards
+- **UC3**: Admins must be able to (after validation) refund to cards
 
 ### User Actor
 - **UC4**: Users must be able to add their card details and an amount to send
-- **UC5**: Users must have their card details and amount to send validated
-- **UC6**: Users must be able to use their card details in a transaction against the configured remote bank URL
+- **UC5**: Users must be able to (after validation) use their card details in a transaction against the configured remote bank URL
 
 ### Bank Actor
-- **UC7**: The bank will transfer money between accounts
+- **UC6**: The bank will transfer money between accounts
 
 A visual representation of the use cases can be found here.
 
