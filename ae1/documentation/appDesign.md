@@ -10,4 +10,6 @@
 - UML class / robustness diagrams
 - list of features and what requirements they solve, include other features at the end of the table
 - images of final site
-- javadoc (implement it, say how someone can access it)
+
+## Javadoc
+For those who want a greater understanding of our program works, Javadoc has been used across the code to give details on how things are done. To view it, go to the ae1 parent folder and use ``` mvn javadoc:javadoc ```.
