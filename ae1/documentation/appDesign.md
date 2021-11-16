@@ -40,7 +40,7 @@ The following are use cases for the application based on the previously identifi
 - **UC5**: Users must be able to (after validation) use their card details in a transaction against the configured remote bank URL
 
 ### Bank Actor
-- **UC6**: The bank will transfer money between accounts
+- **UC6**: The bank must be able to transfer money between accounts
 
 ![UML Diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/use-case-v2.drawio.png "UML Diagram")
 
