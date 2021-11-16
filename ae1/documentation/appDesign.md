@@ -51,6 +51,7 @@ The following are use cases for the application based on the previously identifi
 
 ## List of finished features
 - list of use cases and if they're completed, features and what requirements they solve, include other features at the end of the table
+- link to the test plan
 
 ## Diagrams
 - UML class / robustness diagrams
