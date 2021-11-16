@@ -36,7 +36,7 @@ The following are use cases for the application based on the previously identifi
 - **UC3**: Admins must be able to (after validation) refund to cards
 
 ### User Actor
-- **UC4**: Users must be able to add their card details and an amount to send
+- **UC4**: Users must be able to add their card details
 - **UC5**: Users must be able to (after validation) use their card details in a transaction against the configured remote bank URL
 
 ### Bank Actor
