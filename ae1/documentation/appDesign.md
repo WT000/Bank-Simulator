@@ -61,10 +61,10 @@ The following are use cases for the application based on the previously identifi
 
 ## <a name="features"></a> List of finished features
 - list of use cases and if they're completed, features and what requirements they solve, include other features at the end of the table
-- link to the test plan
+- link to the test plan (tests against use cases, preconditions, method, postconditions (results), screenshots)
 
 ## <a name="diagrams"></a> Diagrams
-- UML class / robustness diagrams
+- UML class / robustness / sequence diagrams
 
 - images of final site
 
