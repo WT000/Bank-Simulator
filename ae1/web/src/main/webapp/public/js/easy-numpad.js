@@ -24,9 +24,9 @@ function show_easy_numpad(thisElement, type)
             <div class="easy-numpad-number-container">
                 <table>
                     <tr>
-                        <td><a href="7" onclick="easynum(this)">7</a></td>
-                        <td><a href="8" onclick="easynum(this)">8</a></td>
-                        <td><a href="9" onclick="easynum(this)">9</a></td>
+                        <td><a href="1" onclick="easynum(this)">1</a></td>
+                        <td><a href="2" onclick="easynum(this)">2</a></td>
+                        <td><a href="3" onclick="easynum(this)">3</a></td>
                         <td><a href="Cancel" class="cancel" id="cancel" onclick="easy_numpad_cancel()">X</a></td>
                     </tr>
                     <tr>
@@ -36,9 +36,9 @@ function show_easy_numpad(thisElement, type)
                         <td><a href="Del" class="del" id="del" onclick="easy_numpad_del()"><</a></td>
                     </tr>
                     <tr>
-                        <td><a href="1" onclick="easynum(this)">1</a></td>
-                        <td><a href="2" onclick="easynum(this)">2</a></td>
-                        <td><a href="3" onclick="easynum(this)">3</a></td>
+                        <td><a href="7" onclick="easynum(this)">7</a></td>
+                        <td><a href="8" onclick="easynum(this)">8</a></td>
+                        <td><a href="9" onclick="easynum(this)">9</a></td>
                         <td><a href="Done" class="done" id="done" onclick="easy_numpad_done()">O</a></td>
                     </tr>
                     <tr>
@@ -60,9 +60,9 @@ function show_easy_numpad(thisElement, type)
             <div class="easy-numpad-number-container">
                 <table>
                     <tr>
-                        <td><a href="7" onclick="easynum(this)">7</a></td>
-                        <td><a href="8" onclick="easynum(this)">8</a></td>
-                        <td><a href="9" onclick="easynum(this)">9</a></td>
+                        <td><a href="1" onclick="easynum(this)">1</a></td>
+                        <td><a href="2" onclick="easynum(this)">2</a></td>
+                        <td><a href="3" onclick="easynum(this)">3</a></td>
                         <td><a href="Cancel" class="cancel" id="cancel" onclick="easy_numpad_cancel()">X</a></td>
                     </tr>
                     <tr>
@@ -72,9 +72,9 @@ function show_easy_numpad(thisElement, type)
                         <td><a href="Del" class="del" id="del" onclick="easy_numpad_del()"><</a></td>
                     </tr>
                     <tr>
-                        <td><a href="1" onclick="easynum(this)">1</a></td>
-                        <td><a href="2" onclick="easynum(this)">2</a></td>
-                        <td><a href="3" onclick="easynum(this)">3</a></td>
+                        <td><a href="7" onclick="easynum(this)">7</a></td>
+                        <td><a href="8" onclick="easynum(this)">8</a></td>
+                        <td><a href="9" onclick="easynum(this)">9</a></td>
                         <td><a href="Done" class="done" id="done" onclick="easy_numpad_done()">O</a></td>
                     </tr>
                     <tr>
