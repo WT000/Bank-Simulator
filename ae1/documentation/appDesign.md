@@ -1,14 +1,14 @@
 ## Contents
-- **[APP DESIGN](#appDesign)**
+- **APP DESIGN**
 - [Requirements and Planning](#requirements)
 - [Use Cases](#usecases)
 - [Initial Designs](#designs)
-- **[FINISHED APP](#finished)**
+- **FINISHED APP**
 - [List of features](#features)
 - [Diagrams](#diagrams)
 - [Javadoc](#javadoc)
 
-# <a name="appDesign"></a> APP DESIGN
+# APP DESIGN
 
 ## <a name="requirements"></a> Requirements and Planning
 This application is built to resemble a modern point of sale application, allowing users to enter their credit card details into a website and see a result depending on the information they put in. From knowing this, it allows us to split the program into a short list of simple requirements: 
@@ -57,7 +57,7 @@ The following are use cases for the application based on the previously identifi
 ## <a name="designs"></a> Initial Designs
 - initial design (screenshots of the images from the PowerPoint)
 
-# <a name="finished"></a> FINISHED APP
+# FINISHED APP
 
 ## <a name="features"></a> List of finished features
 - list of use cases and if they're completed, features and what requirements they solve, include other features at the end of the table
