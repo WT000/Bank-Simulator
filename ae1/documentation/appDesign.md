@@ -1,6 +1,6 @@
 ## Contents
 - **APP DESIGN**
-- [Requirements and Planning](#requirements)
+- [Requirements, Planning and Features](#requirements)
 - [Use Cases](#usecases)
 - [Initial Designs](#designs)
 - **FINISHED APP**
