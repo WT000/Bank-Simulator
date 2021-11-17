@@ -1,6 +1,6 @@
 ## Contents
 - **APP DESIGN**
-- [Requirements and Planning](#requirements)
+- [Requirements, Planning and Features](#requirements)
 - [Use Cases](#usecases)
 - [Initial Designs](#designs)
 - **FINISHED APP**
@@ -10,7 +10,7 @@
 
 # APP DESIGN
 
-## <a name="requirements"></a> Requirements and Planning
+## <a name="requirements"></a> Requirements, Planning and Features
 This application is built to resemble a modern point of sale application, allowing users to enter their credit card details into a website and see a result depending on the information they put in. From knowing this, it allows us to split the program into a short list of simple requirements: 
 
 - **Users must be able to enter credit card details**
@@ -28,7 +28,7 @@ There will also be a few miscellaneous properties of the application that will a
 - **The system needs an intuitive UI so users don't feel like they're using an outdated site**
 - **The system should log transactions to a rolling file and console**
 
-From these requirements, a set of development phases could be created and tasks could be picked by group members to complete. You can look at the [Projects](https://github.com/WT000/COM528AE1/projects) board for specific details on who did what, but in a nutshell:
+From these requirements, a set of development phases could be created and tasks could be picked by group members to complete. You can look at the [Projects](https://github.com/WT000/COM528AE1/projects) board for identified features and specific details on who did what, but in a nutshell:
 
 | Github User | Phase 1                                                                                       | Phase 2                                          | Phase 3                                                                                |
 |-------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------|----------------------------------------------------------------------------------------|
