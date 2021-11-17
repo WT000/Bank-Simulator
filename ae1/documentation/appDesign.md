@@ -55,7 +55,18 @@ The following are use cases for the application based on the previously identifi
 ![UML Diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/use-case-v2.drawio.png "UML Diagram")
 
 ## <a name="designs"></a> Initial Designs
-- initial design (screenshots of the images from the PowerPoint)
+Before creating the webapp, we created a few initial ideas for how the pages would look and how events could be handled. Below are mine and Nastaran's initial ideas for the site:
+
+### User Actor
+- [Sale App](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/saleapp.PNG)
+- [Sale App SUCCESS](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/saleappsucc.PNG)
+- [Sale App FAILURE](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/saleappfail.PNG)
+- [Sale App Card Reader](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/designA.PNG)
+- [Legacy Sale App Card Reader](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/designB.PNG)
+
+### Admin Actor
+- [Login Form](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/adminlogin.PNG)
+- [Control Panel](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/controlpanel.PNG)
 
 # FINISHED APP
 
