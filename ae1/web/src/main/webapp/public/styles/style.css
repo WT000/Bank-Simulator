@@ -51,6 +51,14 @@ body{
     align-items: center;
 }
 
+#inputContainer{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #resultContainer #result{
     width: 80%;
     height: 10vh;
@@ -66,6 +74,23 @@ body{
     text-align: center;
 }
 
+#inputContainer #currentInput{
+    width: 60%;
+    height: 8vh;
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+#currentInput #inputResult{
+    margin: 0;
+    font-family: "Lucida Console";
+    text-align: center;
+    white-space: pre;
+}
+
 #formPlacer{
     display: flex;
     justify-content: center;
@@ -79,12 +104,67 @@ body{
     border-radius: 20px;
 }
 
+#formContainerKeypad{
+    padding: 15px;
+    width: 450px;
+    height: 260px;
+    margin-top: 5px;
+    background-color: #34383c;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#formContainerKeyboard{
+    padding: 15px;
+    width: 1000px;
+    height: 260px;
+    margin-top: 5px;
+    background-color: #34383c;
+    border-radius: 20px;
+    justify-content: space-between;
+    flex-direction: column;
+    display: none;
+}
+
+#spaceBar{
+    width: 430px;
+}
+
+.keypadRow{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 #formContainerSmall{
     padding: 15px;
     padding-bottom: 5px;
     width: 55%;
     background-color: #34383c;
     border-radius: 20px;
+}
+
+.numpadButton{
+    width: 80px;
+    height: 50px;
+}
+
+.keypadColFiller{
+    opacity: 0;
+    width: 81px;
+    height: 51px;
+}
+
+.hiddenButton{
+    background-color: #34383c;
+    border: 0;
+}
+
+.btn-warning{
+  color: white !important;
 }
 
 label{

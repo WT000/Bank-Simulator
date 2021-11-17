@@ -96,7 +96,7 @@ public class MVCController {
         String bankUser = adminSettings.getProperty("org.solent.oodd.ae1.web.username");
         String bankPass = adminSettings.getProperty("org.solent.oodd.ae1.web.password");
 
-        String result = "<p id=\"resultText\"> Please enter your details and an amount to send below.</p>";
+        String result = "<p id=\"resultText\"> Please enter your card number. </p>";
 
         // Action from form determines what's done, happens after form is submitted
         // doTransaction - money is being sent to the admin from a customer
@@ -300,6 +300,107 @@ public class MVCController {
         return "admin";
     }
 
+    // Legacy sale service
+    // Call the sale service page
+
+    /**
+     * Call to the legacy sale service page, the old layout
+     * 
+     * @param model Model
+     * @param session The users session
+     * @param action The form action to perform
+     * @param cardNo The entered card number
+     * @param cardName The entered card name
+     * @param cardDate The entered card expiry date
+     * @param cardCvv The entered card cvv
+     * @param amount The entered amount to send to the bank
+     * @return Redirect to the legacysaleservice.jsp page
+     */
+    @RequestMapping(value = "/legacysaleservice", method = {RequestMethod.GET, RequestMethod.POST})
+    public String legacysaleservice(Model model, HttpSession session,
+                              @RequestParam(name = "action", required = false) String action,
+                              @RequestParam(name = "cardNumber", required = false) String cardNo,
+                              @RequestParam(name = "cardName", required = false) String cardName,
+                              @RequestParam(name = "cardDate", required = false) String cardDate,
+                              @RequestParam(name = "cardCvv", required = false) String cardCvv,
+                              @RequestParam(name = "amount", required = false) String amount) {
+        // Set loggedIn to false whenever this page is gone to
+        session.setAttribute("loggedIn", false);
+        
+        // Create a new rest client and get admin bank account details (as they may have changed)
+        BankRestClientImpl restClient = new BankRestClientImpl(adminSettings.getProperty("org.solent.oodd.ae1.web.url"));
+        String bankCardNo = adminSettings.getProperty("org.solent.oodd.ae1.web.cardNumber");
+        String bankCardName = adminSettings.getProperty("org.solent.oodd.ae1.web.cardName");
+        String bankDate = adminSettings.getProperty("org.solent.oodd.ae1.web.cardDate");
+        String bankCvv = adminSettings.getProperty("org.solent.oodd.ae1.web.cardCvv");
+        CreditCard bankCard = new CreditCard(bankCardNo, bankCardName, bankDate, bankCvv);
+
+        // Get the current username and password for admin
+        String bankUser = adminSettings.getProperty("org.solent.oodd.ae1.web.username");
+        String bankPass = adminSettings.getProperty("org.solent.oodd.ae1.web.password");
+
+        String result = "<p id=\"resultText\"> Please enter your details and an amount to send below.</p>";
+
+        // Action from form determines what's done, happens after form is submitted
+        // doTransaction - money is being sent to the admin from a customer
+        if ("doTransaction".equals(action)) {
+            
+            // Ensure the entered amount is a valid double
+            boolean error = false;
+            try {
+                double numAmount = Double.parseDouble(amount);
+            } catch (Exception e) {
+                error = true;
+            }
+            
+            // Validate the card, set its details if it's valid
+            CreditCard customerCard = new CreditCard();
+            CardValidationResult cardResult = RegexCardValidator.isValid(cardNo);
+
+            if (cardResult.isValid()) {
+                customerCard.setEndDate(cardDate);
+                if (!customerCard.cardDateExpiredOrError()) {
+                    customerCard.setCardnumber(cardNo);
+                    customerCard.setName(cardName);
+                    customerCard.setCvv(cardCvv);
+                } else {
+                    result = "<p id=\"resultText\" style=\"color:red;\">ERROR - Your card has expired.</p>";
+                    error = true;
+                }
+            } else {
+                result = "<p id=\"resultText\" style=\"color:red;\">ERROR - " + cardResult.getError() + ".</p>";
+                error = true;
+            }
+            
+            // Only continue with the transaction if no errors have happened
+            if (!error) {
+                try {
+                    // Try sending the transaction to the admin card, doing auth using their username and password
+                    TransactionReplyMessage restResponse = restClient.transferMoney(customerCard, bankCard, Double.valueOf(amount), bankUser, bankPass);
+
+                    // Check whether the transaction was successful or not
+                    if (restResponse.getStatus() == BankTransactionStatus.SUCCESS) {
+                        result = "<p id=\"resultText\" style=\"color:green;\">SUCCESS - £" + amount + " has been taken from your account.</p>";
+                    } else {
+                        // null isn't a helpful message if the bank properties haven't been correctly configured.
+                        if (restResponse.getMessage() != null) {
+                            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - " + restResponse.getMessage() + ".</p>";
+                        } else {
+                            result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations, please ensure your card is added to an account.</p>";
+                        }
+                    }
+                // An exception could happen during the transfer, catch it here
+                } catch (Exception e) {
+                    result = "<p id=\"resultText\" style=\"color:red;\">FAILURE - couldn't perform transactional operations on the currently configured bank.</p>";
+                }
+            }
+        }
+        
+        // Return the page and result
+        model.addAttribute("result", result);
+        return "legacysaleservice";
+    }
+    
     // Error handling
 
     /**
