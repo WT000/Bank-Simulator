@@ -290,12 +290,12 @@ public class MVCController {
                 }
             }
         }
-
+        
         model.addAttribute("result", result);
         model.addAttribute("loggedIn", loggedIn);
-        model.addAttribute("bankUrl", bankUrl);
-        model.addAttribute("bankUsername", bankUsername);
-        model.addAttribute("bankCardNo", bankCardNo);
+        model.addAttribute("bankUrl", adminSettings.getProperty("org.solent.oodd.ae1.web.url"));
+        model.addAttribute("bankUsername", adminSettings.getProperty("org.solent.oodd.ae1.web.username"));
+        model.addAttribute("bankCardNo", adminSettings.getProperty("org.solent.oodd.ae1.web.cardNumber"));
         
         return "admin";
     }
