@@ -4,7 +4,7 @@
 - [Use Cases](#usecases)
 - [Initial Designs](#designs)
 - **FINISHED APP**
-- [List of features](#features)
+- [List of finished features and test plan](#features)
 - [Diagrams](#diagrams)
 - [Javadoc](#javadoc)
 
@@ -69,10 +69,17 @@ Before creating the webapp, we created a few initial ideas for how the pages wou
 
 # FINISHED APP
 
-## <a name="features"></a> List of finished features
-- list of use cases and if they're completed, features and what requirements they solve, include other features at the end of the table
-- link to the test plan (tests against use cases, preconditions, method, postconditions (results), screenshots)
+## <a name="features"></a> List of finished features and test plan
 
+| Use Case Feature | Implementation                                                                                                           | Additional Notes                                                                                                                                                                                                                    |
+|------------------|--------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| UC1              | Admins are able to enter a username and password (of which is stored in the properties file) to gain access to the page. | The password which is checked against is hashed. Login access is granted automatically if required values are missing.                                                                                                              |
+| UC2              | Once logged in, the admin is able to view current properties or add new properties in a form.                            | Default properties are loaded when no properties are currently present, meaning testuser2 and defaulttestpass are the default credentials. Furthermore, the entered properties are tested against the bank to ensure they're valid. |
+| UC3              | Once logged in, admins are able to type card numbers to refund to and transfer money into the account.                   | The to card is always retrieved from the properties file.                                                                                                                                                                           |
+| UC4              | Users are able to enter their bank card details (card number, card date and card cvv) and submit.                        | The card number and date are validated before sending to the bank.                                                                                                                                                                  |
+| UC5              | Once the form is validated, the card details are sent to the bank and an appropriate result is given to the user.        | The ReST connection catches any exceptions or errors that happen, ensuring the user gets a relevant result.                                                                                                                         |
+
+Click here to see the test plan.
 ## <a name="diagrams"></a> Diagrams
 - UML class / robustness / sequence diagrams
 
