@@ -316,7 +316,7 @@ public class MVCController {
      * @param amount The entered amount to send to the bank
      * @return Redirect to the legacysaleservice.jsp page
      */
-    @RequestMapping(value = "/legacysaleservice", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/legacy/legacysaleservice", method = {RequestMethod.GET, RequestMethod.POST})
     public String legacysaleservice(Model model, HttpSession session,
                               @RequestParam(name = "action", required = false) String action,
                               @RequestParam(name = "cardNumber", required = false) String cardNo,
@@ -398,7 +398,7 @@ public class MVCController {
         
         // Return the page and result
         model.addAttribute("result", result);
-        return "legacysaleservice";
+        return "legacy/legacysaleservice";
     }
     
     // Error handling
