@@ -84,8 +84,19 @@ Before creating the webapp, we created a few initial ideas for how the pages wou
 [Interested in seeing the test plan? Click here.](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/appTestPlan.md)
 ## <a name="diagrams"></a> Diagrams & Screenshots
 ### UML Class diagrams
-- card-checker
-![card-checker class diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/use-case-v2.drawio.png "card-checker class diagram")
+Some images are fairly large, so the raw cdg files are contained [here](https://github.com/WT000/GROUPA5AE1/tree/main/ae1/documentation/UML/raw-uml) if you want to view it all for yourself.
+
+- card-checker (handles parts of card validation before the ReST transfer)
+
+![card-checker class diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/card-checker-uml.png "card-checker class diagram")
+
+- bank-client (handles the ReST transfer and contains DAO objects)
+
+![bank-client class diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/bank-client-uml.png "bank-client class diagram")
+
+- web (brings everything together in a web app and controls properties)
+
+![web class diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/web-uml.png "web class diagram")
 
 / robustness / sequence diagrams
 
