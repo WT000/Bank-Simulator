@@ -119,7 +119,8 @@ body{
 #formContainerKeyboard{
     padding: 15px;
     width: 1000px;
-    height: 260px;
+    /* Height would be 260px if numbers didn't need to be included */
+    height: 310px;
     margin-top: 5px;
     background-color: #34383c;
     border-radius: 20px;
