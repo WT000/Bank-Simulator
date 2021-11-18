@@ -187,13 +187,13 @@ public class MVCController {
         // Get the most recent bank information
         String bankUrl = adminSettings.getProperty("org.solent.oodd.ae1.web.url");
         String bankCardNo = adminSettings.getProperty("org.solent.oodd.ae1.web.cardNumber");
-        String bankHashedPassword = adminSettings.getProperty("org.solent.oodd.ae1.web.hashedPassword");
         BankRestClientImpl restClient = new BankRestClientImpl(adminSettings.getProperty("org.solent.oodd.ae1.web.url"));
         CreditCard bankCard = new CreditCard(bankCardNo);
         
         // Get the actual username and password, we'll check these later in case a properties file doesn't exist
         String bankUsername = adminSettings.getProperty("org.solent.oodd.ae1.web.username");
         String bankPassword = adminSettings.getProperty("org.solent.oodd.ae1.web.password");
+        String bankHashedPassword = adminSettings.getProperty("org.solent.oodd.ae1.web.hashedPassword");
         
         // if loggedIn doesn't exist, make it false
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
@@ -203,7 +203,7 @@ public class MVCController {
         }
         
         // If there's currently no account configured, allow auto-login
-        if (bankUsername.equals("") || bankPassword.equals("")) {
+        if (bankUsername.equals("") || bankPassword.equals("") || bankHashedPassword.equals("") || bankCardNo.equals("") || bankUrl.equals("")) {
             loggedIn = true;
         }
         
