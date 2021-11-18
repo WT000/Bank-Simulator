@@ -46,10 +46,11 @@ The following are use cases for the application based on the previously identifi
 - **UC3**: Admins must be able to (after validation) refund to cards
 
 ### User Actor
-- **UC4**: Users must be able to add their card details and (after validation) use their card details in a transaction against the configured remote bank URL
+- **UC4**: Users must be able to add their card details and (after validation) review their details
+- **UC5**: Users must be able to submit the transaction, sending the amount to the REST URL
 
 ### Bank Actor
-- **UC5**: The bank must be able to transfer money between accounts
+- **UC5**: The bank must be able to transfer money between the accounts during transactions and refunds
 
 ![UML Diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/use-case-v2.drawio.png "UML Diagram")
 
