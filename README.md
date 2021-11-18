@@ -20,6 +20,8 @@ mvn cargo:run
 
 After doing one of these, navigate to http://localhost:8080/web/ for credits and a gateway to the running app! I recommend using a modern browser which supports JavaScript. 
 
+**To access the admin control panel you'll need to enter "testuser2" and "defaulttestpass" if the default properties file successfully loads. If there's already a properties file with valuesi nside it, the app will let you skip the login until valid properties are set.**
+
 # DOCUMENTATION
 
 - Click [here](https://github.com/WT000/COM528AE1/blob/main/ae1/documentation/appDesign.md) to see documentation for the app.
