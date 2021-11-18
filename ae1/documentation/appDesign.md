@@ -120,4 +120,4 @@ To visually demonstrate some of our use cases, here's some sequence diagrams:
 ![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequenceadd_transaction.png "login diagram")
 
 ## <a name="javadoc"></a> Javadoc
-For those who want a greater understanding of our program works, Javadoc has been used across the code to give details on how things are done. To view it, go to the ae1 parent folder and use ``` mvn javadoc:javadoc ```. Or, you could generate the Javadoc in [Netbeans](https://netbeans.apache.org/).
+For those who want a greater understanding of our program works, Javadoc has been used across the code to give details on how things are done. To view it, go to the ae1 parent folder and use ``` mvn javadoc:javadoc ```. Or, you could generate the Javadoc in [Netbeans](https://netbeans.apache.org/) by right clicking a maven module and selecting Generate Javadoc.
