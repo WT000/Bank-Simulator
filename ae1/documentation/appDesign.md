@@ -98,19 +98,25 @@ the raw cdg files are contained [here](https://github.com/WT000/GROUPA5AE1/tree/
 
 ![web class diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/web-uml.png "web class diagram")
 
+### Robustness diagrams
+
 ### Sequence diagrams
 To visually demonstrate some of our use cases, here's some sequence diagrams:
 
 - **UC1 (login)**
+
 ![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequencelogin.png "login diagram")
 
 - **UC2 (properties)**
+
 ![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequenceproperties.png "login diagram")
 
 - **UC3 (refund)** 
+
 ![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequencerefund.png "login diagram")
 
-- **UC4 / UC5 (add card and transaction)
+- **UC4 / UC5 (add card and transaction)**
+
 ![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequenceadd_transaction.png "login diagram")
 
 ## <a name="javadoc"></a> Javadoc
