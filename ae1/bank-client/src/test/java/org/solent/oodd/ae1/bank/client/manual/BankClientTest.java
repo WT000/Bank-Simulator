@@ -19,6 +19,7 @@ import org.solent.oodd.ae1.bank.model.dto.TransactionReplyMessage;
 /**
  *
  * @author WT000
+ * @nastaransharifisadr
  */
 public class BankClientTest {
 
@@ -63,28 +64,32 @@ public class BankClientTest {
 
         assertEquals(BankTransactionStatus.SUCCESS, reply.getStatus());
     }
+    //added by nastaran
     @Test
     public void testCVV() {
         BankRestClient client = new BankRestClientImpl(bankUrl);
         assertEquals(fromCard.getCvv(), "123");
     }
+    //added by nastaran
     @Test
     public void testEndDate() {
         BankRestClient client = new BankRestClientImpl(bankUrl);
         assertEquals(fromCard.getEndDate(), "11/21");
     }
+    //added by nastaran
     @Test
     public void testIssueNumber() {
         BankRestClient client = new BankRestClientImpl(bankUrl);
         assertEquals(fromCard.getIssueNumber(), "01");
     }
     
-    
+    //added by nastaran
     @Test
     public void testName() {
         BankRestClient client = new BankRestClientImpl(bankUrl);
         assertEquals(fromCard.getName(), "test user1");
     }
+    //added by nastaran
     @Test
     public void testtransfermoney() {
         BankRestClient client = new BankRestClientImpl(bankUrl);
@@ -104,6 +109,7 @@ public class BankClientTest {
 
         assertEquals("1.0",reply.getAmount().toString());
     }
+    
 
     @Test
     public void testClientAuth() {

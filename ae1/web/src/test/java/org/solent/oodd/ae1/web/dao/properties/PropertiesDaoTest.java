@@ -76,6 +76,7 @@ public class PropertiesDaoTest {
         String Password = propertiesDao.getProperty("org.solent.oodd.ae1.web.password");
         assertEquals("testPassword", Password);        
     }
+    //added by nastaran
     @Test
     public void testPropertiesCardName() {
         PropertiesDao propertiesDao = new PropertiesDao(TEST_PROPERTIES_FILE);
@@ -85,6 +86,7 @@ public class PropertiesDaoTest {
         String cardCVV = propertiesDao.getProperty("org.solent.oodd.ae1.web.cardCvv");
         assertEquals("nasi", cardCVV);        
     }
+    //added by nastaran
     @Test
     public void testPropertiesCardDate() {
         PropertiesDao propertiesDao = new PropertiesDao(TEST_PROPERTIES_FILE);
@@ -94,6 +96,7 @@ public class PropertiesDaoTest {
         String cardDate = propertiesDao.getProperty("org.solent.oodd.ae1.web.cardDate");
         assertEquals("11/10/2021", cardDate);        
     }
+    //added by nastaran
     @Test
     public void testPropertiesCardNumber() {
         PropertiesDao propertiesDao = new PropertiesDao(TEST_PROPERTIES_FILE);
@@ -103,6 +106,7 @@ public class PropertiesDaoTest {
         String cardNumber = propertiesDao.getProperty("org.solent.oodd.ae1.web.cardNumber");
         assertEquals("123456789", cardNumber);        
     }
+    //added by nastaran
     @Test
     public void testPropertiesHashPassword() {
         PropertiesDao propertiesDao = new PropertiesDao(TEST_PROPERTIES_FILE);
