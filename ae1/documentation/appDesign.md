@@ -1,10 +1,10 @@
 ## Contents
 - **APP DESIGN**
-- [Requirements, Planning and Features](#requirements)
+- [Requirements, Planning & Features](#requirements)
 - [Use Cases](#usecases)
 - [Initial Designs](#designs)
 - **FINISHED APP**
-- [List of finished features and test plan](#features)
+- [List of finished features & test plan](#features)
 - [Diagrams](#diagrams)
 - [Javadoc](#javadoc)
 
