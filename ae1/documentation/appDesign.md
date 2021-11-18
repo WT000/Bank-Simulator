@@ -61,8 +61,8 @@ Before creating the webapp, we created a few initial ideas for how the pages wou
 - [Sale App](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/saleapp.PNG)
 - [Sale App SUCCESS](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/saleappsucc.PNG)
 - [Sale App FAILURE](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/saleappfail.PNG)
-- [Sale App Card Reader Design](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/designB.PNG)
-- [Legacy Sale App Card Reader](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/designA.PNG)
+- [Sale App Card Reader Design](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/designA.PNG)
+- [Legacy Sale App Card Reader Design](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/designB.PNG)
 
 ### Admin Actor
 - [Login Form](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/legacy/images/Website%20Ideas/adminlogin.PNG)
