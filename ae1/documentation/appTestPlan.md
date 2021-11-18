@@ -1,6 +1,6 @@
 # TEST PLAN
 
-Click [here](https://github.com/WT000/COM528AE1/blob/main/ae1/documentation/appDesign.md) to go back to the main documentatiomn for the app.
+Click [here](https://github.com/WT000/COM528AE1/blob/main/ae1/documentation/appDesign.md) to go back to the main documentation for the app.
 
 A recap of the use cases:
 - **UC1**: Admins must be able to log into a secure control panel
