@@ -13,7 +13,7 @@ Once installed, navigate to the parent folder (ae1) and run:
 mvn clean install
 ```
 
-You can now deploy the web application using [Tomcat](https://tomcat.apache.org/download-90.cgi)! Furthermore, you could navigate to the web directory and run:
+You can now deploy the web application using [Tomcat](https://tomcat.apache.org/download-90.cgi). Furthermore, you could navigate to the web directory and run:
 ```
 mvn cargo:run
 ```

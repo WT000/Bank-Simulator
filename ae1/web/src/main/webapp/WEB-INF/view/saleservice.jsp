@@ -59,6 +59,19 @@
         </div>
         <div id="formContainerKeyboard" class="container-md">
             <div class="keypadRow">
+                <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">1</button></div>
+                <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">2</button></div>
+                <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">3</button></div>
+                <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">4</button></div>
+                <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">5</button></div>
+                <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">6</button></div>
+                <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">7</button></div>
+                <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">8</button></div>
+                <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">9</button></div>
+                <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">0</button></div>
+                <div class="keypadColFiller"></div>
+            </div>
+            <div class="keypadRow">
                 <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">Q</button></div>
                 <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">W</button></div>
                 <div class="keypadCol"><button class="btn btn-secondary numpadButton" onclick="addText(this)">E</button></div>
