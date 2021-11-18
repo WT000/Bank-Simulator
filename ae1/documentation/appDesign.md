@@ -81,7 +81,7 @@ Before creating the webapp, we created a few initial ideas for how the pages wou
 | UC5              | Once the form is validated, the card details are sent to the bank and an appropriate result is given to the user.                             | The ReST connection catches any exceptions or errors that happen, ensuring the user gets a relevant result.                                                                                                                         |
 | UC6              | The cards and an appropriate amount are sent to the ReST URL and transactions / refunds send to the correct account.                          | Like above, error detection is implemented to ensure the system doesn't crash, the URL can be updated in the properties control form too.                                                                                           |
 
-Click here to see the test plan.
+[Interested in seeing the test plan? Click here.](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/appTestPlan.md)
 ## <a name="diagrams"></a> Diagrams
 - UML class / robustness / sequence diagrams
 
