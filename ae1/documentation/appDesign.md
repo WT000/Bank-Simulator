@@ -10,7 +10,7 @@
 
 # APP DESIGN
 
-## <a name="requirements"></a> Requirements, Planning and Features
+## <a name="requirements"></a> Requirements, Planning & Features
 This application is built to resemble a modern point of sale application, allowing users to enter their credit card details into a website and see a result depending on the information they put in. From knowing this, it allows us to split the program into a short list of simple requirements: 
 
 - **Users must be able to enter credit card details**
@@ -70,7 +70,7 @@ Before creating the webapp, we created a few initial ideas for how the pages wou
 
 # FINISHED APP
 
-## <a name="features"></a> List of finished features and test plan
+## <a name="features"></a> List of finished features & test plan
 
 | Use Case Feature | Implementation                                                                                                                                | Additional Notes                                                                                                                                                                                                                    |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -82,7 +82,7 @@ Before creating the webapp, we created a few initial ideas for how the pages wou
 | UC6              | The cards and an appropriate amount are sent to the ReST URL and transactions / refunds send to the correct account.                          | Like above, error detection is implemented to ensure the system doesn't crash, the URL can be updated in the properties control form too.                                                                                           |
 
 [Interested in seeing the test plan? Click here.](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/appTestPlan.md)
-## <a name="diagrams"></a> Diagrams
+## <a name="diagrams"></a> Diagrams & Screenshots
 - UML class / robustness / sequence diagrams
 
 - images of final site
