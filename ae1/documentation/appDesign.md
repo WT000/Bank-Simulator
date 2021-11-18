@@ -81,7 +81,7 @@ Before creating the webapp, we created a few initial ideas for how the pages wou
 | UC5              | Once the form is validated, the card details are sent to the bank and an appropriate result is given to the user.                             | The ReST connection catches any exceptions or errors that happen, ensuring the user gets a relevant result.                                                                                                                         |
 | UC6              | The cards and an appropriate amount are sent to the ReST URL and transactions / refunds send to the correct account.                          | Like above, error detection is implemented to ensure the system doesn't crash, the URL can be updated in the properties control form too.                                                                                           |
 
-[Interested in seeing the test plan? Click here.](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/appTestPlan.md)
+[Interested in seeing the test plan and images of the app working? Click here.](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/appTestPlan.md)
 ## <a name="diagrams"></a> Diagrams & Screenshots
 ### UML Class diagrams
 the raw cdg files are contained [here](https://github.com/WT000/GROUPA5AE1/tree/main/ae1/documentation/UML/raw-uml) if you wish to view them in that format.
@@ -98,9 +98,20 @@ the raw cdg files are contained [here](https://github.com/WT000/GROUPA5AE1/tree/
 
 ![web class diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/web-uml.png "web class diagram")
 
-/ robustness / sequence diagrams
+### Sequence diagrams
+To visually demonstrate some of our use cases, here's some sequence diagrams:
 
-- images of final site
+- **UC1 (login)**
+![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequencelogin.png "login diagram")
+
+- **UC2 (properties)**
+![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequenceproperties.png "login diagram")
+
+- **UC3 (refund)** 
+![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequencerefund.png "login diagram")
+
+- **UC4 / UC5 (add card and transaction)
+![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequenceadd_transaction.png "login diagram")
 
 ## <a name="javadoc"></a> Javadoc
 For those who want a greater understanding of our program works, Javadoc has been used across the code to give details on how things are done. To view it, go to the ae1 parent folder and use ``` mvn javadoc:javadoc ```. Or, you could generate the Javadoc in [Netbeans](https://netbeans.apache.org/).
