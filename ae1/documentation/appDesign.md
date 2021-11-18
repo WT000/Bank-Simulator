@@ -84,7 +84,7 @@ Before creating the webapp, we created a few initial ideas for how the pages wou
 [Interested in seeing the test plan? Click here.](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/appTestPlan.md)
 ## <a name="diagrams"></a> Diagrams & Screenshots
 ### UML Class diagrams
-Some images are fairly large, so the raw cdg files are contained [here](https://github.com/WT000/GROUPA5AE1/tree/main/ae1/documentation/UML/raw-uml) if you want to view it all for yourself.
+the raw cdg files are contained [here](https://github.com/WT000/GROUPA5AE1/tree/main/ae1/documentation/UML/raw-uml) if you wish to view them in that format.
 
 - card-checker (handles parts of card validation before the ReST transfer)
 
