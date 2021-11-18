@@ -98,10 +98,8 @@ the raw cdg files are contained [here](https://github.com/WT000/GROUPA5AE1/tree/
 
 ![web class diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/web-uml.png "web class diagram")
 
-### Robustness diagrams
-
-### Sequence diagrams
-To visually demonstrate some of our use cases, here's some sequence diagrams:
+### Sequence and Robustness diagrams
+To visually demonstrate some of our use cases, here's some diagrams which follow the guidelines / rules of [this](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/robustness-analysis-tutorial/) tutorial:
 
 - **UC1 (login)**
 
@@ -109,15 +107,18 @@ To visually demonstrate some of our use cases, here's some sequence diagrams:
 
 - **UC2 (properties)**
 
-![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequenceproperties.png "login diagram")
+![properties sequence diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequenceproperties.png "properties sequence diagram")
+![properties robustness diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/robustnessAdminProperties.png "properties robustness diagram")
 
 - **UC3 (refund)** 
 
-![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequencerefund.png "login diagram")
+![refund sequence diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequencerefund.png "refund sequence diagram")
+![refund robustness diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/robustnessAdminRefund.png "refund robustness diagram")
 
 - **UC4 / UC5 (add card and transaction)**
 
-![login diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequenceadd_transaction.png "login diagram")
+![transaction sequence diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/sequenceadd_transaction.png "transaction sequence diagram")
+![transaction robustness diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/robustnessUser.png "transaction robustness diagram")
 
 ## <a name="javadoc"></a> Javadoc
 For those who want a greater understanding of our program works, Javadoc has been used across the code to give details on how things are done. To view it, go to the ae1 parent folder and use ``` mvn javadoc:javadoc ```. Or, you could generate the Javadoc in [Netbeans](https://netbeans.apache.org/) by right clicking an open maven module and selecting ***Generate Javadoc***.
