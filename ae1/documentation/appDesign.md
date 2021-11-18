@@ -83,7 +83,11 @@ Before creating the webapp, we created a few initial ideas for how the pages wou
 
 [Interested in seeing the test plan? Click here.](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/appTestPlan.md)
 ## <a name="diagrams"></a> Diagrams & Screenshots
-- UML class / robustness / sequence diagrams
+### UML Class diagrams
+- card-checker
+![card-checker class diagram](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/UML/use-case-v2.drawio.png "card-checker class diagram")
+
+/ robustness / sequence diagrams
 
 - images of final site
 
