@@ -29,5 +29,6 @@ A recap of the use cases:
 4.4|UC4|Users must only be able to enter a 3 digit length cvv|Attempt to enter invalid cvv's|PASS
 4.5|UC4|Users must only be able to place one decimal place in the amount|Attempt to enter . more than once|PASS
 4.6|UC4|Users must be able to cancel their transaction|Attempt to click the X button during the transaction process|PASS
+4.7|UC4|Users must only be able to place a space once in their name|Attempt to click the space button after already using it|PASS
 5.1|UC5/6|Transactions must be sent to the appropriate ReST URL|Attempt to send a transaction using 5133880000000012 and view the transactions page|PASS
 5.2|UC5/6|Refunds must be sent to the appropriate ReST URL|Attempt to refund the previous transaction|PASS
