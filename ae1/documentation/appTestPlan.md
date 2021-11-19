@@ -2,7 +2,7 @@
 
 Click [here](https://github.com/WT000/COM528AE1/blob/main/ae1/documentation/appDesign.md) to go back to the main documentation for the app.
 
-A recap of the use cases:
+The code already has unit tests to ensure classes and methods work as intended, but it's always good to ensure that the front-end is properly working with everything too. Here's a recap of the use cases:
 - **UC1**: Admins must be able to log into a secure control panel
 - **UC2**: Admins must be able to enter new properties / overwrite default properties
 - **UC3**: Admins must be able to (after validation) refund to cards
@@ -20,7 +20,7 @@ A recap of the use cases:
 1.4|UC1|User login credentials must be wiped when returning to the saleapp|Go back to the saleapp page|PASS ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/1.4.PNG)
 2.1|UC2|Users must be able to submit valid properties|Attempt to change the properties to the testuser1 details|PASS ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/2.1.PNG)
 2.2|UC2|Users must not be able to set the properties to invalid values|Attempt to use an invalid URL, username, password and card number|PASS ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/2.2A.PNG) ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/2.2B.PNG) ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/2.2C.PNG)
-2.3|UC2|Properties must be written to a file|Check the properties after setting them to see if they exist|PASS ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/2.3.PNG)
+2.3|UC2|Properties must be written to a file|Check the properties after setting them to see if they exist, especially to see if the plain text password has been hashed|PASS ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/2.3.PNG)
 3.1|UC3|Users must be able to refund to card|Attempt to refund £5 to 5133880000000012|PASS ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/3.1A.PNG) ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/3.1B.PNG) ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/3.1C.PNG) ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/3.1D.PNG)
 3.2|UC3|Users must not be able to enter invalid cards - it shouldn't do the ReST refund|Attempt to enter an invalid card (1111222233334444) to stop the transfer early|PASS ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/3.2.PNG)
 4.1|UC4|Users must be able to add their card details|Attempt to use the virtual keypad and get to the submit screen at the end|PASS ![Test](https://github.com/WT000/GROUPA5AE1/blob/main/ae1/documentation/images/4.1.PNG)
