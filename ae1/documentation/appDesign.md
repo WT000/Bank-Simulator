@@ -7,6 +7,7 @@
 - [List of finished features & test plan](#features)
 - [Diagrams](#diagrams)
 - [Javadoc](#javadoc)
+- [Additional notes](#notes)
 
 # APP DESIGN
 
@@ -122,3 +123,7 @@ To visually demonstrate some of our use cases, here's some diagrams which follow
 
 ## <a name="javadoc"></a> Javadoc
 For those who want a greater understanding of our program works, Javadoc has been used across the code to give details on how things are done. To view it, go to the ae1 parent folder and use ``` mvn javadoc:javadoc ```. Or, you could generate the Javadoc in [Netbeans](https://netbeans.apache.org/) by right clicking an open maven module and selecting ***Generate Javadoc***.
+
+## <a name="notes"></a> Additional notes
+### CI / CD
+We decided to use this to ensure that our code is still functioning after each push to the repo, it's especially useful for finding commits that accidentally break the system and need someone to fix the program. It also saves time as we don't need to manually run tests right as we're about to push, we can simply look at the status on GitHub and see if the app is okay.
