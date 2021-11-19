@@ -1,6 +1,6 @@
 # COM528AE1 - GROUP A5
 
-This is our groups submission for the AE1, a credit card app powered by REST and built on Java Server Pages.
+This is our groups submission for the COM528 AE1, a credit card app powered by REST and built on Java Server Pages.
 
 ae1 contains code and documentation related to our project.
 
