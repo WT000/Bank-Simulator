@@ -2,7 +2,7 @@
 
 Click [here](https://github.com/WT000/COM528AE1/blob/main/ae1/documentation/appDesign.md) to go back to the main documentation for the app.
 
-A recap of the use cases:
+The code already has unit tests to ensure classes and methods work as intended, but it's always good to ensure that the front-end is properly working with everything too. Here's a recap of the use cases:
 - **UC1**: Admins must be able to log into a secure control panel
 - **UC2**: Admins must be able to enter new properties / overwrite default properties
 - **UC3**: Admins must be able to (after validation) refund to cards
