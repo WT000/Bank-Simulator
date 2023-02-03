@@ -1,6 +1,6 @@
-# COM528AE1 - GROUP A5
+# Bank simulator
 
-This is our groups submission for the COM528 AE1, a credit card app powered by REST and built on Java Server Pages.
+A credit card app powered by REST and built on Java Server Pages.
 
 ae1 contains code and documentation related to our project.
 
